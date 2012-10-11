@@ -1,0 +1,12 @@
+====================
+Tues. April 10, 2012
+====================
+
+.. topic:: 0900
+
+    Just sitting in my morning meeting, listening to people work through problems with the project.
+
+    My neck and shoulder are killing me today. I must have slept in a funny position or something.
+
+    Yesterday after work, Zach and Michelle and raven came over for a beer.  It was a celebratory beer for Zach because yesterday was his first day working at EMC.  We spent part of the day sending messages to each other using the write command to send messages from one pseudo terminal to another.  It was an extremely simple IM system.
+

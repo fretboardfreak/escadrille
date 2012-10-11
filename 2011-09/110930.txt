@@ -1,0 +1,35 @@
+====================
+16. Debian VM Server
+====================
+
+Friday, Sept. 30, 2011
+
+.. topic:: 9:15 - Exploring a New Distro
+
+    Don't tell Ubuntu but...  I'm cheating on him!
+
+    Yeah, thats right.  I'm trying out the debian operating system in a
+    virtual environment for now.  I'm looking for an alternative to the Ubuntu
+    system because I am very close to switching.  Lately, the Ubuntu community
+    has started making changes in a direction that diverges from my needs and
+    wants.
+
+    Ubuntu want's to create an OS that can rival Apple's OSs or Microsoft's
+    OSs.  The result is a number of design desicions that have opted for
+    form over function.  I know that they make a Server release that is better
+    suited to my needs, but I have noticed that the Ubuntu Server mirrors the
+    changes that happen in the desktop release.  This usually means that when
+    they change something big like the window manager (*Unity == the-suck*)
+    the server release will also receive that change eventually in a later
+    release.  Quite simply, that isn't something that I want to deal with.
+
+    Now, to be fair, the Ubuntu Dev Team has done an unparalleled job at
+    improving many of the useability headaches and negative social stigmas
+    that linux has typically suffered from.  They have significantly increased
+    the linux's market share for desktop type use.  Only recently have their
+    release to release changes started to rub me the wrong way.  As time goes
+    on, it gets harder and harder to create and maintain a heavily modified
+    Ubuntu installation.
+
+    Since Ubuntu is based on debian I figured that it would be a good,
+    familiar place to start.

@@ -1,0 +1,44 @@
+==========================
+14. Slow Morning, Long Day
+==========================
+
+Tuesday, Sept. 27, 2011
+
+.. topic:: 8:30 - The Silent Alarm
+
+    Unfortunately I slept through the first hour of my alarm this morning.  It
+    was set to go off at 5:30am but I don't remember seeing or hearing it
+    until 6:30am.  Nicole on the other hand, did hear it go off.
+
+    Thats really too bad because now I am getting the same start as I do
+    everyday instead of an early and extra productive one.
+
+.. topic:: 14:00 - Pleasantly Surprised
+
+    Since my last post, I worked pretty much straight (even through lunch)
+    until not long ago. I was trying to:
+
+        a. finish coding an enhancement
+        b. clean up the code and the docstrings
+        c. multiple test/fix cycles
+        d. final tweaking of the output format
+
+    Yesterday, I expected all those tasks to take most of today.  That's also
+    why I had set my alarm so early.  I wanted to come in to the office and
+    get a head start because I fully expected that I would be staying late
+    today. Those are only about 2/3 of my total list.
+
+    Now though, as you can see, I can see that my fears were mostly unfounded.
+    I have ten or so minutes to take a quick break and then I get to go do
+    some more testing.
+
+    The reason I have all these things to do before tomorrow is because I am
+    switching teams temporarily.  Thus, as of tomorrow I belong 100% to the
+    Recover Point team instead of the Automation team. I'm excited to learn
+    about this new area of the product but having to pass off all of my
+    current projects and workload is harder than it would seem.  I am
+    dissappointed that I won't be able to keep up the code reviews for the
+    audit system that I wrote or implement the enhancements that I've been
+    designing into our release script.
+
+    I guess that's life though.

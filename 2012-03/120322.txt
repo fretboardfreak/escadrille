@@ -1,0 +1,11 @@
+========================
+Thursday, March 22, 2012
+========================
+
+.. topic:: 0840
+
+    My management server has died a horrible (possibly painful) death.  At least thats what I will continue to say until it can boot again.  Stupid power outages!
+
+.. topic:: 0900
+
+    Power outages are really a pain in the but.  First it makes all our systems go down.  Then it uncovers all sorts of hardware issues and boot problems and other nasty things.  And as a last complaint, power outages mean that I have to spend a good chunk of my morning turning things on again.

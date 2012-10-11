@@ -1,0 +1,10 @@
+===============
+Monday, Nov. 29
+===============
+
+.. topic:: 0900
+
+    YAML.  After almost a year or two since hearing of this new data structure I am finally diving in.  I've only had a chance to glance at the minimal documentation on the pyYaml website so far but it seems pretty promising.
+
+    The reason I have started to take a look at YAML again is because I want to write a CGI web interface for taskwarrior.  The output of taskwarrior's export function is YAML so I figured it would be a good way to learn the YAML format.
+

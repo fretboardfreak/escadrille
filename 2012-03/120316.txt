@@ -1,0 +1,19 @@
+======================
+Friday, March 16, 2012
+======================
+
+.. topic:: 0830
+
+    Mom has landed. Unfortunately I forgot to get my second set of keys from Nicole the other day so I had to give Mom mine. Apparently there is a boat show at Northlands this weekend and Mom wants to try and make the trek to go and see it.  All I can say is that I hope she doesn't get lost and end up in Saskatoon or something.
+
+.. topic:: 0900
+
+    For some reason the IO Generator application that I have been fighting with has the *feature* to write *over the edge* of the volume I give it.  Meaning if I tell it to write to only the first 2 million blocks out out of a 2.1 million block device, it should write to somewhere between 2.0 and 2.1 million blocks.  It is mind bogglinglgy silly.
+
+.. topic:: 1130
+
+    I get to go for lunch at the mall with Mom today.
+
+.. topic:: 1315
+
+    PyCon!  Last weekend there was a Python Conference and today we get to sit in the board room and watch some of the talks.  The first one is all about imports in python.

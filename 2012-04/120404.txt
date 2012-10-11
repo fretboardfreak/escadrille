@@ -1,0 +1,34 @@
+==================
+Wed. April 4, 2012
+==================
+
+
+
+.. topic:: 0730
+
+    Good morning world; mine sure is today.  I am sitting in my housecoat watching the Men's World Curling Championships.  I mentioned in my post the other day that I might get a chance to watch a game on TV before the weekend.
+
+    Time to go shower during a commercial break.
+
+.. topic:: 0755
+
+    Shower is done and tea is made.  It's 5-4 for Canada against Sweden in the 7th end.
+
+    .. image:: ../pix/2012-04/120404_1.jpg
+        :width: 60 %
+        :align: center
+        :alt: Toasted Walnut Green Tea and a smile!
+
+    My tea this morning is a strongly steeped Toasted Walnut Green tea with a teaspoon of raw sugar. Yum!
+
+.. topic:: 0930
+
+    Oh goody, work.  *Don't worry, I have a few minutes while I wait for my system to load.*
+
+    I stopped at Starbucks on my way into work today.  I'm kinda digging having the choice on my way in to work of which coffee shop I buy my morning coffee at.  So today's coffee is a Venti (*whats with the confusing names for sizes?*) Medium  Roast.
+
+    There's really nothing like some good music (Paul Gilbert right now) and a good coffee to help you tackle tough problems.
+
+.. topic:: 2300
+
+    Whelp, I finally got my act together and set up my eeepc a bit more.  I'm now running a nicely configured LXDE with WICD as my wireless manager.  There are still a few things to work out but I will work on those as I feel like.

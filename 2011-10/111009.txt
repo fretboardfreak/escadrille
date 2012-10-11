@@ -1,0 +1,47 @@
+=========================
+18. Almost a Week Gone By
+=========================
+
+Sunday, Oct. 9, 2011
+
+.. topic:: 09:30 - Yay Curling
+
+    Wow. It is a little hard right now to figure out where the week has gone.
+    After working on my VM Server last weekend I sort of buried myself under
+    non-techy things for the week.
+
+    There were even a number of days this week where I didn't turn on my
+    second computer. Instead of sitting in front of a PC all week I have been
+    curling, reading and working.
+
+    I started reading a few Tom Clancy books again.  Say what you will about
+    the depth of his stories; I find them to be highly engaging when you're in
+    the right mood.
+
+    As for Curling, I am registered in 3 different leagues this year.  The
+    Sunday evening GUSL (Granite University Sunday League),  the Friday night
+    mixed and the Thursday night mens.  We lost two people from our GUSL team
+    of last year so we've picked up Chris Pederson from school and Ellen, a
+    lady Nicole has curled with before.  The Friday night team also lost two
+    from their lineup of last year which allowed Nicole and myself to fill
+    those spots.  Finally, my thursday evening team has been a team of three
+    for the past couple of years.  Shinya (spelling?) played with them last
+    year and they wanted to continue to get more and more competitive.
+
+    It looks like I'm going to have another great year curling!
+
+.. topic:: 15:00 - A Days Work Lost
+
+    Well, that's why you should focus on tiny tiny tiny commits and then
+    squash them into one atomic commit and merge your project branch back in.
+
+    It's the only sane way to work in git.
+
+    Now I know that's a big statement to make but I stand behind it.  I just
+    lost a considerable amount of work because of a typo in a script. The
+    result was removing a file with modifications before I could even stage
+    it.  What a waste.
+
+    From now on I should foster a stricter habit of saving the file, then
+    committing it to the repository.  At least that way it's double protected
+    against stupidity.

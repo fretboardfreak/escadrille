@@ -1,0 +1,11 @@
+============================
+26. Monday, November 7, 2011
+============================
+
+.. topic:: 1330
+
+    Meetings, meeting, meetings, yay.  Well, ok, maybe not yay.
+
+.. topic:: 1430
+
+    I have been trying to test the same bug fix for the whole frikkin day.  I have no idea what I'm missing and it frustrates the hell out of me!

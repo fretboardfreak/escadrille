@@ -1,0 +1,24 @@
+===========================
+04. Tuesday, Sept. 13, 2011
+===========================
+
+3:30pm
+======
+
+Today has been a productive day. I've been working from home today and that
+means no distractions.  I managed to get a few code reviews finished -- I'm
+taking a break in the middle of one right now -- and now I'm going to
+prototype a release notes generating script.
+
+The Release Notes Generator uses the last git tag matching
+"``ChimeraV\d.\d\d.\d.\d``" to the current HEAD of origin/dev to generate a log
+file.  It then displays each log message to the user and gives the user a menu
+of choices for what section of the release notes that it should be added to.
+
+I'll use subprocess to run the git commands, the ``re`` module to
+find and match/sort the tag strings, the ``cmd`` module to provide
+the command line interface to the user, and a bunch of string and file IO
+operations to put all of the messages into a nice rst format and sorted
+into their proper sections.
+
+Wish me luck.

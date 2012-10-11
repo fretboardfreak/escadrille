@@ -1,0 +1,7 @@
+======================
+23. Monday, October 31
+======================
+
+.. topic:: 1030
+
+	I'm starting to get sick an tired of all the hacky inconsistencies within this code base. I'm at the point where I rarely even believe the doc strings in the code anymore.

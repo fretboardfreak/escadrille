@@ -1,0 +1,51 @@
+==================================
+17. Lost a Day, Gained a Server VM
+==================================
+
+Sunday, Oct. 2, 2011
+
+.. topic:: 10:00 - Server VM == Great Idea
+
+    I spent a great deal of time yesterday configuring my new debian server
+    virtual machine and I have to say that I'm pretty impressed so far.  By
+    setting up the server using bridged networking I'm essentially gaining a
+    new server class machine without any hardware.  The best part is that I am
+    able to run the VM on any computer that is currently running.
+
+    The major driver for this move to a VM server was my need to have a server
+    setup at home but never really having a stable PC setup to use.  There are
+    multiple reasons that I have a *need* to have a home server, namely:
+
+    - Need a privately hosted git repo
+    - Need external access point for my network
+    - Proper incremental backups
+    - Website things that I'm unable to do at curtissand.com
+
+    Now that I have the server set up, running and pretty much ready to go
+    there are a number of scripts and features that I want to add.  It would
+    be nice to have an interface for submitting patches (for when ssh git
+    pushes are unavailable).  Also a script triggering interface would be good
+    to have too.
+
+.. topic:: 11:00 - Looking at Ditz for Todo/Bug/Issue Tracking
+
+    I've spent the morning reading about issue tracking systems and I am
+    starting to think that the *ditz* project could come in very handy.  I've
+    already seen what happens if I just start working on a whole bunch of
+    scripts.  It isn't pretty.  Hopefully with ditz I'll be able to keep track
+    of the things that I'm working on and use it more like a todo program
+    than anything else.  I'll have more on this later.
+
+.. topic:: 23:50 - Idea About the Python GIL
+
+    I was just reading this article about the `Python GIL and Threading
+    Implications
+    <http://dabeaz.blogspot.com/2011/08/inside-look-at-gil-removal-patch-of.html>`_
+    and it strikes me; everybody is fixated on removing the GIL so that
+    multithreaded applications will work better.  I propose that we try adding
+    global level interpreter namespaces and multiple GILs. Of course we'd have
+    to test out the memory usage effects this would have but essentially it
+    could allow multiple threads to request an interpereter resource.  Typical
+    systems today have more than enough ram to run a limited number of python
+    interpreters.
+

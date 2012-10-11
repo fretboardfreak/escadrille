@@ -1,0 +1,60 @@
+=========
+July 2012
+=========
+
+----
+:date: Mon, 07/23
+:time: 1000
+
+Go away Monday!  The weekend was so much better.
+
+Nicole and I went to her aunties cabin this weekend.  It was pretty fun except that it rained on Saturday so it wasn't really hot enough to go put on the boat.
+
+I took my tent out there though and I was happily surprised that nothing in the tent got wet despite the torrential downpour and lack of tarps.
+
+----
+:date: Tues, 07/17
+:time: 1030
+
+I am back from holidays. :(
+
+----
+:date: Thurs. 07/12
+:time: 1030
+
+Today is the last day of my week.  Yay! I am taking tomorrow and Monday off so that I can go to the Shuswap with the fam-damn-ily.  Eric and Carrie (and dogs), Lacey, Auntie Dawn and Uncle John (and dogs) and Gra'mom should all be there.  Mom was saying that Derek may even decide to come out for the weekend.
+
+Apparently Derek has applied to a bunch of places for a position but hasn't heard any results yet.  I wonder exactly how he's going about the process of finding places, applying, etc.  In the past he has shown a fair bit of naivity about this sort of thing and may parents haven't exactly looked for a job in decades.  I'm pretty much staying out of it though because Derek and I do not see eye-to-eye on this type of subject.  He always has too much hubris to recognize that I have more experience in finding professional jobs than he, and since he graduate this "Masters of Management" course he views himself as better than me.  Something he will not get away with since I have a job, I've never not had a job, and I've never lived off of my parents dime without bothering to find a job.
+
+----
+:date: Wed, 07/04
+:time: 1115
+
+I just had a blonde moment... I've been listening to music all morning but everything sounded like there was a track missing during mixdown.  Finally I realized that the cable wasn't completely plugged into my headphones.  Ugh.
+
+:time: 0900
+
+.. image:: ./pix/2012-07/eye-phone.png
+    :width: 60 %
+    :align: center
+    :alt: Courtesy of http://leasticoulddo.com/
+
+Good morning. I thought I'd greet the day with a bit of humor that I found on the "Least I Could Do" (LICD) webcomic.  Usually I forget to go back and look at the LICD comics that I missed over the weekend; I usually forget that they publish comics on the weekend.  Usually their weekend comic is a Calvin-and-Hobbes-esque comic that looks into the childhood of the main character Rayne.  This one caught my eye.
+
+Enjoy.
+
+----
+:date: Tues, 07/03
+:time: 2300
+
+My blogging habits have been pretty lacking as of late. That's partially because I've been keeping busy working on various projects and partially because I've forgotten.
+
+Over the last month or so I have done a fair bit of work on the RC cars. I cleaned and fixed up one of the RC10T3's, replaced the steering servo, replaced the radio with a 2.4GHz model and put on new tires.  I've also ordered diff and shock rebuild kits for both cars; it's still in the mall.
+
+On Dads car, I tore off all of the electronics and the mechanical speed control; then I scraped all of the silicone bathroom sealant off of the chassis and replaced the motor. I'm waiting for the hobby shop to call me when they get my receiver in; at which point, I'll then go in and buy a servo. For batteries I'm going to tear apart the old yellow 1500mah battery packs that I have and make four 3 cell packs that will fit on the wings of the car.  I'll also need to write two series writing harnesses so that the speed control receives the 7.2V that it expects.
+
+In addition to RC cars I've been working a little bit on my rst website builder, playing/recording some guitar, playing skyrim and reading a textbook on distributed systems.
+
+Such a boring life.
+
+Well, I'll try to write more often now that I don't need to make a new file every day.

@@ -1,0 +1,17 @@
+====================
+Tues. March 06, 2012
+====================
+
+.. topic:: 0800
+
+    Sitting in the games room at work again so that I can watch the brier.  Unfortunately, I have a meeting from about 830 to about 930 today and tomorrow which is right smack dab in the middle of the draw.
+
+    Last night after work I went over to Zakk's place and we went over to *Uncle Glenn's* which is the nice little neighborhood bar next to his place.  They have some very good wood fired pizza and other eats. We watched the beginning of the game at the bar and had some food and then we grabbed the TV and went to my place, set up the TV and watched the last 2 + an extra end.  It worked out very well.
+
+    Before going over to Zakk's though I called maintenance about my oven not working.  Lu See Lim answered and to my surprise she half expected me to call about that stove.  I guess they use the oven timer to test the oven.  The catch is that on this old *Moffat* stove, when the timer turns the oven off it just flips a breaker.  In order to use the oven again you have to push the knob on the stop dial in until you hear a click and then everything works fine again.
+
+    I learned two different things from this, *(1)* Lu See really does a good job at Fairmont Village, *(2)* I need to learn how to use old appliances. I don't want to be that goof on the airplane trying to use the touch screen TVs that don't exist...
+
+.. topic:: 1130
+
+    In the, so far, typical manner that we have seen so far Rachel is going through yet another design change.  Hopefully it won't be as bad as when we looked at Failovers.  I say this is typical because of our lack of knowledge of the RecoverPoint object model.  We have been designing an OO representation of their Functional Data Model but every time we expand our view of RecoverPoint and try to implement a new feature we need to do some pretty heavy refactoring to keep things consistent.  It can be very trying on this pair of programmers.

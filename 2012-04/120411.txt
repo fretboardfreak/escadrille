@@ -1,0 +1,17 @@
+===================
+Wed. April 11, 2012
+===================
+
+.. topic:: 0830
+
+    I am ashamed to say that yesterday after work I did absolutely nothing productive.  I was feeling pretty tired and run diem yesterday.  When I got home I very quickly fell prey to my armchair and the enticing patterns on my eyelids.
+
+    This morning I realized -finally - why I had chosen Tims for my morning coffee.  This morning I bought a simple, no frills mocha from Starbucks for 5 bucks and change.   Now, I may not have been alive in the days of old back in the wild wild west but from where I'm sitting, that's highway robbery.
+
+.. topic:: 1100
+
+    I really hate it when I try to load the management server and instead it has a hidden import error and then spits out tracebacks that are only secondary to the underlying problem.  It's damned hard to debug!
+
+.. topic:: 1330
+
+    Went to lunch at Zodiak today with Zach.  I kinda like finally being able to chat with him throughout the day and bring able to discuss proprietary technical issues if it ever comes up.

@@ -1,0 +1,26 @@
+============
+Jan 20, 2012
+============
+
+.. topic:: 0820
+
+    Good morning world. TGIF! Today started with another < -20 degree morning. The brakes on my car have been squeeking something fierce lately and I'm thinking I should think about having somebody look at them.
+
+    Just for the heck of it here is a clever picture about toolchains that I got from `XKCD <http://xkcd.com>`_:
+
+    .. image:: ./images/tool.gif
+        :width: 60 %
+        :align: center
+        :alt: Some alt-text because I can.
+
+.. topic:: 0900
+
+    Rachel and I just received an email from a person who was just told to do the same job that we are doing.  There are a staggering number of broken lines of communication within this company and it is starting to be pretty grating and tiresome.
+
+.. topic:: 0930
+
+    Alright, I have a pretty functional front end for my CGI Blog, so that means that I now have to give some thought to the content management aspect of things. As it stands now, the design is to have the cgi interface with a content directory.  The content directory will be filled with blog entries (html snippets) and the other relevant media files.  The problem that I'm now wrestling with is how do I get those compiled files onto my webserver from my various devices.
+
+.. topic:: 1700
+
+    Two hours to go until we curl.  Work is finished. Nicole is on her way over.  Things are looking up for this evening.  Now I'm off to put some heat on my shoulders and go through my stretches.

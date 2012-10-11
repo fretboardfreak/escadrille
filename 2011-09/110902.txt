@@ -1,0 +1,31 @@
+=========================
+01. Friday, Sept. 2, 2011
+=========================
+
+1230: A changeset of Epic Proportions
+=====================================
+
+I'm just sitting here at work waiting away the lunch hour so I thought I'd
+write a short post here.  I took over a big changeset and review from Marc and
+so I am waiting for the rest of the team to get back so I can finish.  The
+reason I'm getting antsy to finish this little project is twofold:
+
+#. The whole repo is on *freeze* until this changeset is in.
+#. I'm leaving work at 2pm, leaving me 1 hour or so to finish this review and
+   get this changeset checked in.
+
+I have to say though, that this changeset is the largest that I've ever worked
+on.  If everything goes well I will be checking in a changeset that has 14K
+added lines of text and a total of 20K changed lines (added, deleted or
+modified).  Essentially it is a *changeset of epic proportions*.
+
+The reason I'm leaving early is because it's a long weekend. :D  Zach,
+Michelle, Nicole and myself are taking a road trip back to Quesnel for the
+weekend.  It should be fun; I've been looking forward to it for a while now
+too.
+
+We'll be taking Raven (Zach and Michelle's puppy) half way to Hinton too so
+that will be exciting.  We'll be leaving Raven in Hinton at Zach's parent's
+place because my Mom is allergic.
+
+So long for now (until my next post).

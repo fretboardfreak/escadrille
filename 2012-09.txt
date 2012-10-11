@@ -1,0 +1,39 @@
+==========
+Sept. 2012
+==========
+
+.. |CircuitLab| replace:: `Circuit Lab <https://circuitlab.com>`_
+
+----
+:date: Mon. Sept. 10, 2012
+:time: 0840
+
+Yesterday I managed to wire up an almost fully functional battery discharge circuit.  It took a bit of re-designing on Circuit Lab but I managed to effectively isolate the power circuit from the control circuit.  Pretty much everything worked the way I wanted it to.  The battery drained as expected and at the proper voltage the MOSFET turned off.
+
+.. image:: ./pix/2012-09/battery-discharger-prototype2.jpg
+   :width: 60 %
+   :align: center
+   :alt: Prototype 2
+
+The reason I say almost fully functional is because there are a few more things that I'd like to try and add to the circuit before I call it a day.  Then when I'm done adding things I want to solder together a more robust solution inside a project box so that it looks all fancy and such.  Here's what I still need/want to add:
+
+#. An Off/On LED.  I should be able to use the output of the OP-Amp to also power an LED.  When VBatt reaches the target voltage, the OP-Amp output goes low to turn of the MOSFET and so this LED would be On during discharge and off otherwise.
+#. On/Off Switch.  Turn of the the power to the Op-Amp and the MOSFET turns off.  One switch to turn the whole system on and off.
+#. Something to protect the circuit from turning back on.  Chemical Batteries -- especially large ones -- have this weird property where the voltage will drop as expected with a load attached but after you remove the load the battery slowly *regains* it's voltage.  This doesn't mean that it's re-charging or anything, the amount of charge left in the battery is the same.  In the case of the battery discharge circuit I'll want to prevent the system from turning on again when the battery voltage climbs above the cut-off threshold again.
+#. A low current, voltage ladder to power a small array of LEDs.  It would be nice to have maybe 3 LEDs in a voltage ladder so that if the voltage is High enough, all 3 LEDs would turn on, and as VBatt gets lower the LED's would turn off one by one.  This is really just a nice to have but would be an interesting circuit design challenge.
+
+----
+
+:date: Fri. Sept. 07, 2012
+:time: 0900
+
+If you've never heard of it before, or have never checked it out before, you MUST check out |CircuitLab|.  It is a very cool circuit WYSIWYG editor and simulator. The library of parts is still kinda small but development is active and there is the ability to copy the parameters from a SPICE component model into |CircuitLab|.  I can see it being fairly handy to have.
+
+Here is the first circuit that I've designed using the Circuit Lab editor.  The simulation works but since the Op-Amp model and the BJT is slightly different than actual components that I have on hand so the actual circuit doesn't work yet.
+
+.. image:: ./pix/2012-09/battery-discharger.png
+   :width: 60 %
+   :align: center
+   :alt: Safe Battery Discharge Circuit Version 1
+
+The next thing I want to try is using an n-channel FET for the switch instead of an NPN BJT.  They are much simpler to bias.

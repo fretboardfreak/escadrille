@@ -1,0 +1,118 @@
+=========
+May, 2012
+=========
+
+The fifth month, prepare for something.
+
+----
+
+:date: Tue. May 29
+:time: 0800
+
+Good morning world.  It has been a while since I've written anything.
+
+----
+
+:date: Fri. May 18
+:time: 0900
+
+TGIF.  It rained all night last night and the sky is gloomy, but I don't care.  I've got one more day of work until my vacation, and it cannot pass quickly enough.  Today I'm going to work on IO Manager issues and hopefully time will pass quickly.
+
+----
+
+:date: May 18
+:time: 0055
+
+Yay, we did not get lost.  The jubilations show was funny. It was called *2 and 2/3 men*.  It was a weird mishmash of 2 and a half men and an underwater themed prom at west Edmonton high in Canada (they pointed out that they were in Canada and not LA).
+
+Anyways, I'm of to bed now. Good night.
+
+----
+
+:date: Thurs. May 17
+:time: 1130
+
+Howdy Doody world.  **One and a half days left until vacation!**
+
+Today and tomorrow I will be rapidly trying to finish the jobs that are currently on my plate.  I have some code reviews to address and then some bugs to look into so out shouldn't nee too difficult to accomplish.
+
+Tonight after work Nicole, Shlee, John and I are headed to Jubilations.  A comedy dinner theater from what it sounds like.  I think I'll be driving which means I need to find out where it is, otherwise we will not be able to go.
+
+----
+
+:time: 1445
+
+Things are looking up this afternoon.  My tests have been successful and things have been pretty smooth. I will have posted 4 code reviews and 1 RP defect by the end of today.
+
+----
+
+:date: Wed. May 16
+:time: 1030
+
+Hullo world and welcome to yet again another day of work.  The sky outside is a perfect blue due to the scorching hot sun turning all the plants green.  Can you tell I don't have my head focused to much on work at the moment?
+
+Yesterday was Nicole's birthday so I tried to take  to Chapters to pick up the girl with the dragon tattoo trilogy.  Chapters didn't have the books so after some deliberation we decided to get her the	Clean Code book.
+
+----
+
+:date: Tues. May 15
+:time: 0915
+
+I'm trying a new blog format.  Since I tend not to write too much in my blog to begin with, I'm trying out a new format that should make writing the blog a bit easier.
+
+:time: 0830
+
+Good morning world. It appears that I tend to go a few days where I write some stuff and then there are days where I don't end up writing anything.
+
+Last time I wrote something it wad just before the van Halen concert I think.  Well the tickets never showed up in the mall so it was a good thing that I arranged replacement tickets for us.  The show was SO good!  David is still a crazy monster behind the Mic and the Van Halen family are as good as ever.  Eddie lived up to the hype that a 30 year career creates.
+
+----
+
+:date: Tues. May 8
+:time: 1030
+
+Good morning world.  I have finally checked in my big Consistency Checking change set for Chimera's IOManager!  Yay me. (*thunderous, audience applause*)
+
+Yesterday after work I finally went and tried the pool at my apartment complex.  It's not very big and I don't think it's heated because it's lukewarm.  That said, it felt great for my shoulder and I felt really good afterwards.  Today my back is a bit stiff -- almost as if I went swimming yesterday or something -- but despite that my shoulder and neck feels a bit looser than normal.  I think if I maintain my stretching and start swimming a couple times a week, my shoulder will be back into good shape in no time. I have my fingers crossed.
+
+:time: 1315
+
+Van Halen tickets should be coming in the mail any day now.  Hopefully they arrive today or tomorrow otherwise I'm going to have to call ticketmaster and see what can be done about it.  The show is on Friday and I'm very excited to see them. But I don't have the tickets yet and that makes me nervous.
+
+----
+
+:date: Mon. May 7
+:time: 0830
+
+Good morning world.  Last weekend went by very quickly. I had the tires changed on my car and on Saturday we had the spring thaw at the granite.  The thaw was good except that I don't have photo ID because they take your license when you change your address.
+
+On the weekend I also went to Brewsters for a beer and their seasonal beer right now is Espresso Porter. It was extremely tasty, and I may have to make a stop this afternoon.
+
+----
+
+:date: Thurs, May 4
+:time: 1520
+
+TGIF! Boy am I glad that today is Friday.  My brain is fried, the week felt like a month, and I'm looking forward to the weekend!
+
+Tomorrow night is the Spring Thaw at the Granite.  That should be fun.  Chris invited us for beers at his place to pregame and I've invited Zack. It should be a blast.
+
+----
+
+:date: Thurs, May 4
+:time: 1015
+
+Good morning world.  It's been a while since I've written much. I guess I've been so focussed on work and other things at home that I didn't leave myself much time for writing.
+
+I think I may have agravated the tendons in my left arm or something because my wrist has been very sore this week.  My shoulder hasn't gotten a whole lot better even though it hasn't gotten worse.  I should probably go see that physio person my mother found last time she was here but I'm not sure I'll have time until June to do so.
+
+----
+
+:date: Tue. May 1
+:time: 0900
+
+.. note::
+
+    Birthday Countdown: 30 Days left
+
+I managed to get stopped at every red light along 111st on my way in to work this morning.  Yuk!!

@@ -1,0 +1,33 @@
+============================
+05. Another Thursday At Work
+============================
+
+Thursday, Sept. 15, 2011
+
+New Blog Format
+===============
+
+.. topic:: 6:20
+
+    I'm testing a new blog format today.  I figure that blog posts should tend
+    to be smaller entries on my website.  Coming to this decision was only
+    easy when I realized that longer posts usually end up being
+    ``../../ideas/index.txt`` papers, ``../../ref/index.txt``
+    papers, and work documents so a simplified format for blog entries makes
+    things cleaner.
+
+Python 2.7 on dusty (a.k.a. csand-alpha)
+========================================
+
+.. topic:: 6:30
+
+    I think I should be able to install a python 2.7 interpreter on dusty.
+    This way I won't have to upgrade the OS on dusty right now.  My only real
+    motivation for wanting to upgrade to 11.04 is python 2.7 because I've
+    started writing my own scripts in 2.7.  They are no longer backwards
+    compatible.
+
+    This upgrade should tide me over until I buy a new media server machine.
+    I'm very excited for that, but it might be pushed off until after I buy a
+    new phone.  I haven't yet been able to decide which one is more valuable
+    to me.

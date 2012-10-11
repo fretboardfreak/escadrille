@@ -1,0 +1,17 @@
+===================
+Tue. April 24, 2012
+===================
+
+.. topic:: 0045
+
+    Oops, I lost track of time watching top gear.  I'm gonna regret this in the morning.
+
+.. topic:: 0850
+
+    This morning is going a but slow.  Let's I just say I'm a wee bit tired today and the grey overcast sky does not help me or my lethargic state of mind.
+
+.. topic:: 2000
+
+    I stayed a bit late at work today because I'm trying to finish this IOManager change-set for RecoverPoint consistency checking.  I've had a couple of false starts and is really grating on me that it's taking this long.
+
+    A UPS guy just dropped off a small package for me from the Alexander Kieth's brewery.  It was a pack of four coasters that my parents decided to send my way when they won them with a case of beer.

@@ -1,0 +1,26 @@
+======================
+15. A Day for Learning
+======================
+
+Thursday, Sept. 29, 2010
+
+.. topic:: 8:45 - Replication, Splitting, Etc.
+
+    This morning, and likely most of today, I'll be reading, watching videos
+    and hopefully learning something about RecoverPoint.  It seems like a
+    pretty interesting feature to be adding to VPlex.
+
+    Last night, I found out that `Wikipedia <http://en.wikipedia.org/>`_
+    has a bunch of very clear explanations about what the various EMC products
+    are.
+
+    | `EMC Corp. <http://en.wikipedia.org/wiki/EMC_Corporation>`_
+    | 'VPlex <http;//en.wikipedia.org/wiki/VPLEX>`_
+    | 'RecoverPoint <http://en.wikipedia.org/wiki/RecoverPoint>`_
+    | `Invista <http://en.wikipedia.org/wiki/EMC_Invista>`_
+
+.. topic:: 14:00 - File Conversion Fun
+
+    I have been tasked with writing a conversion script to convert between
+    Excel and markdown files.  I'm not entirely sure yet on the specifics but
+    it sounds like it should be a good project.

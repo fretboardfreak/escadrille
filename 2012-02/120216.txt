@@ -1,0 +1,19 @@
+==================
+Thu. Feb. 16, 2012
+==================
+
+.. topic:: 1050
+
+    This morning is going a bit on the slow side.  I have three untested changesets to test, Rachel has a massive changeset to test and Dave has a test to do but we all want the same system.  It is at this point when it would be extremely nice to have multiple CLR setups so we don't have to wait in line to test.
+
+.. topic:: 1320
+
+    High Voltage is a lovely treat for lunch!
+
+.. topic:: 1400
+
+    Two hours and change left in the day.  I am really hoping that I can test out some of my changesets before the end of the day.  It would be nice to be able to post my changesets for review tonight.
+
+.. topic:: 1500
+
+    Well, I had a Eureka moment.  Normally that would be a good thing but today it is not, because the Eureka moment was immediately followed by a DOH-why-didn't-I-think-of-that-earlier moment.

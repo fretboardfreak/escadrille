@@ -1,0 +1,26 @@
+====================
+03. Sunday, Sept. 11
+====================
+
+4:30pm
+======
+
+I have spent the weekend watching data dance.  Yes, that's just fancy way of
+saying that I got some new hard drives for my NAS [#nas]_ and I've been stuck
+babysitting data transfers through a USB2.0 adapter... Yuk!
+
+I just had an idea for updating the notes on my website!  I could add a few
+clauses to the file upload cgi script that I finished earlier.  I then add an
+option to my notes script which makes a tarball named prv_notes.tar.gz.  If I
+get really ambitious then the script can also use urllib2 to post the file to
+the webserver.  Until I get that gung-ho though I'll start with manual upload
+of the tarball.
+
+The server side script would then untar the package and replace the website
+contents on ``curtissand.com/prv/``
+
+=====
+
+.. [#nas] Network Attached Storage.  Similar to an external hard drive but
+    accessible through the internet.  This is the one I have: `Dlink DNS-323
+    <http://www.dlink.ca/products/?pid=509>`_

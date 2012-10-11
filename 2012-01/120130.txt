@@ -1,0 +1,15 @@
+============
+Jan 30, 2012
+============
+
+.. topic:: 1000
+
+    This morning when I got into work I saw 940+ failures from my weekend test suite. What a lovely thing to see when you come in to work first thing on Monday morning.  It turns out I had a flipping bug in my new changeset.  I really hate when that happens because it invalidates a full 72 hours of testing time!
+
+.. topic:: 1145
+
+    Just about time for lunch.  I think I'm gonna take the opportunity to go chair shopping for home.  There is a furnishings place down Calgary trail that I want to go to and then staples and or office depot.  There's probably only time enough to go to one store over my lunch break.  If I don't find anything this afternoon then I'll try again after work.
+
+.. topic:: 1230
+
+    I didn't go all the way down to South Edmonton Common today. I figured that it may take longer than the hour that I had to play with.  Instead, I just went to Staples to see the chairs they have there.  I found 2 chairs that looked okay.  They both had tall backs, lumbar support, and adjustable arms.  That gives me a place to start; I want to keep looking to see if can find a chair with great support for a good deal.  After work today I should go to a couple of shops and take a look.

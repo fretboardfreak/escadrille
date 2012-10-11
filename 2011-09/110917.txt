@@ -1,0 +1,69 @@
+=======================================
+07. So Much To Do, So Little Motivation
+=======================================
+
+Saturday, Sept. 17, 2011
+
+Coffee == Liquid Karma
+======================
+
+.. topic:: 10:00
+
+    Though it may already be 10am, I feel more like It's 6am.  For some reason my
+    shoulders aren't feeling that much better today, despite sleeping in my own
+    bed.
+
+    It feels like I have such a list of things I want to do:
+
+    .. note::
+        Many of these items have idea pages with them.  I should link to those
+        pages that do exist.  Also for items that need a more in depth
+        description I should make a page.
+
+        - misc cleaning/tidying/organizing
+        - laundry
+        - dishes
+        - upgrade Nicole's laptop
+        - grocery shopping
+        - wash the car
+        - get an oil change
+        - program a CGI based site-mgmt ui
+        - program a CGI based todo list
+        - improve site aesthetics
+        - re-arrange landing page for a beta *go live*
+        - re-evaluate pswd protection scheme on site
+        - re-write bash profile scripts
+        - look into multi-category todo extension for sphinx
+
+    *In fact*, this is such a good list I'll update my `ToDo List <../index>`
+    right now.
+
+    Wow, that's a lot of stuff that I really want to work on soon.  Some of the
+    stuff at the top will definitely get done once I get going today.  The rest of
+    this though will need to be fleshed out more and turned into a project.
+
+    ...
+
+    I just had an idea.  My site right now has a section where I put my ideas, a
+    section where I put my various notes for future reference, and a locked
+    section that will be able to store some of my more sensitive data.
+
+    I think I should add a section called projects.  When an idea becomes a
+    project, the idea would be moved into an archive directory and a new project
+    page would be created.  Obviously the new project page should link to the idea
+    that it stemmed from.
+
+    The project pages would be the perfect place to keep my notes about various
+    projects.  I'll be able to make multiple design documents if I need to for the
+    project too, by simply making the project a directory rather than a single
+    file.
+
+Okay, Enough Chatting
+=====================
+
+.. topic:: 10:20
+
+    Okay I think I've done enough figurative jaw flapping for this morning.  I'm
+    going to sit back, relax, enjoy my coffee, play some video games and wait for
+    Nicole to awaken.  Then I'll be able to start the day with an envigorating
+    shower and start tackling my ToDo list.
