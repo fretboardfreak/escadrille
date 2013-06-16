@@ -14,9 +14,10 @@ Monday, April 09, 2012
     I've been thinking about the inclusion of pictures in my blog and on the rest of my website and I'm thinking that it would fit my use-cases better if I split the blog out on it's own.  That way the blog pictures don't add to the size of my notes directory by too much.  I noticed that with even just 10 or 15 pictures in the directory, synchronization times between PC and phone increases quite a bit.
 
     That means, my four directories are:
+
     - config
     - code
     - fret
-	- blog
+    - blog
 
     To prevent three need to further split things up, my website is going to have a way to keep some directories more confidential than others.
