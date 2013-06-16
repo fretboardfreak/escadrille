@@ -1,11 +1,6 @@
-====================
-./2011-10/111002.txt
-====================
-
-
-==================================
-17. Lost a Day, Gained a Server VM
-==================================
+==============================
+Lost a Day, Gained a Server VM
+==============================
 
 Sunday, Oct. 2, 2011
 
@@ -53,4 +48,3 @@ Sunday, Oct. 2, 2011
     could allow multiple threads to request an interpereter resource.  Typical
     systems today have more than enough ram to run a limited number of python
     interpreters.
-

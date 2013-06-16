@@ -1,11 +1,6 @@
-====================
-./2011-09/110922.txt
-====================
-
-
-=========================
-10. 80% of the Week Gone!
-=========================
+=====================
+80% of the Week Gone!
+=====================
 
 Thursday, Sept. 22, 2011
 
@@ -68,4 +63,3 @@ Thursday, Sept. 22, 2011
     Unfortunatly the lovely little muscle knot in my neck still hasn't gone
     away.  So that's a great addition to my afternoon.  I think my only
     salvation will be to *wire in* and program until the day's over.
-

@@ -1,8 +1,3 @@
-====================
-./2012-02/120210.txt
-====================
-
-
 ==================
 Fri. Feb. 10, 2012
 ==================
@@ -14,4 +9,3 @@ Fri. Feb. 10, 2012
 .. topic:: 1020
 
     It feels like somebody has slowed down time trying to make me stay at work all day.  The more aware one is about the day being froday, the slower the clock tends to move.  To me this is such a simple fact of life its as obvious as the duality of light.
-

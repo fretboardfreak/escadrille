@@ -1,8 +1,3 @@
-=============
-./2012-10.txt
-=============
-
-
 ============
 October 2012
 ============
@@ -13,4 +8,3 @@ October 2012
 :time: 1615
 
 Mmm Brewsters appetizers before the first night of GUSL curling!
-

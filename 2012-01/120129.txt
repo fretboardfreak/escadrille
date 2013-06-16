@@ -1,15 +1,10 @@
-====================
-./2012-01/120129.txt
-====================
-
-
 ============
 Jan 29, 2012
 ============
 
 .. topic:: 1700
 
-    Good afternoon world.  Today I had a fairly lazy day playing video games and working on my webpage.  I feel that I can justify today's laziness because yesterday tuckered me out.  
+    Good afternoon world.  Today I had a fairly lazy day playing video games and working on my webpage.  I feel that I can justify today's laziness because yesterday tuckered me out.
 
     Yesterday was the First Annual CompE Curling Funspiel and Nicoele - surprise, surprise - was the organizer.  We got to the rink early, drank beer all day, and left the rink late.  In all I'd say that pretty much everybody had fun and Nicole says they may have come out in the green too.
 

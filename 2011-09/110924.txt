@@ -1,11 +1,6 @@
-====================
-./2011-09/110924.txt
-====================
-
-
-=========================
-12. A Day for Programming
-=========================
+=====================
+A Day for Programming
+=====================
 
 Saturday, Sept. 24, 2011
 
@@ -53,4 +48,3 @@ Saturday, Sept. 24, 2011
 
     I guess we have to take the good with the bad.  I'm off to order pizza and
     find a movie to watch whilst eating said zah.
-
