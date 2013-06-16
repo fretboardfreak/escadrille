@@ -1,4 +1,9 @@
-================
+====================
+./2012-02/120219.txt
+====================
+
+
+=================
 Sun. Feb 19, 2012
 =================
 
@@ -34,15 +39,15 @@ Sun. Feb 19, 2012
 
     The next time I glance out at my car, perhaps around 8 or 9 PM, I see the bars sitting on my windshield but I can't tell if anything else has happened.
 
-    .. image:: ./bars-close.jpg
-        :width: 60 %
-        :align: center
-        :alt: Jense's Window Bars leaning against my car #1.
+    .. .. image:: ./bars-close.jpg
+    ..     :width: 60 %
+    ..     :align: center
+    ..     :alt: Jense's Window Bars leaning against my car #1.
 
-    .. image:: ./bars-far.jpg
-        :width: 60 %
-        :align: center
-        :alt: Jense's Window Bars leaning against my car #2.
+    .. .. image:: ./bars-far.jpg
+    ..     :width: 60 %
+    ..     :align: center
+    ..     :alt: Jense's Window Bars leaning against my car #2.
 
     When I go out to my car I see what looks like a milkshake or something has been dumped over the windshield and windows.  Thinking quick I took the bars down to Bill's workshop so that he had them, then drove my car about two blocks away and parked it.  My reasoning here is, if Jense knows that its my car he might do something to it. So if I park it a block away he probably won't know it is my car.  After parking a couple blocks away I pulled out my flashlight to do a better insection of my car and I can see that the milkshake actually looks more like puke covering the entire roof.
 
@@ -58,32 +63,32 @@ Sun. Feb 19, 2012
 
 .. topic:: 1420
 
-    .. image:: ./car-roof2.jpg
-        :width: 60 %
-        :align: center
-        :alt: Roof of my car.
+    .. .. image:: ./car-roof2.jpg
+    ..     :width: 60 %
+    ..     :align: center
+    ..     :alt: Roof of my car.
 
     Well I went and washed my car.  Luckily it wasn't even frozen (uber yuk by the way) so the automatic car wash took good care of it.
 
-    .. image:: ./car-left-side.jpg
-        :width: 60 %
-        :align: center
-        :alt: Left side of my car.
+    .. .. image:: ./car-left-side.jpg
+    ..     :width: 60 %
+    ..     :align: center
+    ..     :alt: Left side of my car.
 
-    .. image:: ./car-roof.jpg
-        :width: 60 %
-        :align: center
-        :alt: Roof of my car.
+    .. .. image:: ./car-roof.jpg
+    ..     :width: 60 %
+    ..     :align: center
+    ..     :alt: Roof of my car.
 
-    .. image:: ./car-rear-window.jpg
-        :width: 60 %
-        :align: center
-        :alt: Rear window of my car.
+    .. .. image:: ./car-rear-window.jpg
+    ..     :width: 60 %
+    ..     :align: center
+    ..     :alt: Rear window of my car.
 
-    .. image:: ./car-roof3.jpg
-        :width: 60 %
-        :align: center
-        :alt: Roof of my car.
+    .. .. image:: ./car-roof3.jpg
+    ..     :width: 60 %
+    ..     :align: center
+    ..     :alt: Roof of my car.
 
     After the car was clean I went for a drive through a bunch of areas like mill woods and riverbend and such.  I'm really looking for potential places to rent for this year but I am also keeping my eyes out for areas that I could later buy in.
 
@@ -99,25 +104,25 @@ Sun. Feb 19, 2012
 
     Touching the door handle, I could feel that it was pretty warm.  I left it for a few moments just in case and then when I carefully opened it I saw the word "RAT" on my door, spelled out with burned paint.  This time though he also torched the door knob and the door jam.
 
-    .. image:: ./door-word.jpg
-        :width: 60 %
-        :align: center
-        :alt: The word "RAT" is burned into my door.
+    .. .. image:: ./door-word.jpg
+    ..     :width: 60 %
+    ..     :align: center
+    ..     :alt: The word "RAT" is burned into my door.
 
-    .. image:: ./door-jam.jpg
-        :width: 60 %
-        :align: center
-        :alt: The door jam was also damaged.
+    .. .. image:: ./door-jam.jpg
+    ..     :width: 60 %
+    ..     :align: center
+    ..     :alt: The door jam was also damaged.
 
-    .. image:: ./door-knob.jpg
-        :width: 60 %
-        :align: center
-        :alt: The door knob was torched.
+    .. .. image:: ./door-knob.jpg
+    ..     :width: 60 %
+    ..     :align: center
+    ..     :alt: The door knob was torched.
 
-    .. image:: ./door-knob2.jpg
-        :width: 60 %
-        :align: center
-        :alt: The door knob was torched.
+    .. .. image:: ./door-knob2.jpg
+    ..     :width: 60 %
+    ..     :align: center
+    ..     :alt: The door knob was torched.
 
     I'm not sure why I didn't think of this the first bunch of times that he burned things in my door, but I finally moved my fire extinguisher right onto the counter by the door just in case I need it.
 

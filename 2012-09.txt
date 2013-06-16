@@ -1,19 +1,25 @@
+=============
+./2012-09.txt
+=============
+
+
 ==========
 Sept. 2012
 ==========
 
-.. |CircuitLab| replace:: `Circuit Lab <https://circuitlab.com>`_
+.. |CircuitLab| replace:: Circuit Lab https://circuitlab.com>
 
 ----
+
 :date: Mon. Sept. 10, 2012
 :time: 0840
 
 Yesterday I managed to wire up an almost fully functional battery discharge circuit.  It took a bit of re-designing on Circuit Lab but I managed to effectively isolate the power circuit from the control circuit.  Pretty much everything worked the way I wanted it to.  The battery drained as expected and at the proper voltage the MOSFET turned off.
 
-.. image:: ./pix/2012-09/battery-discharger-prototype2.jpg
-   :width: 60 %
-   :align: center
-   :alt: Prototype 2
+.. .. image:: ./pix/2012-09/battery-discharger-prototype2.jpg
+..    :width: 60 %
+..    :align: center
+..    :alt: Prototype 2
 
 The reason I say almost fully functional is because there are a few more things that I'd like to try and add to the circuit before I call it a day.  Then when I'm done adding things I want to solder together a more robust solution inside a project box so that it looks all fancy and such.  Here's what I still need/want to add:
 
@@ -31,9 +37,9 @@ If you've never heard of it before, or have never checked it out before, you MUS
 
 Here is the first circuit that I've designed using the Circuit Lab editor.  The simulation works but since the Op-Amp model and the BJT is slightly different than actual components that I have on hand so the actual circuit doesn't work yet.
 
-.. image:: ./pix/2012-09/battery-discharger.png
-   :width: 60 %
-   :align: center
-   :alt: Safe Battery Discharge Circuit Version 1
+.. .. image:: ./pix/2012-09/battery-discharger.png
+..    :width: 60 %
+..    :align: center
+..    :alt: Safe Battery Discharge Circuit Version 1
 
 The next thing I want to try is using an n-channel FET for the switch instead of an NPN BJT.  They are much simpler to bias.

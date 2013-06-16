@@ -1,3 +1,8 @@
+====================
+./2012-04/120413.txt
+====================
+
+
 ===================
 Fri. April 13, 2012
 ===================
@@ -6,9 +11,7 @@ Fri. April 13, 2012
 
     The weather outside is frightful.  And by frightful I mean wet.  Tis the season I guess.
 
-    .. image:: ../pix/2012-04/120413_1.jpg
-        :width: 60 %
-        :align: center
-        :alt: Lovely wet view from my cubicle.
-
-
+    .. .. image:: ../pix/2012-04/120413_1.jpg
+    ..     :width: 60 %
+    ..     :align: center
+    ..     :alt: Lovely wet view from my cubicle.
