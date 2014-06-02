@@ -1,7 +1,0 @@
-===================
-Thurs. Feb 02, 2012
-===================
-
-.. topic:: 1400
-
-    Time for our daily meeting.  So far today I have worked on recording th FAPI calls that get made during our tests.  For some, as yet unknown, reason we have started seeing a some weird behaviour in my code.  Things that were working in the past are not working now and It's very frustrating.

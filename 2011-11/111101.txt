@@ -1,7 +1,0 @@
-=========================
-Tuesday, November 1, 2011
-=========================
-
-.. topic:: 1040
-
-	Well I finally was able to check in my large code change that I've been fighting with for the past week or so.  Today I'm posting a small big fix for that code and then I can actually automate a few testcases this sprint.  Yay.

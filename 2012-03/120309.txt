@@ -1,9 +1,0 @@
-======================
-Friday, March 09, 2012
-======================
-
-.. topic:: 0900
-
-    I just got reminded via email that I am on call this weekend.  After all of the horror stories that I've heard from the other people who have had issues during their on call day, I'm only slightly worried...
-
-    That said, I went to the "onCall Basics" page on our wiki and I found that it has all the troubleshooting and component briefs that I have been looking for since I worked on the Runner team.

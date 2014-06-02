@@ -1,7 +1,0 @@
-===================
-Fri. April 27, 2012
-===================
-
-.. topic:: 1400
-
-    This week we had some visitors from Hopkinton.  Justin M. from the RecoverPoint scrum teamwas here as well as another person named David Black.  David ran a couple of tech talks while he was here about SCSI and VSPhere VVols.  I learned a lot from those sessions.
