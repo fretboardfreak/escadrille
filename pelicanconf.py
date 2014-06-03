@@ -4,29 +4,42 @@ from __future__ import unicode_literals
 
 AUTHOR = u'Curtis Sand'
 SITENAME = u'curtissand.com'
-SITEURL = ''
+SITEURL = 'http://curtissand.com/cs/'
 
-TIMEZONE = 'Europe/Paris'
+TIMEZONE = 'America/Edmonton'
 DEFAULT_DATE_FORMAT = '%Y-%m-%d'
 
 DEFAULT_LANG = u'en'
+
+THEME = 'theme/bootstrap'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 
+TYPOGRIFY = True
+
 # Blogroll
-LINKS =  (('Pelican', 'http://getpelican.com/'),
-          ('Python.org', 'http://python.org/'),
-          ('Jinja2', 'http://jinja.pocoo.org/'),
-          ('You can modify those links in your config file', '#'),)
+LINKS =  (('tags', 'http://curtissand.com/cs/tags.html'),
+          ('archives', 'http://curtissand.com/cs/archives.html'),
+          ('categories', 'http://curtissand.com/cs/categories.html'),
+          )
 
 # Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+#SOCIAL = (('You can add links in your config file', '#'),
+#          ('Another social link', '#'),)
 
-DEFAULT_PAGINATION = 10
+DEFAULT_PAGINATION = 4
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
+
+PDF_GENERATOR = False
+
+# static paths will be copied without parsing their contents
+STATIC_PATHS = ['pictures', ]
+
+# tag cloud
+TAG_CLOUD_STEPS = 4
+TAG_CLOUD_MAX_ITEMS = 100
