@@ -23,7 +23,6 @@ TYPOGRIFY = True
 # Blogroll
 LINKS =  (('tags', 'http://curtissand.com/cs/tags.html'),
           ('archives', 'http://curtissand.com/cs/archives.html'),
-          ('categories', 'http://curtissand.com/cs/categories.html'),
           )
 
 # Social widget
