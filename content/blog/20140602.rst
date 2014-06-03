@@ -2,8 +2,8 @@ Monday
 ======
 
 :date: 2014-06-02
-
 :tags: monday, coffee
+:summary: Somebody has a case of the Monday's...
 
 
 :time: 07:30
