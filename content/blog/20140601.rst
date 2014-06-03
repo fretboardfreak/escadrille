@@ -1,15 +1,14 @@
-2014, June
+Gettin Old
 ==========
 
 :date: 2014-06-01
+
 :tags: old, standing-desk, sore-feet
 
 .. :slug: #need to figure this tag out for my site
 
 :summary: I'm getting old and rebuilding my website.
 
-Sunday, 01
-----------
 
 :time: 12:00
 
