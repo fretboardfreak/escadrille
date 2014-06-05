@@ -1,9 +1,25 @@
 #!/bin/bash
 
-# pull new updates
-git pull --rebase &>/dev/null
+date
 
-[[ $? -eq 0 ]] || exit;
+echo entering repository...
+pushd $(dirname $0)
 
-# build and upload site using Makefile
-make rsync_upload &>/dev/null
+echo pulling new updates...
+git pull --rebase
+
+if [[ $? -ne 0 ]] ; then
+    echo "git pull failed :("
+    exit;
+fi
+
+
+echo building and uploading...
+make rsync_upload
+rc=$?
+
+echo exiting...
+
+date
+
+exit $rc
