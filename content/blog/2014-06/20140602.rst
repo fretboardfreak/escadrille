@@ -1,7 +1,7 @@
 Monday
 ======
 
-:date: 2014-06-02-0730
+:date: 2014-06-02 07:30
 :tags: monday, coffee
 :summary: Somebody has a case of the Monday's...
 

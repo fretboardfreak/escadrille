@@ -1,7 +1,7 @@
 First Poop Post
 ===============
 
-:date: 2014-06-02-2330
+:date: 2014-06-02 23:30
 :tags: poop, pelican, site, android, sgit
 :summary: Oh yeah, postin' from the pooper! Boy oh boy am I login it up these days. (I apologize for that one) Friends don't let friends poop post!
 

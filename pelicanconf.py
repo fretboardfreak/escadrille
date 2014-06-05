@@ -7,7 +7,7 @@ SITENAME = u'curtissand.com'
 SITEURL = 'http://curtissand.com/cs/'
 
 TIMEZONE = 'America/Edmonton'
-DEFAULT_DATE_FORMAT = '%Y-%m-%d-%H%M'
+DEFAULT_DATE_FORMAT = '%Y-%m-%d %H:%M'
 
 DEFAULT_LANG = u'en'
 

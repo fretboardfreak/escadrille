@@ -1,7 +1,7 @@
 Gettin Old
 ==========
 
-:date: 2014-06-01-1200
+:date: 2014-06-01 12:00
 :tags: old, standing-desk, sore-feet
 :summary: I'm getting old and rebuilding my website.
 
