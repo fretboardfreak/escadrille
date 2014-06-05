@@ -1,14 +1,14 @@
 Gettin Old
 ==========
 
-:date: 2014-06-01
+:date: 2014-06-01-1200
 :tags: old, standing-desk, sore-feet
 :summary: I'm getting old and rebuilding my website.
 
 
-:time: 12:00
-
 Twenty seven years old... Fuck me... Let's see what we can make of this year.
+
+----
 
 :time: 19:00
 

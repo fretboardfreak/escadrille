@@ -1,12 +1,10 @@
 Monday
 ======
 
-:date: 2014-06-02
+:date: 2014-06-02-0730
 :tags: monday, coffee
 :summary: Somebody has a case of the Monday's...
 
-
-:time: 07:30
 
 Somebody has a case of the Monday's...  At least I have some tasty tasty french
 press coffee and a bit of extra time to enjoy the first cup before I need to go
