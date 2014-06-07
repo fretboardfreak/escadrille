@@ -33,7 +33,7 @@
     <div class="topbar">
       <div class="topbar-inner">
         <div class="container-fluid">
-          <a class="brand" href="{{ SITEURL }}/">{{ SITENAME }}</a>
+            <a class="brand" href="{{ SITEURL }}/">{{ SITENAME }}</a>
             <ul class="nav">
                 {% for title, link in MENUITEMS %}
                     <li><a href="{{ link }}">{{ title }}</a></li>
@@ -55,6 +55,11 @@
     <div class="container-fluid">
       <div class="sidebar">
         <div class="well">
+            <p>{{ SITESUBTITLE}}</p>
+            <center>
+                <img src="http://curtissand.com/cs/images/sidebar_thumb.jpg" alt="Mah guitjo!" width="125"/>
+            </center>
+            <hr>
             <!--h3>Blogroll</h3-->
             <ul>
                 {% for name, link in LINKS %}
