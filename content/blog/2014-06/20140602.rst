@@ -2,6 +2,7 @@ Monday
 ======
 
 :date: 2014-06-02 07:30
+:category: blog
 :tags: monday, coffee
 :summary: Somebody has a case of the Monday's...
 

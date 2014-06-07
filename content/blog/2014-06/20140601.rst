@@ -2,6 +2,7 @@ Gettin Old
 ==========
 
 :date: 2014-06-01 12:00
+:category: blog
 :tags: old, standing-desk, sore-feet
 :summary: I'm getting old and rebuilding my website.
 
