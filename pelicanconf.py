@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 AUTHOR = u'Curtis Sand'
 SITENAME = u'Quizical Silicon'
 SITESUBTITLE=u'A charge carrier is not a wallet.'
-SITEURL = 'http://curtissand.com/cs/'
+SITEURL = 'http://curtissand.com/cs'
 
 TIMEZONE = 'America/Edmonton'
 DEFAULT_DATE_FORMAT = '%Y-%m-%d %H:%M'
@@ -38,7 +38,7 @@ DEFAULT_PAGINATION = 4
 PDF_GENERATOR = False
 
 # static paths will be copied without parsing their contents
-STATIC_PATHS = ['images', ]
+STATIC_PATHS = ['images', 'style' ]
 
 # tag cloud
 TAG_CLOUD_STEPS = 4
