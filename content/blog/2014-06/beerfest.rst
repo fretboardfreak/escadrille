@@ -6,6 +6,10 @@ Beerfest
 :tags: beer
 :summary: Yesterday, Gautam, Richard and myself went to the Edmonton International Craft Beerfest.
 
+.. image:: ./images/2014-06/beerfest.jpg
+    :alt: Projected Beerfest logo on the conference center wall
+    :width: 300
+    :align: center
 
 It was a pretty good day.  The tickets we got were special Beer Geek VIP tickets which gave us access to the special casks that many of the brewery's brought.  I wouldn't want to try and guess at the number of booths, as I'd probably be off, but there were easily thirty or more brewery's represented.
 
