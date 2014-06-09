@@ -7,6 +7,7 @@ pushd $(dirname $0)
 
 echo pulling new updates...
 git pull --rebase
+git submodule update
 
 if [[ $? -ne 0 ]] ; then
     echo "git pull failed :("
