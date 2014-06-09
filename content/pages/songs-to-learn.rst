@@ -1,1 +1,0 @@
-../../fret/songs-to-learn.rst
