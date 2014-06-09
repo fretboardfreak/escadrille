@@ -1,0 +1,1 @@
+../../fret/whats-interesting.rst
