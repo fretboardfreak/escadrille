@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CONTENT_DIR="./content"
+CONTENT_DIR="$(dirname $0)/content"
 TASKS_DIR="./tasks"
 
 usage () {
