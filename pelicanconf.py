@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 AUTHOR = u'Curtis Sand'
-SITENAME = u'Quizical Silicon'
+SITENAME = u'Quizzical Silicon'
 SITESUBTITLE=u'A charge carrier is not a wallet.'
 SITEURL = 'http://curtissand.com/cs'
 
