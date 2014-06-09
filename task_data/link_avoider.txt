@@ -1,0 +1,4 @@
+DEST|pages
+../fret/links-for-later.rst
+../fret/songs-to-learn.rst
+../fret/whats-interesting.rst
