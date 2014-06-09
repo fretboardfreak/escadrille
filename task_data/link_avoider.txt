@@ -2,3 +2,8 @@ DEST|pages
 ../fret/links-for-later.rst
 ../fret/songs-to-learn.rst
 ../fret/whats-interesting.rst
+DEST|ref
+../fret/ref/pdb.rst
+../fret/ref/python.rst
+../fret/ref/sudoers.rst
+../fret/ref/w3m.rst
