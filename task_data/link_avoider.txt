@@ -3,7 +3,8 @@ DEST|pages
 ../fret/songs-to-learn.rst
 ../fret/whats-interesting.rst
 DEST|ref
-../fret/ref/pdb.rst
-../fret/ref/python.rst
-../fret/ref/sudoers.rst
-../fret/ref/w3m.rst
+../fret/ref/*.rst
+DEST|blog
+../fret/blog/2014-06/*.rst
+DEST|images
+../fret/images/2014-06/*.jpg

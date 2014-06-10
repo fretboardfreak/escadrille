@@ -21,7 +21,7 @@ while read line ; do
         continue;
     elif [[ ${line:0:1} == "#" ]]; then
         continue;
-    elif [[ -f $CONTENT_DIR/$line ]] ; then
+    else # [[ -f $CONTENT_DIR/$line ]] ; then
         cp $CONTENT_DIR/$line $DEST
     fi
 done < "$DATA_FILE";
