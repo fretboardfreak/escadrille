@@ -19,6 +19,8 @@ fi
 
 update_repo () {
     echo pulling new updates...;
+    git clean -fd
+    git submodule update
     git pull --rebase;
     pull_rc=$?;
 
