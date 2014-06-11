@@ -5,6 +5,6 @@ DEST|pages
 DEST|ref
 ../fret/ref/*.rst
 DEST|blog
-../fret/blog/2014-06/*.rst
+../fret/blog/201*/*.rst
 DEST|images
-../fret/images/2014-06/*.jpg
+../fret/images/201*

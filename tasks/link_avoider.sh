@@ -4,7 +4,7 @@
 # a file to copy. Destination defaults to the content directory but can be
 # changed by specifying the new destination with a line like:
 #
-#     DEST|new/destination/
+#     DEST|new/destination
 #
 # Destinations are always relative to the content directory.
 
@@ -22,6 +22,6 @@ while read line ; do
     elif [[ ${line:0:1} == "#" ]]; then
         continue;
     else # [[ -f $CONTENT_DIR/$line ]] ; then
-        cp $CONTENT_DIR/$line $DEST
+        cp -fr $CONTENT_DIR/$line $DEST
     fi
 done < "$DATA_FILE";
