@@ -1,32 +1,74 @@
 #!/bin/bash
 
-update () {
-    date
-
-    echo pulling new updates...
-    git pull --rebase
-    git submodule update
-
-    if [[ $? -ne 0 ]] ; then
-        echo "git pull failed :("
-        exit;
-    fi
-
-
-    echo building and uploading...
-    make rsync_upload
-    rc=$?
-
-    date
-    return $rc
+usage () {
+    echo -e "$0 INTERVAL\n";
+    echo "Update the site in a loop.";
 }
 
-echo entering repository...
-pushd $(dirname $0)
+LOG_FILE="./update_log.txt";
 
-while true; do
-    update
-    echo "returncode: $?";
-    echo "1800 seconds until next update...";
-    sleep 1800;
-done
+PULL_FAILURE=false;
+BUILD_FAILURE=false;
+ITERATION=0;
+INTERVAL=1800;
+if [[ $# -eq 1 ]]; then
+    INTERVAL=$1;
+else
+    usage;
+fi
+
+update_repo () {
+    echo pulling new updates...;
+    git pull --rebase;
+    pull_rc=$?;
+
+    pushd fret;
+    git checkout master;
+    git pull --rebase;
+    fret_rc=$?;
+    popd;
+
+    if [[ $pull_rc != 0 ]] || [[ $fret_rc != 0 ]]; then
+        echo "git pull failed :( - blog=$pull_rc fret=$fret_rc";
+        PULL_FAILURE=true;
+    fi;
+}
+
+build () {
+    echo building and uploading...;
+    make rsync_upload;
+    build_rc=$?;
+    if [[ $build_rc != 0 ]]; then
+        echo "build or rsync error :( - rc=$build_rc";
+        BUILD_FAILURE=true;
+        break;
+    fi;
+}
+
+start_updates () {
+    while ! $PULL_FAILURE && ! $BUILD_FAILURE; do
+        ITERATION=$(($ITERATION + 1));
+        cat /dev/null > $LOG_FILE;
+        sleep 1;
+
+        echo "Starting iteration $ITERATION...";
+        date;
+
+        update_repo;
+        $PULL_FAILURE && break;
+
+        build;
+        $BUILD_FAILURE && break;
+
+        date;
+
+        echo "$INTERVAL seconds until next update...";
+        sleep $INTERVAL;
+    done
+}
+
+pushd $(dirname $0) &> /dev/null
+start_updates &>> $LOG_FILE
+echo "Build failed=$BUILD_FAILURE" &>> $LOG_FILE
+echo "Pull failed=$PULL_FAILED" &>> $LOG_FILE
+exit 0
