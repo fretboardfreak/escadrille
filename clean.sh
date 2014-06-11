@@ -3,6 +3,9 @@
 # remove *pyc files
 find . -iname "*pyc" -delete
 
+# remove update-site.sh log
+rm update_log.txt
+
 # clean up files from link_avoider task
 la_data="task_data/link_avoider.txt"
 for dest in $(grep "^DEST" $la_data); do
