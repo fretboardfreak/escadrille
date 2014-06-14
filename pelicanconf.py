@@ -6,6 +6,8 @@ AUTHOR = u'Curtis Sand'
 SITENAME = u'Quizzical Silicon'
 SITESUBTITLE=u'A charge carrier is not a wallet.'
 SITEURL = 'http://curtissand.com/cs'
+SITETHUMBNAIL_URL = SITEURL + '/images/site_thumb.jpg'
+SITETHUMBNAIL_ALTTEXT = "Mah Guitjo!"
 
 TIMEZONE = 'America/Edmonton'
 DEFAULT_DATE_FORMAT = '%Y-%m-%d %H:%M'
@@ -30,7 +32,7 @@ LINKS =  (('tags', 'http://curtissand.com/cs/tags.html'),
 #SOCIAL = (('You can add links in your config file', '#'),
 #          ('Another social link', '#'),)
 
-DEFAULT_PAGINATION = 4
+DEFAULT_PAGINATION = 5
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
