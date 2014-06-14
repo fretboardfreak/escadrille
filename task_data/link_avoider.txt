@@ -6,5 +6,3 @@ DEST|ref
 ../fret/ref/*.rst
 DEST|blog
 ../fret/blog/201*/*.rst
-DEST|images
-../fret/images/201*
