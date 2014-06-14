@@ -8,6 +8,7 @@ SITESUBTITLE=u'A charge carrier is not a wallet.'
 SITEURL = 'http://curtissand.com/cs'
 SITETHUMBNAIL_URL = SITEURL + '/images/site_thumb.jpg'
 SITETHUMBNAIL_ALTTEXT = "Mah Guitjo!"
+FOOTER_TEXT='Powered by pain and suffering, reading, beer and the sun.'
 
 TIMEZONE = 'America/Edmonton'
 DEFAULT_DATE_FORMAT = '%Y-%m-%d %H:%M'
@@ -23,10 +24,16 @@ TRANSLATION_FEED_ATOM = None
 
 TYPOGRIFY = True
 
-# Blogroll
-LINKS =  (('tags', 'http://curtissand.com/cs/tags.html'),
-          ('archives', 'http://curtissand.com/cs/archives.html'),
-          )
+# LINKS go in the sidebar
+LINKS = (('tags', 'http://curtissand.com/cs/tags.html'),
+         ('archives', 'http://curtissand.com/cs/archives.html'),
+         )
+
+# FOOTER_LINKS go in the footer
+FOOTER_LINKS = (('Pelican', "http://getpelican.com/"),
+                ('Twitter Bootstrap', 'http://twitter.github.com/bootstrap/'),
+                ('Blueimp Gallery', 'http://blueimp.github.io/Gallery/'),
+                )
 
 # Social widget
 #SOCIAL = (('You can add links in your config file', '#'),
