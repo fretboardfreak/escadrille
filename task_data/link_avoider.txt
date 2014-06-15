@@ -2,6 +2,8 @@ DEST|pages
 ../fret/links-for-later.rst
 ../fret/songs-to-learn.rst
 ../fret/whats-interesting.rst
+../fret/about.rst
+../fret/site.rst
 DEST|ref
 ../fret/ref/*.rst
 DEST|blog

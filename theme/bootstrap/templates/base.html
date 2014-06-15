@@ -16,6 +16,7 @@
     <link href="{{ SITEURL }}/theme/local.css" rel="stylesheet">
     <link href="{{ SITEURL }}/theme/pygments.css" rel="stylesheet">
 
+
     <!-- Feeds -->
     {% if FEED_ALL_ATOM %}
     <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
@@ -58,7 +59,9 @@
         <div class="well">
             <p>{{ SITESUBTITLE}}</p>
             <center>
-                <img src="{{ SITETHUMBNAIL_URL }}" alt="{{ SITETHUMBNAIL_ALTTEXT }}" width="125"/>
+                <a class="brand" href="{{ SITEURL }}/">
+                    <img src="{{ SITETHUMBNAIL_URL }}" alt="{{ SITETHUMBNAIL_ALTTEXT }}" width="125"/>
+                </a>
             </center>
             <hr>
             <!--h3>Blogroll</h3-->
@@ -75,6 +78,24 @@
                 {% endfor %}
             </ul>
             </div-->
+            <hr/>
+            <small>{{ TAG_CLOUD_SAYING }}</small>
+            <ul class="tagcloud">
+                {% for tag in tag_cloud %}
+                    {% if loop.index > TAG_CLOUD_SIZE %}{% break %}{% endif %}
+                    <li class="tag-{{ tag.1 }}"><a href="{{ SITEURL }}/{{ tag.0.url }}">{{ tag.0 }}</a></li>
+                {% endfor %}
+            </ul>
+            <hr/>
+            <p><a href="{{ SITEURL }}/{{ ABOUT_AUTHOR_URL }}">About Me</a></p>
+            <p><a href="{{ SITEURL }}/{{ ABOUT_SITE_URL }}">About the Site</a></p>
+            <p>Site Logs:<br>
+            <ul>
+            {% for log in SITE_LOGS %}
+            <li><a href="{{ SITEURL }}/{{ LOG_PATH % log }}">{{ log }}</a></li>
+            {% endfor %}
+            </ul></p>
+            <p>Last Updated:<br>{{ LAST_UPDATED }}</p>
         </div>
       </div>
       <div class="content">
@@ -92,4 +113,5 @@
 
     </div>
 </body>
+<script src="{{ SITEURL }}/style/js/jquery-1.11.1.min.js"></script>
 </html>
