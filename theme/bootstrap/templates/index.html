@@ -2,6 +2,7 @@
 {% block content %}
 
 {% if articles %}
+<div class='small pull-right'>{{ articles|count }} articles</div>
 {% for article in (articles_page.object_list if articles_page else articles) %}
 <div class='article'>
     <h3>{{ article.title }}</h3>

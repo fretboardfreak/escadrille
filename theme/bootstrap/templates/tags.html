@@ -1,9 +1,13 @@
 {% extends "base.html" %}
-{% block title %}{{ SITENAME }} <small>[tags]</small>{% endblock %}
+{% block title %}Tags{% endblock %}
 {% block content %}
-<ul>
+<div class="well small"><p>
 {% for tag, articles in tags|sort %}
-    <li><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a></li>
+{% if loop.index0 % 5 == 0 %}
+</p><p>
+|&nbsp
+{% endif %}
+<a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }} - {{ articles|count }}</a>&nbsp|&nbsp
 {% endfor %}
-</ul>
+</p></div>
 {% endblock %}
