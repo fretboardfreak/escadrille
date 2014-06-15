@@ -15,6 +15,7 @@
     <link href="{{ SITEURL }}/theme/bootstrap.min.css" rel="stylesheet">
     <link href="{{ SITEURL }}/theme/local.css" rel="stylesheet">
     <link href="{{ SITEURL }}/theme/pygments.css" rel="stylesheet">
+    <link href="{{ SITEURL }}/style/css/magnific-popup.css" rel="stylesheet">
 
 
     <!-- Feeds -->
@@ -114,4 +115,31 @@
     </div>
 </body>
 <script type="text/javascript" src="{{ SITEURL }}/style/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="{{ SITEURL }}/style/js/magnific-popup.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    // wrap all image tags with a link
+    $('img').each(function() {
+        $(this).wrap($('<a class="img" href="' + $(this).attr('src') +
+                       '" title="' + $(this).attr('alt') + '"></a>'));
+    });
+    // Enable Magnific Popup on a gallery of images inside a container
+    $('.gallery').each(function() {
+        $(this).find('a').magnificPopup({
+            type: 'image',
+            gallery: {
+                enabled:true
+            }
+        });
+    });
+    // Enable Magnific Popup on naked images
+    $('a.img').each(function() {
+        if ($(this).parent('.gallery').length == 0) {
+            $(this).magnificPopup({
+                type: 'image',
+            });
+        };
+    });
+});
+</script>
 </html>
