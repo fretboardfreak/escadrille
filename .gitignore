@@ -1,4 +1,5 @@
 !.gitignore
 
+update_log.txt
 output/*
 *.pyc
