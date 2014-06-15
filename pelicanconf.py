@@ -46,7 +46,6 @@ LINKS = (('tags', 'http://curtissand.com/cs/tags.html'),
 # FOOTER_LINKS go in the footer
 FOOTER_LINKS = (('Pelican', "http://getpelican.com/"),
                 ('Twitter Bootstrap', 'http://twitter.github.com/bootstrap/'),
-                ('Blueimp Gallery', 'http://blueimp.github.io/Gallery/'),
                 )
 
 # Social widget
