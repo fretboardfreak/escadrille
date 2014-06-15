@@ -24,6 +24,13 @@ TRANSLATION_FEED_ATOM = None
 
 TYPOGRIFY = True
 
+# Menu
+DISPLAY_PAGES_ON_MENU = False
+DISPLAY_CATEGORIES_ON_MENU = True
+MENUITEMS = (('links for later', SITEURL+'/pages/links-for-later.html'),
+             ('songs to learn', SITEURL+'/pages/songs-to-learn.html'),
+             ('what\'s interesting?', SITEURL+'/pages/whats-interesting.html'))
+
 # LINKS go in the sidebar
 LINKS = (('tags', 'http://curtissand.com/cs/tags.html'),
          ('archives', 'http://curtissand.com/cs/archives.html'),

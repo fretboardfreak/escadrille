@@ -35,16 +35,18 @@
         <div class="container-fluid">
             <a class="brand" href="{{ SITEURL }}/">{{ SITENAME }}</a>
             <ul class="nav">
-                {% for title, link in MENUITEMS %}
-                    <li><a href="{{ link }}">{{ title }}</a></li>
+                {% if DISPLAY_CATEGORIES_ON_MENU %}
+                {% for cat, null in categories %}
+                    <li {% if cat == category %}class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
                 {% endfor %}
+                {% endif %}
                 {% if DISPLAY_PAGES_ON_MENU %}
                     {% for page in PAGES %}
                         <li><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></li>
                     {% endfor %}
                 {% endif %}
-                {% for cat, null in categories %}
-                    <li {% if cat == category %}class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+                {% for title, link in MENUITEMS %}
+                    <li><a href="{{ link }}">{{ title }}</a></li>
                 {% endfor %}
             </ul>
         </div>
