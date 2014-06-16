@@ -1,5 +1,6 @@
 #!/bin/bash
 
+TASK=$(basename $0)
 DEST=$1/pages
 
 write_header () {
@@ -22,8 +23,13 @@ get_log () {
     fi
 }
 
+echo "$TASK: Writing Git Log Pages..."
+echo "$TASK: writing blog log..."
+touch $DEST/blog.rst
 write_header "blog" &> $DEST/blog.rst
 get_log &>> $DEST/blog.rst
 
+echo "$TASK: writing fret log..."
+touch $DEST/fret.rst
 write_header "fret" &> $DEST/fret.rst
 get_log "./fret" &>> $DEST/fret.rst

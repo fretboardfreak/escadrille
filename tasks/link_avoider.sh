@@ -8,9 +8,11 @@
 #
 # Destinations are always relative to the content directory.
 
+TASK=$(basename $0)
 CONTENT_DIR=$1
 DATA_FILE="$CONTENT_DIR/../task_data/link_avoider.txt"
 
+echo "$TASK: copying files..."
 DEST=$CONTENT_DIR
 while read line ; do
     if [[ ${line:0:5} == "DEST|" ]]; then
@@ -25,3 +27,5 @@ while read line ; do
         cp -fr $CONTENT_DIR/$line $DEST
     fi
 done < "$DATA_FILE";
+
+echo "$TASK: done"
