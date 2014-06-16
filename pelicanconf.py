@@ -44,8 +44,10 @@ LINKS = (('tags', 'http://curtissand.com/cs/tags.html'),
          )
 
 # FOOTER_LINKS go in the footer
-FOOTER_LINKS = (('Pelican', "http://getpelican.com/"),
+FOOTER_LINKS = (('About this Site', SITEURL+'/pages/site.html'),
+                ('Pelican', "http://getpelican.com/"),
                 ('Twitter Bootstrap', 'http://twitter.github.com/bootstrap/'),
+                ('Magnific Popup', 'http://dimsemenov.com/plugins/magnific-popup/'),
                 )
 
 # Social widget
