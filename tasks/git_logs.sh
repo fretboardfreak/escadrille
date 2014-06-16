@@ -24,6 +24,12 @@ get_log () {
 }
 
 echo "$TASK: Writing Git Log Pages..."
+
+if [[ ! -d $DEST ]]; then
+    echo "$TASK: mkdir $DEST"
+    mkdir -p $DEST
+fi
+
 echo "$TASK: writing blog log..."
 touch $DEST/blog.rst
 write_header "blog" &> $DEST/blog.rst
