@@ -8,9 +8,10 @@ die () {
     exit $1
 }
 
-if [[ $HOSTNAME -eq "crunchbang-vm" ]]; then
+HOSTNAME=$(hostname)
+if [[ $HOSTNAME == "crunchbang-vm" ]]; then
     SRC="/home/csand/storage/Dropbox/images"
-elif [[ $HOSTNAME -eq "shiny" ]]; then
+elif [[ $HOSTNAME == "shiny" ]]; then
     SRC="/home/csand/Dropbox/images"
 fi
 
