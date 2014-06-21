@@ -10,6 +10,8 @@ die () {
 
 if [[ $HOSTNAME -eq "crunchbang-vm" ]]; then
     SRC="/home/csand/storage/Dropbox/images"
+elif [[ $HOSTNAME -eq "shiny" ]]; then
+    SRC="/home/csand/Dropbox/images"
 fi
 
 test -z $SRC && die 1 "No source path defined for $HOSTNAME"
