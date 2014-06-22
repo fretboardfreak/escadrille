@@ -1,9 +1,18 @@
 {% extends "base.html" %}
 {% block title %}Tags{% endblock %}
 {% block content %}
-<p><div class="well small" id="wordcloud">
-{% for tag, articles in tags|sort %}
+<p><div class="well small span6" id="wordcloud">
+{% for tag, articles in tags %}
 <a href="{{ SITEURL }}/{{ tag.url }}" rel="{{ articles|count }}">{{ tag }}</a>
 {% endfor %}
 </div></p>
+<h3>Alphabetical</h3>
+<div class="well small">
+<ul>
+{% for tag, articles in tags|sort %}
+{% if tag == "" %} {% continue %} {% endif %}
+<li><a href="{{ SITEURL }}/{{ tag.url }}">{{ articles|count }}&nbsp{{ tag }}</a></li>
+{% endfor %}
+</ul>
+</div>
 {% endblock %}
