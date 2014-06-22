@@ -40,8 +40,8 @@ MENUITEMS = (('links for later', SITEURL+'/pages/links-for-later.html'),
              ('what\'s interesting?', SITEURL+'/pages/whats-interesting.html'))
 
 # LINKS go in the sidebar
-LINKS = (('tags', 'http://curtissand.com/cs/tags.html'),
-         ('archives', 'http://curtissand.com/cs/archives.html'),
+LINKS = (('All Tags', 'http://curtissand.com/cs/tags.html'),
+         ('Archives', 'http://curtissand.com/cs/archives.html'),
          )
 
 # FOOTER_LINKS go in the footer
@@ -49,6 +49,7 @@ FOOTER_LINKS = (('About this Site', SITEURL+'/pages/about-the-site.html'),
                 ('Pelican', "http://getpelican.com/"),
                 ('Twitter Bootstrap', 'http://twitter.github.com/bootstrap/'),
                 ('Magnific Popup', 'http://dimsemenov.com/plugins/magnific-popup/'),
+                ('Tag Cloud', 'http://addywaddy.github.io/jquery.tagcloud.js/'),
                 )
 
 # Social widget
@@ -67,8 +68,8 @@ STATIC_PATHS = ['images', 'style' ]
 
 # tag cloud
 TAG_CLOUD_SAYING = "Random Tags"
-TAG_CLOUD_STEPS = 4
-TAG_CLOUD_MAX_ITEMS = 100
-TAG_CLOUD_SIZE = 5
+TAG_CLOUD_STEPS = 10
+TAG_CLOUD_MAX_ITEMS = 15
+TAG_CLOUD_SIZE = 15
 
 JINJA_EXTENSIONS = ['jinja2.ext.loopcontrols']
