@@ -13,5 +13,25 @@
             {% if DISQUS_SITENAME %}<div id="disqus_thread"></div>{% endif %}
             {% if FACEBOOK_APPID %}<div class="fb-comments" data-href="{{ FQ_SITEURL }}/{{ article.url }}" data-num-posts="10" data-width="760"></div>{% endif %}
         <div-->
+        <div id="livefyre-comments"></div>
     </div>
+{% endblock %}
+{% block script %}
+    <script type="text/javascript" src="http://zor.livefyre.com/wjs/v3.0/javascripts/livefyre.js"></script>
+    <script type="text/javascript">
+    (function () {
+        var articleId = fyre.conv.load.makeArticleId(null);
+        fyre.conv.load({}, [{
+            el: 'livefyre-comments',
+            network: "livefyre.com",
+            siteId: "360738",
+            articleId: articleId,
+            signed: false,
+            collectionMeta: {
+                articleId: articleId,
+                url: fyre.conv.load.makeCollectionUrl(),
+            }
+        }], function() {});
+    }());
+    </script>
 {% endblock %}
