@@ -72,14 +72,11 @@
                 {% endfor %}
             </ul>
             </div-->
-            <p>
-            <small>{{ TAG_CLOUD_SAYING }}</small>
-            <div id="tagcloud">
+            <p><div id="tagcloud">
             {% for tag in tag_cloud %}
             <a href="{{ SITEURL }}/{{ tag[0].url }}" rel="{{ TAG_CLOUD_STEPS - tag.1 }}">{{ tag[0] }}</a>
             {% endfor %}
             </div></p>
-            <hr/>
             <p>
             {% for name, link in LINKS %}
             <a href="{{ link }}">{{ name }}</a><br>
@@ -142,12 +139,12 @@ $(document).ready(function() {
     });
     $.fn.tagcloud.defaults = {
       size: {start: 13, end: 25, unit: 'pt'},
-      color: {start: '#f0b', end: '#0b0'}
+      color: {start: '#00b', end: '#0b0'}
     };
     $('#wordcloud a').tagcloud();
     $('#tagcloud a').tagcloud({
       size: {start: 10, end: 18, unit: 'pt'},
-      color: {start: '#f0b', end: '#0b0'}
+      color: {start: '#00b', end: '#0b0'}
     });
 });
 </script>

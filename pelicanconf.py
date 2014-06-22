@@ -40,7 +40,7 @@ MENUITEMS = (('links for later', SITEURL+'/pages/links-for-later.html'),
              ('what\'s interesting?', SITEURL+'/pages/whats-interesting.html'))
 
 # LINKS go in the sidebar
-LINKS = (('All Tags', 'http://curtissand.com/cs/tags.html'),
+LINKS = (('More Tags', 'http://curtissand.com/cs/tags.html'),
          ('Archives', 'http://curtissand.com/cs/archives.html'),
          )
 
