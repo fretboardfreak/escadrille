@@ -116,6 +116,7 @@
 </body>
 <script type="text/javascript" src="{{ SITEURL }}/style/js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="{{ SITEURL }}/style/js/magnific-popup.js"></script>
+<script type="text/javascript" src="{{ SITEURL }}/style/js/jquery.tagcloud.js"></script>"
 <script type="text/javascript">
 $(document).ready(function() {
     // wrap all image tags with a link
@@ -139,6 +140,15 @@ $(document).ready(function() {
                 type: 'image',
             });
         };
+    });
+    $.fn.tagcloud.defaults = {
+      size: {start: 13, end: 25, unit: 'pt'},
+      color: {start: '#f0b', end: '#0b0'}
+    };
+    $('#wordcloud a').tagcloud();
+    $('#tagcloud a').tagcloud({
+      size: {start: 10, end: 18, unit: 'pt'},
+      color: {start: '#f0b', end: '#0b0'}
     });
 });
 </script>
