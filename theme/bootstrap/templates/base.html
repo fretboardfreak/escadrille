@@ -63,14 +63,7 @@
                 <a class="brand" href="{{ SITEURL }}/">
                     <img src="{{ SITETHUMBNAIL_URL }}" alt="{{ SITETHUMBNAIL_ALTTEXT }}" width="125"/>
                 </a>
-            </center>
-            <hr>
             <!--h3>Blogroll</h3-->
-            <ul>
-                {% for name, link in LINKS %}
-                <li><a href="{{ link }}">{{ name }}</a></li>
-                {% endfor %}
-            </ul>
             <!--div class="social">
             <h3>Social</h3>
             <ul>
@@ -79,24 +72,21 @@
                 {% endfor %}
             </ul>
             </div-->
-            <hr/>
+            <p>
             <small>{{ TAG_CLOUD_SAYING }}</small>
-            <ul class="tagcloud">
-                {% for tag in tag_cloud %}
-                    {% if loop.index > TAG_CLOUD_SIZE %}{% break %}{% endif %}
-                    <li class="tag-{{ tag.1 }}"><a href="{{ SITEURL }}/{{ tag.0.url }}">{{ tag.0 }}</a></li>
-                {% endfor %}
-            </ul>
-            <hr/>
-            <p><a href="{{ SITEURL }}/{{ ABOUT_AUTHOR_URL }}">About Me</a></p>
-            <p><a href="{{ SITEURL }}/{{ ABOUT_SITE_URL }}">About the Site</a></p>
-            <p>Site Logs:<br>
-            <ul>
-            {% for log in SITE_LOGS %}
-            <li><a href="{{ SITEURL }}/{{ LOG_PATH % log }}">{{ log }}</a></li>
+            <div id="tagcloud">
+            {% for tag in tag_cloud %}
+            <a href="{{ SITEURL }}/{{ tag[0].url }}" rel="{{ TAG_CLOUD_STEPS - tag.1 }}">{{ tag[0] }}</a>
             {% endfor %}
-            </ul></p>
-            <p>Last Updated:<br>{{ LAST_UPDATED }}</p>
+            </div></p>
+            <hr/>
+            <p>
+            {% for name, link in LINKS %}
+            <a href="{{ link }}">{{ name }}</a><br>
+            {% endfor %}
+            <a href="{{ SITEURL }}/{{ ABOUT_AUTHOR_URL }}">About Me</a><br>
+            <a href="{{ SITEURL }}/{{ ABOUT_SITE_URL }}">About the Site</a></p>
+            </center>
         </div>
       </div>
       <div class="content">
@@ -104,11 +94,18 @@
             {% block content %}{% endblock %}
         <footer>
             <p class="pull-right"><a href="{{ SITEURL }}/archives.html">[archives]</a> <a href="{{ SITEURL }}/tags.html">[tags]</a></p>
+            <p>
             {% for name, link in FOOTER_LINKS %}
             <a href="{{ link }}">{{ name }}</a>&nbsp|&nbsp
             {% endfor %}
-            <hr/>
-            <p>{{ FOOTER_TEXT }} -- &copy; {{ AUTHOR }}</p>
+            </p>
+            <p>Git Logs:&nbsp
+            {% for log in SITE_LOGS %}
+            <a href="{{ SITEURL }}/{{ LOG_PATH % log }}">{{ log }}</a>&nbsp
+            {% endfor %}
+            </p>
+            <p>Last Updated:&nbsp{{ LAST_UPDATED }}
+            {{ FOOTER_TEXT }} -- &copy; {{ AUTHOR }}</p>
         </footer>
       </div>
 
