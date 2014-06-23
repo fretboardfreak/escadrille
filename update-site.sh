@@ -11,8 +11,13 @@ PULL_FAILURE=false;
 BUILD_FAILURE=false;
 ITERATION=0;
 INTERVAL=1800;
+ONCE=false;
 if [[ $# -eq 1 ]]; then
-    INTERVAL=$1;
+    if [[ $1 == "-1" ]]; then
+        ONCE=true;
+    else
+        INTERVAL=$1;
+    fi
 else
     usage;
 fi
@@ -64,6 +69,10 @@ start_updates () {
 
         date;
 
+        if [[ $ONCE ]]; then
+            echo "Single update complete."
+            exit 1;
+        fi
         echo "$INTERVAL seconds until next update...";
         sleep $INTERVAL;
     done
