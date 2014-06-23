@@ -56,7 +56,7 @@ FOOTER_LINKS = (('About this Site', SITEURL+'/pages/about-the-site.html'),
 #SOCIAL = (('You can add links in your config file', '#'),
 #          ('Another social link', '#'),)
 
-DEFAULT_PAGINATION = 5
+DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
