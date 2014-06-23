@@ -69,7 +69,7 @@ start_updates () {
 
         date;
 
-        if [[ $ONCE ]]; then
+        if $ONCE; then
             echo "Single update complete."
             exit 1;
         fi
