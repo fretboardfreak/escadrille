@@ -23,7 +23,7 @@ WITH_FUTURE_DATES = True
 
 DEFAULT_LANG = u'en'
 
-THEME = 'theme/bootstrap'
+THEME = 'theme/fretstrap'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
