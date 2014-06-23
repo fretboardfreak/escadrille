@@ -90,6 +90,7 @@
           {% block indextitle %}<div class="page-header"><h1>{% block title %}{% if self.windowtitle() != SITENAME %} {{ self.windowtitle() }} {% endif %}{% endblock %}</h1></div>{% endblock %}
             {% block content %}{% endblock %}
         <footer>
+            {% block comments %}{% endblock %}
             <p class="pull-right"><a href="{{ SITEURL }}/archives.html">[archives]</a> <a href="{{ SITEURL }}/tags.html">[tags]</a></p>
             <p>
             {% for name, link in FOOTER_LINKS %}
@@ -111,6 +112,7 @@
 <script type="text/javascript" src="{{ SITEURL }}/style/js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="{{ SITEURL }}/style/js/magnific-popup.js"></script>
 <script type="text/javascript" src="{{ SITEURL }}/style/js/jquery.tagcloud.js"></script>"
+<script type="text/javascript" src="http://zor.livefyre.com/wjs/v3.0/javascripts/livefyre.js"></script>
 {% block script %}{% endblock %}
 <script type="text/javascript">
 $(document).ready(function() {
@@ -146,5 +148,19 @@ $(document).ready(function() {
       color: {start: '#00b', end: '#0b0'}
     });
 });
+(function () {
+    var articleId = fyre.conv.load.makeArticleId(null);
+    fyre.conv.load({}, [{
+        el: 'livefyre-comments',
+        network: "livefyre.com",
+        siteId: "360738",
+        articleId: articleId,
+        signed: false,
+        collectionMeta: {
+            articleId: articleId,
+            url: fyre.conv.load.makeCollectionUrl(),
+        }
+    }], function() {});
+}());
 </script>
 </html>
