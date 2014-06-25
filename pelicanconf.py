@@ -19,7 +19,7 @@ ABOUT_SITE_URL = "pages/about-the-site.html"
 SITE_LOGS = ["blog", "fret"]
 LOG_PATH = "pages/%s-log.html"
 LAST_UPDATED = time.strftime(DEFAULT_DATE_FORMAT)
-WITH_FUTURE_DATES = True
+WITH_FUTURE_DATES = False
 
 DEFAULT_LANG = u'en'
 
