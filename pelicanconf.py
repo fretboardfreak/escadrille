@@ -16,7 +16,7 @@ TIMEZONE = 'America/Edmonton'
 DEFAULT_DATE_FORMAT = '%Y-%m-%d %H:%M'
 
 ABOUT_SITE_URL = "pages/about-the-site.html"
-SITE_LOGS = ["blog", "fret"]
+SITE_LOGS = ["blog", "fret", "music"]
 LOG_PATH = "pages/%s-log.html"
 LAST_UPDATED = time.strftime(DEFAULT_DATE_FORMAT)
 WITH_FUTURE_DATES = False

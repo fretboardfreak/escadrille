@@ -2,7 +2,7 @@
 
 TASK=$(basename $0)
 DEST=$1/pages
-REPOS="blog fret"
+REPOS="blog fret music"
 
 get_header () {
     (echo -e "$1 log\n=================\n\n"
