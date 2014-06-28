@@ -6,6 +6,7 @@ usage () {
 }
 
 LOG_FILE="./update_log.txt";
+SUBMODULES="fret music";
 
 PULL_FAILURE=false;
 BUILD_FAILURE=false;
@@ -29,16 +30,19 @@ update_repo () {
     git pull --rebase;
     pull_rc=$?;
 
-    pushd fret;
-    git checkout master;
-    git pull --rebase;
-    fret_rc=$?;
-    popd;
+    for submodule in SUBMODULES; do
+        pushd $submodule;
+        git checkout master;
+        git pull --rebase;
+        sub_rc=$?;
+        popd;
 
-    if [[ $pull_rc != 0 ]] || [[ $fret_rc != 0 ]]; then
-        echo "git pull failed :( - blog=$pull_rc fret=$fret_rc";
-        PULL_FAILURE=true;
-    fi;
+        if [[ $pull_rc != 0 ]] || [[ $sub_rc != 0 ]]; then
+            echo "git pull failed :( - blog=$pull_rc fret=$sub_rc";
+            PULL_FAILURE=true;
+            break;
+        fi;
+    done;
 }
 
 build () {
