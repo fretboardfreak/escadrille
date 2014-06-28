@@ -77,7 +77,7 @@ start_updates () {
             echo "Single update complete."
             exit 1;
         fi
-        echo "$INTERVAL seconds until next update...";
+        echo "$INTERVAL seconds until next update at $(date --date="+$INTERVAL seconds")...";
         sleep $INTERVAL;
     done
 }
