@@ -30,7 +30,7 @@ update_repo () {
     git pull --rebase;
     pull_rc=$?;
 
-    for submodule in SUBMODULES; do
+    for submodule in $SUBMODULES; do
         pushd $submodule;
         git checkout master;
         git pull --rebase;
