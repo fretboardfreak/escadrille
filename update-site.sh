@@ -71,7 +71,7 @@ start_updates () {
         build;
         $BUILD_FAILURE && break;
 
-        date;
+        echo "iteration $ITERATION finished at $(date)";
 
         if $ONCE; then
             echo "Single update complete."
