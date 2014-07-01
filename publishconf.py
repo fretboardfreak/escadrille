@@ -15,6 +15,10 @@ RELATIVE_URLS = False
 
 DELETE_OUTPUT_DIRECTORY = True
 
+FEED_DOMAIN = SITEURL
+FEED_MAX_ITEMS = 100
+FEED_ALL_RSS = 'all.rss.xml'
+
 # Following items are often useful when publishing
 
 #DISQUS_SITENAME = ""
