@@ -20,8 +20,8 @@ if [[ ! -d $TASKS_DIR ]]; then
 fi;
 
 if [[ ! -d $CONTENT_DIR ]]; then
-    echo "No content dir found, nothing to pre-proces...";
-    exit 0;
+    echo "No '$CONTENT_DIR' dir found, making it...";
+    mkdir -p $CONTENT_DIR
 fi;
 
 echo -e "pre-processing..."
