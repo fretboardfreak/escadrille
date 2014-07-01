@@ -5,9 +5,9 @@ PELICANOPTS=
 BASEDIR=$(CURDIR)
 INPUTDIR=$(BASEDIR)/content
 OUTPUTDIR=$(BASEDIR)/output
-CONFFILE=$(BASEDIR)/pelicanconf.py
-PUBLISHCONF=$(BASEDIR)/publishconf.py
-DEVCONF=$(BASEDIR)/devconf.py
+CONFFILE=$(BASEDIR)/conf/curtissand.py
+PUBLISHCONF=$(BASEDIR)/conf/publishconf.py
+DEVCONF=$(BASEDIR)/conf/devconf.py
 
 FTP_HOST=localhost
 FTP_USER=anonymous
