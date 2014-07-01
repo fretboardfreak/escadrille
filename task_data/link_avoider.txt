@@ -1,5 +1,5 @@
 DEST|pages
-../fret/links-for-later.rst
+../fret/links.rst
 ../fret/songs-to-learn.rst
 ../fret/whats-interesting.rst
 ../fret/about.rst
