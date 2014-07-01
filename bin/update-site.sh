@@ -82,7 +82,7 @@ start_updates () {
     done
 }
 
-pushd $(dirname $0) &> /dev/null
+pushd $(dirname $0)/.. # descend from .../bin to the top dir
 start_updates &>> $LOG_FILE
 echo "Build failed=$BUILD_FAILURE" &>> $LOG_FILE
 echo "Pull failed=$PULL_FAILED" &>> $LOG_FILE
