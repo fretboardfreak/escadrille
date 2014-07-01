@@ -5,7 +5,6 @@ import time
 from os.path import join
 
 AUTHOR = u'Curtis Sand'
-ABOUT_AUTHOR_URL = "pages/about-me.html"
 SITENAME = u'Quizzical Silicon'
 SITESUBTITLE=u'A charge carrier is not a wallet.'
 SITEURL = 'http://curtissand.com/cs'
@@ -16,7 +15,6 @@ FOOTER_TEXT='Powered by pain and suffering, reading, beer and the sun.'
 TIMEZONE = 'America/Edmonton'
 DEFAULT_DATE_FORMAT = '%Y-%m-%d %H:%M'
 
-ABOUT_SITE_URL = "pages/about-the-site.html"
 SITE_LOGS = ["blog", "fret", "music"]
 LOG_PATH = "pages/%s-log.html"
 LAST_UPDATED = time.strftime(DEFAULT_DATE_FORMAT)
