@@ -73,3 +73,5 @@ TAG_CLOUD_MAX_ITEMS = 15
 TAG_CLOUD_SIZE = 15
 
 JINJA_EXTENSIONS = ['jinja2.ext.loopcontrols']
+
+PYGMENTS_RST_OPTIONS = {'linenos': 'table'}
