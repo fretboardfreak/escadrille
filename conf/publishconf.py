@@ -8,7 +8,7 @@ from __future__ import unicode_literals
 import os
 import sys
 sys.path.append(os.curdir)
-from conf.pelicanconf import *
+from conf.curtissand import *
 
 SITEURL = 'http://curtissand.com/cs/'
 RELATIVE_URLS = False
