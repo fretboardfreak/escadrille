@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 import time
+from os.path import join
 
 AUTHOR = u'Curtis Sand'
 ABOUT_AUTHOR_URL = "pages/about-me.html"
@@ -40,8 +41,11 @@ MENUITEMS = (#('songs to learn', SITEURL+'/pages/songs-to-learn.html'),
              ('links', SITEURL+'/pages/links.html'))
 
 # LINKS go in the sidebar
-LINKS = (('More Tags', 'http://curtissand.com/cs/tags.html'),
-         ('Archives', 'http://curtissand.com/cs/archives.html'),
+LINKS = (('More Tags',      join(SITEURL, 'tags.html')),
+         ('Archives',       join(SITEURL, 'archives.html')),
+         ('About Me',       join(SITEURL, 'about-me.html')),
+         ('About the Site', join(SITEURL, 'about-the-site.html')),
+         ('RSS Feed',       join(SITEURL, 'all.rss.xml')),
          )
 
 # FOOTER_LINKS go in the footer
