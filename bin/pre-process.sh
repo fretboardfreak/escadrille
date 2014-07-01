@@ -1,7 +1,7 @@
 #!/bin/bash
 
-CONTENT_DIR="$(dirname $0)/content"
-TASKS_DIR="./tasks"
+CONTENT_DIR=$(readlink -f $(dirname $0)/../content)
+TASKS_DIR=$(readlink -f $(dirname $0)/../tasks)
 
 usage () {
     echo -e "Usage: $0\n";
@@ -13,6 +13,8 @@ if [[ $# -gt 0 ]]; then
     usage;
     exit 1;
 fi;
+
+pushd $(dirname $0)/.. # descend from .../bin to the top dir
 
 if [[ ! -d $TASKS_DIR ]]; then
     echo "No tasks found...";

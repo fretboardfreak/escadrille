@@ -55,7 +55,7 @@ help:
 	@echo '                                                                       '
 
 pre_process:
-	./pre-process.sh
+	./bin/pre-process.sh
 
 html: pre_process
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
