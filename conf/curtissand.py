@@ -41,8 +41,8 @@ MENUITEMS = (#('songs to learn', SITEURL+'/pages/songs-to-learn.html'),
 # LINKS go in the sidebar
 LINKS = (('More Tags',      join(SITEURL, 'tags.html')),
          ('Archives',       join(SITEURL, 'archives.html')),
-         ('About Me',       join(SITEURL, 'about-me.html')),
-         ('About the Site', join(SITEURL, 'about-the-site.html')),
+         ('About Me',       join(SITEURL, 'pages/about-me.html')),
+         ('About the Site', join(SITEURL, 'pages/about-the-site.html')),
          ('RSS Feed',       join(SITEURL, 'all.rss.xml')),
          )
 
