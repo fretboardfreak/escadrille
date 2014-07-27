@@ -30,7 +30,7 @@ def get_galleries(content_dir):
             name = "Images"
         if name[0] == '/':
             name = name[1:]
-        galleries[name] = img_dir.replace(content_dir, '.')
+        galleries[name] = img_dir
     return galleries
 
 def get_image_directive(src, alt_text):
@@ -42,16 +42,17 @@ def get_image_directive(src, alt_text):
 """ % (src, alt_text)
 
 def write_gallery(write, name, content_dir, img_dir):
-    print "    %s : %s" % (name, img_dir)
+    name = name.replace('/', ' - ')
     write('=' * len(name))
     write('\n%s\n' % name)
     write('=' * len(name))
     write('\n' + GALLERY_START)
-    imgs = commands.getoutput('find %s -iname "*.jpg"' %
-                              os.path.join(content_dir, img_dir)).split('\n')
+    imgs = commands.getoutput('find %s -iname "*.jpg" -o -iname "*.png"' %
+                              img_dir).split('\n')
     imgs.sort()
     for img in imgs:
         _, alt_text = os.path.split(img)
+        img = img.replace(content_dir, '.')
         write('\n%s' % get_image_directive(img, alt_text))
     write('\n' + GALLERY_END)
 
@@ -60,9 +61,9 @@ def main():
     print "%s: building galleries" % prog
     content_dir = get_content_dir()
     for name, img_dir in get_galleries(content_dir).iteritems():
-        dest = "%s.rst" % os.path.join(content_dir,
-                                       _DEST,
-                                       name.replace(' ', ''))
+        fname = name.replace(' ', '')
+        fname = fname.replace('/', '-')
+        dest = "%s.rst" % os.path.join(content_dir, _DEST, fname)
         try:
             os.makedirs(os.path.dirname(dest))
         except OSError, exc:
@@ -71,8 +72,6 @@ def main():
         print "Writing %s" % dest
         with open(dest, 'w') as fout:
             write_gallery(fout.write, name, content_dir, img_dir)
-
-
 
 if __name__=="__main__":
     sys.exit(main())
