@@ -54,6 +54,15 @@ FOOTER_LINKS = (('About this Site', SITEURL+'/pages/about-the-site.html'),
                 ('Tag Cloud', 'http://addywaddy.github.io/jquery.tagcloud.js/'),
                 )
 
+GALLERY_PREFIX = SITEURL + '/pages/galleries/'
+GALLERY_LINKS = (
+        ('Images', GALLERY_PREFIX + 'Images.html'),
+        ('2014-07', GALLERY_PREFIX + '2014-07.html'),
+        ('2014-06', GALLERY_PREFIX + '2014-06.html'),
+        ('2014-06 - Coffee', GALLERY_PREFIX + '2014-06-coffee.html'),
+        ('Site History', GALLERY_PREFIX + 'site-history.html')
+        )
+
 # Social widget
 #SOCIAL = (('You can add links in your config file', '#'),
 #          ('Another social link', '#'),)

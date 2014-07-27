@@ -96,6 +96,11 @@
             <a href="{{ link }}">{{ name }}</a>&nbsp|&nbsp
             {% endfor %}
             </p>
+            <p>Image Galleries:&nbsp
+            {% for name, link in GALLERY_LINKS %}
+            <a href="{{ link }}">{{ name }}</a>&nbsp|&nbsp
+            {% endfor %}
+            </p>
             <p>Git Logs:&nbsp
             {% for log in SITE_LOGS %}
             <a href="{{ SITEURL }}/{{ LOG_PATH % log }}">{{ log }}</a>&nbsp
