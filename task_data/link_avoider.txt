@@ -4,6 +4,7 @@ DEST|pages
 ../fret/whats-interesting.rst
 ../fret/about.rst
 ../fret/site.rst
+../fret/misc/space.rst
 DEST|ref
 ../fret/ref/*.rst
 DEST|blog
