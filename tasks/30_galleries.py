@@ -42,17 +42,19 @@ def get_image_directive(src, alt_text):
 """ % (src, alt_text)
 
 def write_gallery(write, name, content_dir, img_dir):
-    name = name.replace('/', ' - ')
-    write('=' * len(name))
-    write('\n%s\n' % name)
-    write('=' * len(name))
-    write('\n' + GALLERY_START)
+    tname = name.replace('/', ' - ')
+    write('=' * len(tname))
+    write('\n%s\n' % tname)
+    write('=' * len(tname))
+    write('\n\n:summary:\n:save_as: %s\n' % os.path.join(_DEST, "%s.html" %
+                                                     name.replace('/', '-')))
+    write(GALLERY_START)
     imgs = commands.getoutput('find %s -iname "*.jpg" -o -iname "*.png"' %
                               img_dir).split('\n')
     imgs.sort()
     for img in imgs:
         _, alt_text = os.path.split(img)
-        img = img.replace(content_dir, '.')
+        img = img.replace(content_dir, '../..')
         write('\n%s' % get_image_directive(img, alt_text))
     write('\n' + GALLERY_END)
 
