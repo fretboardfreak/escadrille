@@ -12,6 +12,10 @@ _DEST = "pages/galleries/"
 GALLERY_START = '\n.. raw:: html\n\n    <div class="gallery">\n\n'
 GALLERY_END = '\n.. raw:: html\n\n    </div>\n\n'
 
+PAGE_SOURCES = "../fret/galleries/"
+
+PROG = ''
+
 def get_content_dir():
     parser = ArgumentParser(description=__doc__)
     parser.add_argument(dest='content_dir')
@@ -41,14 +45,27 @@ def get_image_directive(src, alt_text):
     :align: center
 """ % (src, alt_text)
 
+def get_title(title_name):
+    val = '=' * len(title_name)
+    val += '\n%s\n' % title_name
+    val += '=' * len(title_name)
+    return val
+
+def get_page(fname, title):
+    if os.path.exists(fname):
+        with open(fname, 'r') as fin:
+            return fin.read()
+    else:
+        return get_title(title) + "\n\n:summary:\n"
+
 def write_gallery(write, name, content_dir, img_dir):
-    tname = name.replace('/', ' - ')
-    write('=' * len(tname))
-    write('\n%s\n' % tname)
-    write('=' * len(tname))
-    write('\n\n:summary:\n:save_as: %s\n' % os.path.join(_DEST, "%s.html" %
-                                                     name.replace('/', '-')))
-    write(GALLERY_START)
+    title_name = name.replace('/', ' - ')
+    _name = name.replace('/', '-')
+    url = os.path.join(_DEST, "%s.html" % _name)
+    fname = os.path.join(PAGE_SOURCES, "%s.rst" % _name)
+
+    write(get_page(fname, title_name))
+    write('\n:save_as: ' + url + '\n' + GALLERY_START + '\n')
     imgs = commands.getoutput('find %s -iname "*.jpg" -o -iname "*.png"' %
                               img_dir).split('\n')
     imgs.sort()
@@ -59,8 +76,9 @@ def write_gallery(write, name, content_dir, img_dir):
     write('\n' + GALLERY_END)
 
 def main():
-    prog = sys.argv[0]
-    print "%s: building galleries" % prog
+    global PROG
+    _, PROG = os.path.split(sys.argv[0])
+    print "%s: building galleries" % PROG
     content_dir = get_content_dir()
     for name, img_dir in get_galleries(content_dir).iteritems():
         fname = name.replace(' ', '')
@@ -71,7 +89,7 @@ def main():
         except OSError, exc:
             if exc.errno != 17:
                 raise
-        print "Writing %s" % dest
+        print "%s: Writing %s" % (PROG, dest)
         with open(dest, 'w') as fout:
             write_gallery(fout.write, name, content_dir, img_dir)
 
