@@ -7,7 +7,7 @@ import sys, os.path
 import commands # rather dirty but quick for these scripts
 from argparse import ArgumentParser
 
-_DEST = "pages/galleries/"
+_DEST = "galleries/"
 
 GALLERY_START = '\n.. raw:: html\n\n    <div class="gallery">\n\n'
 GALLERY_END = '\n.. raw:: html\n\n    </div>\n\n'
@@ -56,7 +56,8 @@ def get_page(fname, title):
         with open(fname, 'r') as fin:
             return fin.read()
     else:
-        return get_title(title) + "\n\n:summary:\n"
+        return (get_title(title) +
+                "\n\n:summary:\n:date: 1900-01-01 01:01\n\n")
 
 def write_gallery(write, name, content_dir, img_dir):
     title_name = name.replace('/', ' - ')
