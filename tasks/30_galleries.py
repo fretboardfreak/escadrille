@@ -66,7 +66,7 @@ def write_gallery(write, name, content_dir, img_dir):
     fname = os.path.join(PAGE_SOURCES, "%s.rst" % _name)
 
     write(get_page(fname, title_name))
-    write('\n:save_as: ' + url + '\n' + GALLERY_START + '\n')
+    write('\n' + GALLERY_START + '\n')
     imgs = commands.getoutput('find %s -iname "*.jpg" -o -iname "*.png"' %
                               img_dir).split('\n')
     imgs.sort()
