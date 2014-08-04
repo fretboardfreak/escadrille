@@ -72,7 +72,7 @@ def write_gallery(write, name, content_dir, img_dir):
     imgs.sort()
     for img in imgs:
         _, alt_text = os.path.split(img)
-        img = img.replace(content_dir, '../..')
+        img = img.replace(content_dir, '..')
         write('\n%s' % get_image_directive(img, alt_text))
     write('\n' + GALLERY_END)
 
