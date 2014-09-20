@@ -19,8 +19,6 @@ if [[ $# -eq 1 ]]; then
     else
         INTERVAL=$1;
     fi
-else
-    usage;
 fi
 
 update_repo () {
@@ -87,7 +85,8 @@ if [[ `hostname` -eq cube ]]; then
     source /home/csand/virt_envs/www/bin/activate
 fi
 
-pushd $(dirname $0)/.. # descend from .../bin to the top dir
+echo "Using interval $INTERVAL"
+pushd $(dirname $0)/..  &>/dev/null # descend from .../bin to the top dir
 start_updates &>> $LOG_FILE
 echo "Build failed=$BUILD_FAILURE" &>> $LOG_FILE
 echo "Pull failed=$PULL_FAILED" &>> $LOG_FILE
