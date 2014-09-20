@@ -82,6 +82,11 @@ start_updates () {
     done
 }
 
+if [[ `hostname` -eq cube ]]; then
+    echo "Activating virtualenv..."
+    source /home/csand/virt_envs/www/bin/activate
+fi
+
 pushd $(dirname $0)/.. # descend from .../bin to the top dir
 start_updates &>> $LOG_FILE
 echo "Build failed=$BUILD_FAILURE" &>> $LOG_FILE
