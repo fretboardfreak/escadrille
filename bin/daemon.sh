@@ -37,8 +37,9 @@ stop () {
 }
 
 restart () {
-    stop;
-    [[ $rc -ne 0 ]] && _exit;
+    if [[ status -eq 0 ]]; then
+        stop;
+    fi
     start;
 }
 
