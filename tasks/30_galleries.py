@@ -56,8 +56,9 @@ def get_page(fname, title):
         with open(fname, 'r') as fin:
             return fin.read()
     else:
-        return (get_title(title) +
-                "\n\n:summary:\n:date: 1900-01-01 01:01\n\n")
+        return (get_title(title)
+                "\n\n:date: 1900-01-01 01:01\n:category: pics\n:tags: pics\n"
+                ":summary:\n\n")
 
 def write_gallery(write, name, content_dir, img_dir):
     title_name = name.replace('/', ' - ')
