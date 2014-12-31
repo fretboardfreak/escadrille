@@ -18,7 +18,6 @@ DEFAULT_DATE_FORMAT = '%Y-%m-%d %H:%M'
 SITE_LOGS = ["blog", "fret", "music"]
 LOG_PATH = "pages/%s-log.html"
 LAST_UPDATED = time.strftime(DEFAULT_DATE_FORMAT)
-WITH_FUTURE_DATES = False
 
 DEFAULT_LANG = u'en'
 
