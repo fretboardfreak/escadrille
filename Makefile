@@ -8,6 +8,7 @@ OUTPUTDIR=$(BASEDIR)/output
 CONFFILE=$(BASEDIR)/conf/curtissand.py
 PUBLISHCONF=$(BASEDIR)/conf/publishconf.py
 DEVCONF=$(BASEDIR)/conf/devconf.py
+CACHEDIR=/tmp/www_cache
 
 FTP_HOST=localhost
 FTP_USER=anonymous
@@ -35,21 +36,23 @@ help:
 	@echo 'Makefile for a pelican Web site                                        '
 	@echo '                                                                       '
 	@echo 'Usage:                                                                 '
-	@echo '   make html                        (re)generate the web site          '
-	@echo '   make clean                       remove the generated files         '
-	@echo '   make regenerate                  regenerate files upon modification '
-	@echo '   make publish                     generate using production settings '
-	@echo '   make serve [PORT=8000]           serve site at http://localhost:8000'
-	@echo '   make devserver [PORT=8000]       start/restart develop_server.sh    '
-	@echo '   make stopserver                  stop local server                  '
-	@echo '   make ssh_upload                  upload the web site via SSH        '
-	@echo '   make rsync_upload                upload the web site via rsync+ssh  '
-	@echo '   make dropbox_upload              upload the web site via Dropbox    '
-	@echo '   make ftp_upload                  upload the web site via FTP        '
-	@echo '   make s3_upload                   upload the web site via S3         '
-	@echo '   make cf_upload                   upload the web site via Cloud Files'
-	@echo '   make github                      upload the web site via gh-pages   '
-	@echo '   make pre_process                 run only the pre-processor tasks   '
+	@echo '   make html                    (re)generate the web site          '
+	@echo '   make clean                   remove the generated files         '
+	@echo '   make regenerate              regenerate files upon modification '
+	@echo '   make publish                 generate using production settings '
+	@echo '   make serve [PORT=8000]       serve site at http://localhost:8000'
+	@echo '   make devserver [PORT=8000]   start/restart develop_server.sh    '
+	@echo '   make stopserver              stop local server                  '
+	@echo '   make ssh_upload              upload the web site via SSH        '
+	@echo '   make rsync_upload            upload the web site via rsync+ssh  '
+	@echo '   make dropbox_upload          upload the web site via Dropbox    '
+	@echo '   make ftp_upload              upload the web site via FTP        '
+	@echo '   make s3_upload               upload the web site via S3         '
+	@echo '   make cf_upload               upload the web site via Cloud Files'
+	@echo '   make github                  upload the web site via gh-pages   '
+	@echo '   make pre_process             run only the pre-processor tasks   '
+	@echo '   make tmp_cache               build the site and save to a temp cache dir'
+	@echo '   make upload_cache            upload the temp cache dir'
 	@echo '                                                                       '
 	@echo 'Set the DEBUG variable to 1 to enable debugging, e.g. make DEBUG=1 html'
 	@echo '                                                                       '
@@ -98,6 +101,15 @@ ssh_upload: publish
 
 rsync_upload: publish
 	rsync -e "ssh -p $(SSH_PORT)" -P -rvz --delete $(OUTPUTDIR)/ $(SSH_USER)@$(SSH_HOST):$(SSH_TARGET_DIR) --cvs-exclude
+
+make_tmp_cache:
+	mkdir -p $(CACHEDIR)
+
+upload_cache: make_tmp_cache
+	rsync -e "ssh -p $(SSH_PORT)" -P -rvz $(CACHEDIR)/ $(SSH_USER)@$(SSH_HOST):$(SSH_TARGET_DIR) --cvs-exclude
+
+tmp_cache: publish make_tmp_cache
+	rsync -haP --no-whole-file --inplace --delete $(OUTPUTDIR)/ $(CACHEDIR) --cvs-exclude
 
 dropbox_upload: publish
 	cp -r $(OUTPUTDIR)/* $(DROPBOX_DIR)

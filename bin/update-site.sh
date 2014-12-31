@@ -47,7 +47,8 @@ update_repo () {
 
 build () {
     echo building and uploading...;
-    make rsync_upload;
+    #make rsync_upload;
+    make tmp_cache
     build_rc=$?;
     if [[ $build_rc != 0 ]]; then
         echo "build or rsync error :( - rc=$build_rc";
