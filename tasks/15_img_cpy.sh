@@ -9,8 +9,8 @@ die () {
 }
 
 HOSTNAME=$(hostname)
-if [[ $HOSTNAME == "crunchbang-vm" ]]; then
-    SRC="/home/csand/storage/Dropbox/images"
+if [[ $HOSTNAME == "csand-fedora-vm" ]]; then
+    SRC="/home/csand/Dropbox/images"
 elif [[ $HOSTNAME == "shiny" ]]; then
     SRC="/home/csand/Dropbox/images"
 elif [[ $HOSTNAME == "cube" ]]; then
