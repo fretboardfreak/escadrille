@@ -13,8 +13,8 @@ if [[ $HOSTNAME == "csand-fedora-vm" ]]; then
     SRC="/home/csand/Dropbox/images"
 elif [[ $HOSTNAME == "shiny" ]]; then
     SRC="/home/csand/Dropbox/images"
-elif [[ $HOSTNAME == "cube" ]]; then
-    SRC="/home/csand/storage/Dropbox/images"
+elif [[ $HOSTNAME == "obsidian" ]]; then
+    SRC="/home/csand/Dropbox/images"
 else
     echo "AAHHH, DONT KNOW WHAT TO DO WITH HOST `hostname`"
 fi
