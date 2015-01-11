@@ -1,5 +1,7 @@
 #!/bin/bash
 
+. /home/csand/virt_envs/www/bin/activate
+
 usage () {
     echo -e "$0 INTERVAL\n";
     echo "Update the site in a loop.";
