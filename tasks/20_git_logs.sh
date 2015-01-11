@@ -17,7 +17,7 @@ get_log () {
         pushd $1 &>/dev/null;
     fi
     # replace @ to make email address scraping harder
-    git log | sed -e 's/@/<AT>/g' &>> $2
+    git log | sed -e 's/@/<AT>/g' -e 's/*/\\*/g' &>> $2
     if [[ ! -z $1 ]]; then
         echo -n "$TASK: changing back to "
         popd
