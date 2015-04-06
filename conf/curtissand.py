@@ -10,7 +10,9 @@ SITESUBTITLE=u'A charge carrier is not a wallet.'
 SITEURL = 'http://curtissand.com/cs'
 SITETHUMBNAIL_URL = SITEURL + '/images/site_thumb.jpg'
 SITETHUMBNAIL_ALTTEXT = "Mah Guitjo!"
-FOOTER_TEXT='Powered by pain and suffering, reading, beer and the sun.'
+FOOTER_TEXT='Powered by pain and suffering, reading, beer and the sun. Curtis Sand, 2015. Unauthorized use and/or duplication of this material without express and written permission from this blog’s author and/or owner is strictly prohibited. Excerpts and links may be used, provided that full and clear credit is given to Curtis Sand and Quizzical Silicon with appropriate and specific direction to the original content.'
+
+FAVICON=''
 
 TIMEZONE = 'America/Edmonton'
 DEFAULT_DATE_FORMAT = '%Y-%m-%d %H:%M'
