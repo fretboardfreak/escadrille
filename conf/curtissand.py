@@ -67,7 +67,7 @@ DEFAULT_PAGINATION = 10
 PDF_GENERATOR = False
 
 # static paths will be copied without parsing their contents
-STATIC_PATHS = ['images', 'style' ]
+STATIC_PATHS = ['images', 'style', 'js']
 
 # tag cloud
 TAG_CLOUD_SAYING = "Random Tags"
