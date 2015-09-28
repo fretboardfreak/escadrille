@@ -36,8 +36,8 @@ TYPOGRIFY = True
 DISPLAY_PAGES_ON_MENU = False
 DISPLAY_CATEGORIES_ON_MENU = True
 MENUITEMS = (#('songs to learn', SITEURL+'/pages/songs-to-learn.html'),
-             ('what\'s interesting?', SITEURL+'/pages/whats-interesting.html'),
-             ('links', SITEURL+'/pages/links.html'))
+             #('what\'s interesting?', SITEURL+'/pages/whats-interesting.html'),
+             ('links', SITEURL+'/pages/links.html'),)
 
 # LINKS go in the sidebar
 LINKS = (('More Tags',      join(SITEURL, 'tags.html')),
