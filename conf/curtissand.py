@@ -29,6 +29,7 @@ TOC_PAGES = ["music", "pics", "ref"]
 
 TWITTER_USERNAME = 'fretboardfreak'
 GITHUB_URL = 'https://github.com/fretboardfreak'
+BITBUCKET_URL = 'https://bitbucket.org/fret'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
