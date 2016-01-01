@@ -4,7 +4,7 @@
 {% if articles %}
 <div class='small pull-right'>{{ articles|count }} articles</div>
 {% if category in TOC_PAGES %}
-{% for article in (articles_page.object_list if articles_page else articles)|sort %}
+{% for article in (articles_page.object_list if articles_page else articles)|sort(attribute='date', reverse=True) %}
 <div class="well small"><div class='article'><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></div></div>
 {% endfor %}
 {% else %}
