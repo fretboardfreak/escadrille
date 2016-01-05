@@ -111,6 +111,7 @@
             <a href="{{ link }}">{{ name }}</a>&nbsp|&nbsp
             {% endfor %}
             </p>
+            <p><a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="{{TWITTER_USERNAME}}"></a></p>
             <p>Git Logs:&nbsp
             {% for log in SITE_LOGS %}
             <a href="{{ SITEURL }}/{{ LOG_PATH % log }}">{{ log }}</a>&nbsp
