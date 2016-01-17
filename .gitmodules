@@ -1,6 +1,0 @@
-[submodule "fret"]
-	path = fret
-	url = git@bitbucket.org:fret/fret.git
-[submodule "music"]
-	path = music
-	url = git@bitbucket.org:fret/music.git
