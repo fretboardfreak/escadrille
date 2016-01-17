@@ -2,7 +2,7 @@
 
 TASK=$(basename $0)
 DEST=$1/pages
-REPOS="blog fret music"
+REPOS="blog fret fretsmusic"
 
 get_header () {
     (echo -e "$1 log\n=================\n\n"
@@ -17,11 +17,12 @@ get_log () {
         pushd $1 &>/dev/null;
     fi
     # replace @ to make email address scraping harder
-    git log | sed -e 's/@/<AT>/g' -e 's/*/\\*/g' &>> $2
+    local data=$(git log | sed -e 's/@/<AT>/g' -e 's/*/\\*/g')
     if [[ ! -z $1 ]]; then
         echo -n "$TASK: changing back to "
         popd
     fi
+    echo $data 2>&1 >> $2
 }
 
 get_footer () {
@@ -30,14 +31,15 @@ get_footer () {
 
 write_log_page () {
     local repo="$1"
-    local file="$(readlink -f $DEST/$repo.rst)"
+    local file="$DEST/$repo.rst"
     local dir="$1"
-    if [[ $dir == "blog" ]]; then
+    if [[ "$dir" == "blog" ]]; then
         dir=".";
+    else
+        dir="${HOME}/$dir"
     fi
-    dir=$(readlink -f $dir)
     echo "$TASK: writing $repo log..."
-    touch $file
+    touch $file && sync
     get_header $repo $file
     get_log $dir $file
     get_footer $file
