@@ -17,6 +17,8 @@ elif [[ $HOSTNAME == "obsidian" ]]; then
     SRC="/home/csand/Dropbox/blog"
 elif [[ $HOSTNAME == 'fedora-vm' ]]; then
     SRC="/home/csand/storage/Dropbox/blog"
+elif [[ $HOSTNAME == 'hackmanite' ]]; then
+    SRC="/Users/csand/Dropbox/blog"
 else
     echo "AAHHH, DONT KNOW WHAT TO DO WITH HOST `hostname`"
 fi
