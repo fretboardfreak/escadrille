@@ -1,7 +1,7 @@
 #!/bin/bash
 
-CONTENT_DIR=$(readlink -f $(dirname $0)/../content)
-TASKS_DIR=$(readlink -f $(dirname $0)/../tasks)
+CONTENT_DIR=$(dirname $0)/../content
+TASKS_DIR=$(dirname $0)/../tasks
 
 usage () {
     echo -e "Usage: $0\n";
@@ -33,3 +33,5 @@ for task_f in $(ls $TASKS_DIR); do
         $task $CONTENT_DIR
     fi
 done;
+
+popd;
