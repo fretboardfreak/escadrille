@@ -10,4 +10,4 @@ DEST|ref
 DEST|blog
 ../fret/blog/201*/*.rst
 DEST|music
-../music/*.rst
+../fretsmusic/*.rst

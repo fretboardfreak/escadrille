@@ -23,8 +23,8 @@ while read line ; do
         continue;
     elif [[ ${line:0:1} == "#" ]]; then
         continue;
-    else # [[ -f $CONTENT_DIR/$line ]] ; then
-        cp -fr $CONTENT_DIR/$line $DEST
+    else # [[ -f $line ]] ; then
+        cp -fr $line $DEST
     fi
 done < "$DATA_FILE";
 
