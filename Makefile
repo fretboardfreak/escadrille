@@ -1,33 +1,8 @@
-PY=python
-PELICAN=pelican
-PELICANOPTS=
+# Squadron Makefile
+#
+# Squadron is an automation extension of the pelican website generator.
+#
 
-BASEDIR=$(CURDIR)
-INPUTDIR=$(BASEDIR)/content
-OUTPUTDIR=$(BASEDIR)/output
-CONFFILE=$(BASEDIR)/conf/curtissand.py
-PUBLISHCONF=$(BASEDIR)/conf/publishconf.py
-DEVCONF=$(BASEDIR)/conf/devconf.py
-CACHEDIR=/tmp/www_cache
-
-FTP_HOST=localhost
-FTP_USER=anonymous
-FTP_TARGET_DIR=/
-
-SSH_HOST=curtissand.com
-SSH_PORT=22
-SSH_USER=curtsan2
-SSH_TARGET_DIR=~/www/cs/
-
-S3_BUCKET=my_s3_bucket
-
-CLOUDFILES_USERNAME=my_rackspace_username
-CLOUDFILES_API_KEY=my_rackspace_api_key
-CLOUDFILES_CONTAINER=my_cloudfiles_container
-
-DROPBOX_DIR=~/Dropbox/Public/
-
-DEBUG ?= 0
 ifeq ($(DEBUG), 1)
 	PELICANOPTS += -D
 endif
