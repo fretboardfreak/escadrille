@@ -1,5 +1,7 @@
 !.gitignore
 
+content
+
 update_log.txt
 upload_log.txt
 output/*
