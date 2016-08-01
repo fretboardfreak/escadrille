@@ -5,3 +5,5 @@ upload_log.txt
 output/*
 *.pyc
 *.swp
+
+.DS_Store
