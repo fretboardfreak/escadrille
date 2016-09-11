@@ -14,7 +14,7 @@ if [[ $HOSTNAME == "csand-fedora-vm" ]]; then
 elif [[ $HOSTNAME == "shiny" ]]; then
     SRC="/home/csand/Dropbox/images"
 elif [[ $HOSTNAME == "obsidian" ]]; then
-    SRC="/home/csand/Dropbox/images"
+    SRC="/home/csand/storage/pics/website/cs"
 elif [[ $HOSTNAME == 'fedora-vm' ]]; then
     SRC="/home/csand/storage/Dropbox/images"
 else
