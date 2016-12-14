@@ -16,11 +16,14 @@ class Sections(Enum):
     copy_files = None  # Dynamic Option Discovery
 
 
-class Config(object):
+class ConfigFile(object):
     """Config File API for Squadron."""
+
+    default_path = os.path.abspath('./squadron.cfg')
+
     def __init__(self, filename):
         self.filename = filename
-        self.parser = SafeConfigParser(interpolation=ExtendedInterpolation))
+        self.parser = SafeConfigParser(interpolation=ExtendedInterpolation())
         self.loaded = False
 
     def load(self):
