@@ -11,7 +11,7 @@ DEBUG = False
 class PreprocessUI(object):
     """UI Interface for the Preprocessor Command Line tool."""
 
-    description = """Squadron Preprocessor Tool."""
+    description = "A description of the UI tool."
 
     def __init__(self, version, verbose=False, debug=False):
         self.parser = argparse.ArgumentParser(description=__doc__)
@@ -40,7 +40,7 @@ class PreprocessUI(object):
 def dprint(msg):
     """Conditionally print a debug message."""
     if DEBUG:
-        print(msg)
+        print('dbg:', msg)
 
 
 def vprint(msg):
@@ -52,6 +52,7 @@ def vprint(msg):
 class DebugAction(argparse.Action):
     """Enable the debugging output mechanism."""
 
+    shortflag = '-d'
     flag = '--debug'
     help = 'Enable debugging output.'
 
@@ -60,8 +61,8 @@ class DebugAction(argparse.Action):
         parser.add_argument(cls.flag, help=cls.help, action=cls)
 
     def __init__(self, option_strings, dest, **kwargs):
-        super(DebugAction, self).__init__(option_strings, dest, nargs=0,
-                                          default=False, **kwargs)
+        super().__init__(option_strings, dest, nargs=0,
+                         default=False, **kwargs)
 
     def __call__(self, parser, namespace, values, option_string=None):
         print('Enabling debugging output.')
@@ -73,6 +74,7 @@ class DebugAction(argparse.Action):
 class VerboseAction(DebugAction):
     """Enable the verbose output mechanism."""
 
+    shortflag = '-v'
     flag = '--verbose'
     help = 'Enable verbose output.'
 
