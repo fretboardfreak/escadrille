@@ -3,10 +3,28 @@
 import sys
 import os
 import argparse
+import errno
+
+from .config import ConfigFile
 
 
 VERBOSE = False
 DEBUG = False
+
+
+class ConfigMixin(object):
+    def build(self):
+        self.parser.add_argument(
+            '-c', '--config', action='store', dest='config',
+            default=ConfigFile.default_path,
+            help='Specify the config file to use.')
+        super().build()
+
+    def validate_args(self, args):
+        if not os.path.exists(args.config):
+            raise FileNotFoundError(errno.ENOENT, "Config File not found",
+                                    args.config)
+        super().validate_args(args)
 
 
 class BaseUI(object):
@@ -43,7 +61,7 @@ class BaseUI(object):
         return args
 
 
-class PreprocessUI(BaseUI):
+class PreprocessUI(ConfigMixin, BaseUI):
     """UI Interface for the Preprocessor Command Line tool."""
 
     description = """Squadron Preprocessor Tool."""
