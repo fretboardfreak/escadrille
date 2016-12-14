@@ -1,6 +1,7 @@
 """Library of command line tools for Squadron Automation."""
 
 import sys
+import os
 import argparse
 
 
@@ -8,8 +9,8 @@ VERBOSE = False
 DEBUG = False
 
 
-class PreprocessUI(object):
-    """UI Interface for the Preprocessor Command Line tool."""
+class BaseUI(object):
+    """A base class for the User Interface."""
 
     description = "A description of the UI tool."
 
@@ -31,10 +32,21 @@ class PreprocessUI(object):
         VerboseAction.add_parser_argument(self.parser)
         self.built = True
 
+    def validate_args(self, args):
+        pass
+
     def parse_cmd_line(self):
         if not self.built:
             self.build()
-        return self.parser.parse_args()
+        args = self.parser.parse_args()
+        self.validate_args(args)
+        return args
+
+
+class PreprocessUI(BaseUI):
+    """UI Interface for the Preprocessor Command Line tool."""
+
+    description = """Squadron Preprocessor Tool."""
 
 
 def dprint(msg):
