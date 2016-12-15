@@ -6,12 +6,15 @@ from configparser import SafeConfigParser
 from configparser import ExtendedInterpolation
 from enum import Enum
 
+
 class GeneralOpts(Enum):
     """Options for the General Section."""
     output_dir = os.environ.get('HOME', '/tmp/')
     enabled_tasks = ''
 
+
 class Sections(Enum):
+    """The sections of the config file."""
     general = GeneralOpts
     copy_files = None  # Dynamic Option Discovery
 

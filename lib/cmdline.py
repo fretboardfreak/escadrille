@@ -1,11 +1,10 @@
 """Library of command line tools for Squadron Automation."""
 
-import sys
 import os
 import argparse
 import errno
 
-from .config import ConfigFile
+from lib.config import ConfigFile
 
 
 VERBOSE = False
@@ -13,7 +12,9 @@ DEBUG = False
 
 
 class ConfigMixin(object):
+    """Mixin class to add options for the configuration file."""
     def build(self):
+        """Add config file options to the parser."""
         self.parser.add_argument(
             '-c', '--config', action='store', dest='config',
             default=ConfigFile.default_path,
@@ -21,6 +22,7 @@ class ConfigMixin(object):
         super().build()
 
     def validate_args(self, args):
+        """If provided, ensure that the config file path exists."""
         if not os.path.exists(args.config):
             raise FileNotFoundError(errno.ENOENT, "Config File not found",
                                     args.config)
@@ -32,14 +34,10 @@ class BaseUI(object):
 
     description = "A description of the UI tool."
 
-    def __init__(self, version, verbose=False, debug=False):
+    def __init__(self, version):
         self.parser = argparse.ArgumentParser(description=__doc__)
         self.version = version
         self.built = False
-        global VERBOSE
-        VERBOSE = verbose
-        global DEBUG
-        DEBUG = debug
 
     def build(self):
         """Build the argument parser."""
@@ -51,9 +49,11 @@ class BaseUI(object):
         self.built = True
 
     def validate_args(self, args):
+        """Subclasses can implement this to verify validity of given args."""
         pass
 
     def parse_cmd_line(self):
+        """Parse the options from the command line."""
         if not self.built:
             self.build()
         args = self.parser.parse_args()
@@ -88,13 +88,15 @@ class DebugAction(argparse.Action):
 
     @classmethod
     def add_parser_argument(cls, parser):
-        parser.add_argument(cls.flag, help=cls.help, action=cls)
+        """Add the action argument."""
+        parser.add_argument(cls.shortflag, cls.flag, help=cls.help, action=cls)
 
     def __init__(self, option_strings, dest, **kwargs):
         super().__init__(option_strings, dest, nargs=0,
                          default=False, **kwargs)
 
     def __call__(self, parser, namespace, values, option_string=None):
+        """Enable debugging output."""
         print('Enabling debugging output.')
         global DEBUG
         DEBUG = True
@@ -109,6 +111,7 @@ class VerboseAction(DebugAction):
     help = 'Enable verbose output.'
 
     def __call__(self, parser, namespace, values, option_string=None):
+        """Enable verbose output."""
         print('Enabling verbose output.')
         global VERBOSE
         VERBOSE = True
