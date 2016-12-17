@@ -37,6 +37,12 @@ def main():
     for section in config_file.parser.sections():
         dprint('Options in section %s: %s' %
                (section, config_file.parser.options(section)))
+    dprint('Enabled Tasks: %s' % config_file.enabled_tasks)
+    dprint('Copy Files Jobs:')
+    for cfj in list(config_file.copy_files_jobs):
+        dprint("%s:" % cfj.name)
+        dprint("  sources: %s" % ' '.join(cfj.value.sources.value))
+        dprint("  destination: %s" % cfj.value.destination.value)
 
     return 0
 
