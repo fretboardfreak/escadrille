@@ -41,8 +41,16 @@ class ConfigFile(object):
         self.parser = SafeConfigParser(interpolation=ExtendedInterpolation())
         self.loaded = False
 
+    def set_general_defaults(self):
+        """Add default values to the parser for the general section."""
+        key = 'DEFAULT'
+        self.parser[key] = {}
+        for opt in GeneralOpts:
+            self.parser[key][opt.name] = opt.value
+
     def load(self):
         """Load the configuration file into memory."""
+        self.set_general_defaults()
         self.parser.read(self.filename)
         self.loaded = True
 
