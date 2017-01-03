@@ -26,6 +26,6 @@ TASK_PATH, _ = os.path.split(core.__file__)
 TASK_PREFIX = core.__package__ + '.'
 
 
-def find_tasks():
+def load_tasks():
     """Wrap tasks.core.find_tasks with the required arguments."""
     return core.find_tasks(TASK_PATH, TASK_PREFIX)
