@@ -28,7 +28,6 @@ class GeneralOpts(Enum):
 class Sections(Enum):
     """The sections of the config file."""
     general = GeneralOpts
-    copy_files = None  # Dynamic Option Discovery
 
 
 class ConfigFile(object):
@@ -73,25 +72,3 @@ class ConfigFile(object):
         enabled = self.parser.get(Sections.general.name,
                                   GeneralOpts.enabled_tasks.name)
         return str(enabled).split(',')
-
-    @property
-    def copy_files_jobs(self):
-        """Generate a map of files and destinations for the Copy Files Task."""
-        jobs, src_suffix, dest_suffix = {}, '_src', '_dst'
-        section = Sections.copy_files.name
-        for option in self.parser.options(section):
-            parts = option.split('_')
-            if not (option.endswith(src_suffix) or
-                    option.endswith(dest_suffix)):
-                continue
-            if not parts[0] in jobs:
-                job = {}
-            if option.endswith(src_suffix):
-                sources_string = ' '.join(str(self.parser.get(
-                    section, option)).split('\n'))
-                job['sources'] = [
-                    pth.strip() for pth in sources_string.split(' ')]
-            elif option.endswith(dest_suffix):
-                job['destination'] = self.parser.get(section, option)
-            jobs[parts[0]] = Enum('CopyFilesJob', job)
-        return Enum('CopyFilesJobs', jobs)
