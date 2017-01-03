@@ -42,7 +42,7 @@ class ConfigFile(object):
 
     def set_general_defaults(self):
         """Add default values to the parser for the general section."""
-        key = 'DEFAULT'
+        key = Sections.general.name
         self.parser[key] = {}
         for opt in GeneralOpts:
             self.parser[key][opt.name] = opt.value
