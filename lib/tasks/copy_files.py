@@ -42,6 +42,8 @@ class CopyFilesTask(Task):
 
     def __call__(self, *args, **kwargs):
         super().__call__(*args, **kwargs)
+        # TODO: implement
+        self._set_status()
 
     def load_from_config(self):
         """Generate a map of files and destinations for the Copy Files Task."""
@@ -75,7 +77,7 @@ class CopyFilesTask(Task):
         msg = super().debug_msg() + "\n"
         for job in self.jobs:
             msg += '  %s:\n' % job.name
-            msg += '    sources:\n    '
+            msg += '    sources:\n      '
             msg += '\n      '.join(job.sources)
             msg += '\n    destination: %s\n' % job.destination
         return msg
