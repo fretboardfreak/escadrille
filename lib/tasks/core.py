@@ -74,7 +74,7 @@ class Task(object):
     def _set_status(self):
         """Set the error status to the length of the warnings and errors lists.
         """
-        self.status = sum(self.warnings) + sum(self.errors)
+        self.status = len(self.errors)
 
     def __call__(self, *args, **kwargs):
         self._clear_status()
