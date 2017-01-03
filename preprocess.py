@@ -43,9 +43,9 @@ def main():
         if task.status is not None and task.status != 0:
             print('Task "%s" did not succeed: errno %s\n  Warnings:\n    %s\n'
                   '  Errors:\n    %s' % (enabled_task, task.status,
-                                   '\n    '.join(task.warnings),
-                                   '\n    '.join(task.errors)))
-
+                                         '\n    '.join(task.warnings),
+                                         '\n    '.join(task.errors)))
+            return task.status
     return 0
 
 
