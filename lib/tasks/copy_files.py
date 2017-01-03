@@ -16,6 +16,13 @@
 from .core import Task
 
 
+class CopyFilesJob(object):
+    def __init__(self, name, sources, destination):
+        self.name = name
+        self.sources = sources
+        self.destination = destination
+
+
 class CopyFilesTask(Task):
     """Base Task object for Squadron.
 
@@ -26,10 +33,46 @@ class CopyFilesTask(Task):
 
     config_key = 'copy_files'
 
-    def __init__(self, sources, destination, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
+        self.jobs = None
         super().__init__(*args, **kwargs)
-        self.sources = sources
-        self.destination = destination
 
     def __call__(self, *args, **kwargs):
-        pass
+        super().__call__(*args, **kwargs)
+
+    def load_from_config(self):
+        """Generate a map of files and destinations for the Copy Files Task."""
+        super().load_from_config()
+        jobs, src_suffix, dest_suffix = {}, '_src', '_dst'
+        for option in self.config_file.parser.options(self.config_key):
+            parts = option.split('_')
+            if not (option.endswith(src_suffix) or
+                    option.endswith(dest_suffix)):
+                continue
+            if parts[0] in jobs:
+                continue
+            job = {'name': parts[0]}
+            if option.endswith(src_suffix):
+                source_opt = option
+                dest_opt = option.replace(src_suffix, dest_suffix)
+            elif option.endswith(dest_suffix):
+                source_opt = option.replace(dest_suffix, src_suffix)
+                dest_opt = option
+            sources_string = ' '.join(str(self.config_file.parser.get(
+                self.config_key, source_opt)).split('\n'))
+            job['sources'] = [
+                pth.strip() for pth in sources_string.split(' ')]
+            job['destination'] = self.config_file.parser.get(
+                self.config_key, dest_opt)
+            jobs[parts[0]] = CopyFilesJob(**job)
+        self.jobs = jobs.values()
+
+    def debug_msg(self):
+        """Return some debug outut about the current state of the task."""
+        msg = super().debug_msg() + "\n"
+        for job in self.jobs:
+            msg += '  %s:\n' % job.name
+            msg += '  sources:\n    '
+            msg += '\n    '.join(job.sources)
+            msg += '\n  destination: %s\n' % job.destination
+        return msg
