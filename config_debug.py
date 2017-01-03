@@ -12,37 +12,36 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""Preprocessor script for Squadron."""
+"""A basic script to read and help debug issues with the config file."""
 import sys
 
 
-from lib.cmdline import PreprocessUI
-from lib.cmdline import dprint
-from lib.cmdline import vprint
+from lib.cmdline import DebugUI
 from lib.config import ConfigFile
+from lib.tasks import load_tasks
 
 
-VERSION = "0.0"
+VERSION = "0.1"
 
 
 def main():
-    """Main method for Squadron preprocessor."""
-    user_interface = PreprocessUI(version=VERSION)
+    """Main method for config_debug.py"""
+    user_interface = DebugUI(version=VERSION)
+    user_interface.description = "A tool for debugging squadron config files."
     options = user_interface.parse_cmd_line()
-    dprint('cmdline args: %s' % options)
-    vprint('Parsing Config File...')
+
+    print('cmdline args: %s' % options)
+    print('Parsing Config File...')
     config_file = ConfigFile(options.config)
     config_file.load()
-    dprint('Config Sections: %s' % config_file.parser.sections())
+    print('Config Sections: %s' % config_file.parser.sections())
     for section in config_file.parser.sections():
-        dprint('Options in section %s: %s' %
-               (section, config_file.parser.options(section)))
-    dprint('Enabled Tasks: %s' % config_file.enabled_tasks)
-    dprint('Copy Files Jobs:')
-    for cfj in list(config_file.copy_files_jobs):
-        dprint("%s:" % cfj.name)
-        dprint("  sources: %s" % ' '.join(cfj.value.sources.value))
-        dprint("  destination: %s" % cfj.value.destination.value)
+        print('Options in section %s: %s' %
+              (section, config_file.parser.options(section)))
+    print('Enabled Tasks: %s' % config_file.enabled_tasks)
+    for task in load_tasks().values():
+        task_obj = task(config_file=config_file)
+        print(task_obj.debug_msg())
 
     return 0
 
