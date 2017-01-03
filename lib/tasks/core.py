@@ -31,7 +31,7 @@ def find_tasks(module, prefix):
             print('Checking class %s' % name)
             if issubclass(cls, Task) and cls != Task:
                 task_map[name] = cls
-    return enum.Enum('tasks', task_map)
+    return task_map
 
 
 class Task(object):
@@ -39,13 +39,46 @@ class Task(object):
 
     The config_key attribute is used to reference the tasks from the config
     file.
+
     The __init__ and __call__ methods should be implemented by the subclasses.
+
+    The constructor should configure the task with everything needed to perform
+    the task. A well designed task does not have state and can therefore be
+    repeated. The task subclass needs to implement any checks or validation
+    required to operation in this way.
+
+    The call method clears the "warnings", "errors" and "status" attributes
+    before starting the task and then can use the "_set_status" method to
+    update the status appropriately at the end of the task.
     """
 
     config_key = 'noop'
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, config_file=None):
+        self.config_file = config_file
+        self.warnings, self.errors, self.status = None, None, None
+        self._clear_status()
+        self.load_from_config()
+
+    def load_from_config(self):
+        """A method that can be subclassed to load info from the config file.
+        """
         pass
 
+    def _clear_status(self):
+        """Reset the warnings and errors lists and the status code."""
+        self.warnings = []
+        self.errors = []
+        self.status = None
+
+    def _set_status(self):
+        """Set the error status to the length of the warnings and errors lists.
+        """
+        self.status = sum(self.warnings) + sum(self.errors)
+
     def __call__(self, *args, **kwargs):
-        pass
+        self._clear_status()
+
+    def debug_msg(self):
+        """If supported, generate and return a debug string."""
+        return "%s Debug" % self.__class__.__name__
