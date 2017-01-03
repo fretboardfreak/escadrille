@@ -71,4 +71,5 @@ class ConfigFile(object):
         """Retrieve a list of the enabled tasks from the config file."""
         enabled = self.parser.get(Sections.general.name,
                                   GeneralOpts.enabled_tasks.name)
-        return str(enabled).split(',')
+        return [task for task in str(enabled).split(',')
+                if task != '']
