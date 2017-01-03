@@ -74,6 +74,12 @@ class BaseUI(object):
         return args
 
 
+class DebugUI(ConfigMixin, BaseUI):
+    """Debug Interface for the Squadron system."""
+
+    description = "A tool for debugging squadron system internals."
+
+
 class PreprocessUI(ConfigMixin, BaseUI):
     """UI Interface for the Preprocessor Command Line tool."""
 
