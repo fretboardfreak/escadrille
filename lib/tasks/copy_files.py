@@ -17,6 +17,9 @@ from .core import Task
 
 
 class CopyFilesJob(object):
+
+    """Data object to represent one Copy Files Job."""
+
     def __init__(self, name, sources, destination):
         self.name = name
         self.sources = sources
