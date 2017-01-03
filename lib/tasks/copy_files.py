@@ -72,7 +72,7 @@ class CopyFilesTask(Task):
         msg = super().debug_msg() + "\n"
         for job in self.jobs:
             msg += '  %s:\n' % job.name
-            msg += '  sources:\n    '
-            msg += '\n    '.join(job.sources)
-            msg += '\n  destination: %s\n' % job.destination
+            msg += '    sources:\n    '
+            msg += '\n      '.join(job.sources)
+            msg += '\n    destination: %s\n' % job.destination
         return msg
