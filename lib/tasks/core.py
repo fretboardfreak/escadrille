@@ -13,22 +13,22 @@
 # limitations under the License.
 """Tasks core library."""
 
-import enum
 import pkgutil
 import inspect
+
+from lib.cmdline import dprint
 
 
 def find_tasks(module, prefix):
     """Return an enum of config file tasks maping names to task callables."""
-    print('finding tasks in %s (prefix: %s)' % (module, prefix))
+    dprint('lib.tasks.core: finding tasks in %s (prefix: %s)' %
+           (module, prefix))
     task_map = {}
     for importer, modname, ispkg in pkgutil.walk_packages([module], prefix):
-        print('inspecting module %s' % modname)
         if ispkg:
             continue
         module = importer.find_module(modname).load_module(modname)
         for name, cls in inspect.getmembers(module, inspect.isclass):
-            print('Checking class %s' % name)
             if issubclass(cls, Task) and cls != Task:
                 task_map[name] = cls
     return task_map
