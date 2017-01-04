@@ -29,7 +29,7 @@ def find_tasks(module, prefix):
         if ispkg:
             continue
         module = importer.find_module(modname).load_module(modname)
-        for name, cls in inspect.getmembers(module, inspect.isclass):
+        for _, cls in inspect.getmembers(module, inspect.isclass):
             if issubclass(cls, Task) and cls != Task:
                 task_map[cls.config_key] = cls
     return task_map
