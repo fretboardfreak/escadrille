@@ -55,6 +55,9 @@ class Task(object):
 
     config_key = 'noop'
 
+    # constant for easy output formatting
+    indent = '  '
+
     def __init__(self, config_file=None):
         self.config_file = config_file
         self.warnings, self.errors, self.status = None, None, None
