@@ -53,18 +53,14 @@ class ConfigFile(object):
         self.parser.read(self.filename)
         self.loaded = True
 
-    def write_default_config(self):
-        """Write an empty, default config file."""
-        default_parser = SafeConfigParser(interpolation=ExtendedInterpolation)
+    def get_default_config(self):
+        """Return the string of an empty, default config file."""
         for section in Sections:
-            default_parser.add_section(section.name)
-            if not section.value:
-                continue
+            default = "[%s]\n" % section.name
             for option in section.value:
-                default_parser.set(section.name, option.name, option.value)
-
-        with open(self.filename, 'w') as fout:
-            default_parser.write(fout)
+                default += "%s: %s\n" % (option.name, option.value)
+            default += "\n"
+        return default
 
     @property
     def enabled_tasks(self):
