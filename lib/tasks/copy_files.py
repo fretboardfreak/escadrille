@@ -81,3 +81,16 @@ class CopyFilesTask(Task):
             msg += '\n      '.join(job.sources)
             msg += '\n    destination: %s\n' % job.destination
         return msg
+
+    @property
+    def default_config(self):
+        """Return a string of the default example section for the config file.
+        """
+        config = "[%s]\n" % self.config_key
+        comment = ["Add key pairs using the suffixes '_dst' and '_src'.",
+                   "The keys with the '_dst' suffix should be a string",
+                   "path to the destination for the matching source key.",
+                   "The matching source key with the '_src' suffix is a",
+                   "list of paths to be copied into the destination."]
+        config += '  ; %s\n\n' % '\n  ; '.join(comment)
+        return config
