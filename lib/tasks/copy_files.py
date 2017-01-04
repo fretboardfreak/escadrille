@@ -13,6 +13,9 @@
 # limitations under the License.
 """Copy Files Task."""
 
+import os
+import subprocess
+
 from .core import Task
 
 
@@ -42,7 +45,20 @@ class CopyFilesTask(Task):
 
     def __call__(self, *args, **kwargs):
         super().__call__(*args, **kwargs)
-        # TODO: implement
+        self.vprint('Starting Copy Files Task: %d copy jobs' % len(self.jobs))
+        for index, job in enumerate(self.jobs, 1):
+            self.vprint('%s(%d/%d) %s' %
+                        (self.indent, index, len(self.jobs), job.name))
+            destination = os.path.abspath(os.path.expanduser(job.destination))
+            if not os.path.exists(destination):
+                os.makedirs(destination)
+            for source_dir in job.sources:
+                source_dir = os.path.abspath(os.path.expanduser(source_dir))
+                self.vprint('%scopying "%s"...' % (self.indent * 2,
+                                                   source_dir))
+                subprocess.check_call(' '.join(['cp', '--recursive',
+                                                source_dir, destination]),
+                                      shell=True)
         self._set_status()
 
     def load_from_config(self):
@@ -92,5 +108,5 @@ class CopyFilesTask(Task):
                    "path to the destination for the matching source key.",
                    "The matching source key with the '_src' suffix is a",
                    "list of paths to be copied into the destination."]
-        config += '  ; %s\n\n' % '\n  ; '.join(comment)
+        config += '; %s\n\n' % '\n; '.join(comment)
         return config
