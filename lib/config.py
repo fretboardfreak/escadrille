@@ -21,7 +21,9 @@ from enum import Enum
 
 class GeneralOpts(Enum):
     """Options for the General Section."""
-    output_dir = os.environ.get('HOME', '/tmp/')
+    tmp_dir = os.path.join(os.environ.get('HOME', '/tmp/'), 'www')
+    output_dir = os.path.join(tmp_dir, 'output')
+    staging_dir = os.path.join(tmp_dir, 'staging')
     enabled_tasks = ''
 
 
