@@ -32,6 +32,9 @@ class ConfigMixin(object):
             '-c', '--config', action='store', dest='config',
             default=ConfigFile.default_path,
             help='Specify the config file to use.')
+        self.parser.add_argument(
+            '--default-config', action='store_true', dest='default_config',
+            default=False, help='Print a default config section and exit.')
         super().build()
 
     def validate_args(self, args):
