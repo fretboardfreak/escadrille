@@ -91,8 +91,11 @@ class PreprocessUI(ConfigMixin, BaseUI):
 
 def dprint(msg):
     """Conditionally print a debug message."""
+    prefix = 'dbg: '
+    line_sep = '\n%s' % prefix
     if DEBUG:
-        print('dbg:', msg)
+        lines = msg.split('\n')
+        print(prefix + line_sep.join(lines))
 
 
 def vprint(msg):
@@ -119,7 +122,6 @@ class DebugAction(argparse.Action):
 
     def __call__(self, parser, namespace, values, option_string=None):
         """Enable debugging output."""
-        print('Enabling debugging output.')
         global DEBUG
         DEBUG = True
         setattr(namespace, self.dest, True)
@@ -134,7 +136,6 @@ class VerboseAction(DebugAction):
 
     def __call__(self, parser, namespace, values, option_string=None):
         """Enable verbose output."""
-        print('Enabling verbose output.')
         global VERBOSE
         VERBOSE = True
         setattr(namespace, self.dest, True)
