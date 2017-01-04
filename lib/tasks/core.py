@@ -17,6 +17,7 @@ import pkgutil
 import inspect
 
 from lib.cmdline import dprint
+from lib.cmdline import vprint
 
 
 def find_tasks(module, prefix):
@@ -82,3 +83,17 @@ class Task(object):
     def debug_msg(self):
         """If supported, generate and return a debug string."""
         return "%s Debug" % self.__class__.__name__
+
+    @property
+    def default_config(self):
+        """Return a string of the default example section for the config file.
+        """
+        pass
+
+    def dprint(self, msg):
+        """Call the conditional debug print method."""
+        dprint(msg)
+
+    def vprint(self, msg):
+        """Call the conditional verbose print method."""
+        vprint(msg)
