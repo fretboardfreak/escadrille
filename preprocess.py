@@ -31,28 +31,33 @@ def main():
     user_interface = PreprocessUI(version=VERSION)
     options = user_interface.parse_cmd_line()
 
+    dprint('loading configuration...')
     config_file = ConfigFile(options.config)
     config_file.load()
     tasks = load_tasks()
     if options.default_config:
-        output = config_file.get_default_config()
-    for enabled_task in config_file.enabled_tasks:
-        if enabled_task in tasks:
-            vprint('Starting task %s' % enabled_task)
-        task = tasks[enabled_task](config_file=config_file)
-        dprint(task.debug_msg())
+        print(config_file.get_default_config())
+    for task_name in tasks:
+        task = tasks[task_name](config_file=config_file)
         if options.default_config:
-            output += task.default_config
-        else:
-            task()
+            print(task.default_config)
+        if (task_name not in config_file.enabled_tasks or
+                options.default_config):
+            continue
+        dprint(task.debug_msg())
+        task()
         if task.status is not None and task.status != 0:
             print('Task "%s" did not succeed: errno %s\n  Warnings:\n    %s\n'
-                  '  Errors:\n    %s' % (enabled_task, task.status,
+                  '  Errors:\n    %s' % (task_name, task.status,
                                          '\n    '.join(task.warnings),
                                          '\n    '.join(task.errors)))
             return task.status
-    if options.default_config:
-        print(output)
+        elif task.warnings:
+            print('Task "%s" succeeded with warnings:\n    %s' %
+                  (task_name, '\n    '.join(task.warnings)))
+        else:
+            vprint('Task %s succeeded with no errors.' % task_name)
+    vprint('All Tasks Completed. Exiting.')
     return 0
 
 
