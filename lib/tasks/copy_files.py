@@ -15,6 +15,8 @@
 
 import os
 import subprocess
+import glob
+import shlex
 
 from .core import Task
 
@@ -54,10 +56,16 @@ class CopyFilesTask(Task):
                 os.makedirs(destination)
             for source_dir in job.sources:
                 source_dir = os.path.abspath(os.path.expanduser(source_dir))
+                source_paths = [shlex.quote(path) for path in
+                                glob.glob(source_dir, recursive=True)]
+                if not source_paths:
+                    self.vprint('%sno files to copy at "%s"' % (
+                                self.indent * 2, source_dir))
+                    continue
                 self.vprint('%scopying "%s"...' % (self.indent * 2,
                                                    source_dir))
                 subprocess.check_call(' '.join(['cp', '--recursive',
-                                                source_dir, destination]),
+                                                *source_paths, destination]),
                                       shell=True)
         self._set_status()
 
