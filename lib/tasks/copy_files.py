@@ -32,11 +32,21 @@ class CopyFilesJob(object):
 
 
 class CopyFilesTask(Task):
-    """Base Task object for Squadron.
+    """Copy Files from around the system into the squadron build.
 
-    The config_key attribute is used to reference the tasks from the config
-    file.
-    The __init__ and __call__ methods should be implemented by the subclasses.
+    Option keys use the suffixes "_dest" and "_src". Files listed in space
+    separated strings as absolute paths are copied from options with the "_src"
+    suffix to the single destination expected in the "_dest" option with the
+    corresponding slug.
+
+    (i.e "pics_src=/home/user/pics/*.jpeg /home/user/ref/images/*"
+    would all get copied to "pics_dest=/tmp/squadron/staging/")
+
+    note: This behaviour disallows files containing spaces in their path. For
+          paths containing spaces you can workaround this limitation by using
+          an asterisk in place of a space. The wildcard will match the spaces
+          and there is a very good chance that the rest of the path will
+          preclude any other matches but the intended target.
     """
 
     config_key = 'copy_files'
@@ -59,8 +69,8 @@ class CopyFilesTask(Task):
                 source_paths = [shlex.quote(path) for path in
                                 glob.glob(source_dir, recursive=True)]
                 if not source_paths:
-                    self.vprint('%sno files to copy at "%s"' % (
-                                self.indent * 2, source_dir))
+                    self.vprint('%sno files to copy at "%s"' %
+                                (self.indent * 2, source_dir))
                     continue
                 self.vprint('%scopying "%s"...' % (self.indent * 2,
                                                    source_dir))
