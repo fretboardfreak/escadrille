@@ -70,8 +70,26 @@ class ConfigFile(object):
         """Retrieve a list of the enabled tasks from the config file."""
         enabled = self.parser.get(Sections.general.name,
                                   GeneralOpts.enabled_tasks.name)
-        return [task for task in str(enabled).split(',')
+        return [task for task in str(enabled).split(' ')
                 if task != '']
+
+    @property
+    def tmp_dir(self):
+        """The temporary directory to use for the squadron run."""
+        return self.parser.get(Sections.general.name,
+                               GeneralOpts.tmp_dir.name)
+
+    @property
+    def output_dir(self):
+        """The output directory to use for the finished product."""
+        return self.parser.get(Sections.general.name,
+                               GeneralOpts.output_dir.name)
+
+    @property
+    def staging_dir(self):
+        """The staging directory to use for the squadron run."""
+        return self.parser.get(Sections.general.name,
+                               GeneralOpts.staging_dir.name)
 
     def print_default_config(self, tasks):
         """Print the default config example including stubs for each task."""
