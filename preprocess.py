@@ -36,13 +36,11 @@ def main():
     config_file.load()
     tasks = load_tasks()
     if options.default_config:
-        print(config_file.get_default_config())
+        config_file.print_default_config(tasks)
+        return 0
     for task_name in tasks:
         task = tasks[task_name](config_file=config_file)
-        if options.default_config:
-            print(task.default_config)
-        if (task_name not in config_file.enabled_tasks or
-                options.default_config):
+        if task_name not in config_file.enabled_tasks:
             continue
         dprint(task.debug_msg())
         task()

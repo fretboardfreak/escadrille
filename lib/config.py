@@ -55,7 +55,8 @@ class ConfigFile(object):
         self.parser.read(self.filename)
         self.loaded = True
 
-    def get_default_config(self):
+    @property
+    def default_config(self):
         """Return the string of an empty, default config file."""
         for section in Sections:
             default = "[%s]\n" % section.name
@@ -71,3 +72,10 @@ class ConfigFile(object):
                                   GeneralOpts.enabled_tasks.name)
         return [task for task in str(enabled).split(',')
                 if task != '']
+
+    def print_default_config(self, tasks):
+        """Print the default config example including stubs for each task."""
+        print(self.default_config)
+        for task in tasks.values():
+            task_obj = task(config_file=self)
+            print(task_obj.default_config)
