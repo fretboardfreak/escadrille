@@ -108,6 +108,12 @@ class ConfigFile(object):
                 option in self.parser.options(section)):
             return self.parser.getboolean(section, option, *args, **kwargs)
 
+    def has_section(self, section):
+        """Wrapper to simplify calls to self.parser.has_section()."""
+        if not self.parser:
+            return False
+        return self.parser.has_section(section)
+
     def section(self, section):
         """Helper method to simplify retrieving config sections for Tasks."""
         return None if not self.parser else self.parser[section]
