@@ -82,6 +82,7 @@ class Task(object):
 
     def __call__(self, *args, **kwargs):
         self._clear_status()
+        self.dprint(self.debug_msg())
 
     def debug_msg(self):
         """If supported, generate and return a debug string."""

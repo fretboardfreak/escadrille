@@ -56,8 +56,8 @@ class CopyFilesTask(Task):
         super().__init__(*args, **kwargs)
 
     def __call__(self, *args, **kwargs):
-        super().__call__(*args, **kwargs)
         self.vprint('Starting Copy Files Task: %d copy jobs' % len(self.jobs))
+        super().__call__(*args, **kwargs)
         for index, job in enumerate(self.jobs, 1):
             self.vprint('%s(%d/%d) %s' %
                         (self.indent, index, len(self.jobs), job.name))
