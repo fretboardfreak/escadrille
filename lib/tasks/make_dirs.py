@@ -41,7 +41,8 @@ class MakeDirsTask(Task):
     def _make_dir(self, path):
         """Make a directory."""
         self.vprint('%s%s' % (self.indent * 2, path))
-        os.makedirs(path)
+        if not os.path.exists(path):
+            os.makedirs(path)
 
     def __call__(self, *args, **kwargs):
         self.vprint('Starting Make Files Task.')
