@@ -16,9 +16,11 @@
 import subprocess
 
 from .core import Task
+from .core import GeneralDirsOptionMixin
+from .core import OtherDirsOptionMixin
 
 
-class CleanTask(Task):
+class CleanTask(GeneralDirsOptionMixin, OtherDirsOptionMixin, Task):
     """Clean out directories as needed."""
 
     config_key = 'clean'
@@ -63,29 +65,13 @@ class CleanTask(Task):
     def load_from_config(self):
         """Load the options from the config file."""
         super().load_from_config()
-        general_dirs = self.config_file.getboolean(
-            self.config_key, self.general_dirs_key)
-        if general_dirs is None:
-            self.general_dirs = self.general_dirs_default
-        else:
-            self.general_dirs = bool(int(general_dirs))
-
-        other_dirs_val = self.config_file.get(
-            self.config_key, self.other_dirs_key)
-        if other_dirs_val is None:
-            self.other_dirs = self.other_dirs_default
-        else:
-            self.other_dirs = [path for path in
-                               other_dirs_val.split(self.config_file.list_sep)
-                               if path != '']
+        self.load_config_general_dirs_bool()
+        self.load_config_other_dirs_list()
 
     def _get_option_snippet(self):
         """Return a string representing the options for this task."""
-        retval = ("%s%s: %s\n" % (self.indent, self.general_dirs_key,
-                                  self.general_dirs))
-        retval += ("%s%s: %s\n" % (
-            self.indent, self.other_dirs_key,
-            self.config_file.list_sep.join(self.other_dirs)))
+        retval = self.get_config_snippet_general_dirs_bool()
+        retval += self.get_config_snippet_other_dirs_list()
         return retval
 
     def debug_msg(self):
