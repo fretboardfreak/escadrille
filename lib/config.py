@@ -59,6 +59,10 @@ class ConfigFile(object):
         """Wrapper to simplify calls to self.parser.get()."""
         return None if not self.parser else self.parser.get(*args, **kwargs)
 
+    def section(self, section):
+        """Helper method to simplify retrieving config sections for Tasks."""
+        return None if not self.parser else self.parser[section]
+
     def default_config(self):
         """Return the string of an empty, default config file."""
         for section in Sections:
