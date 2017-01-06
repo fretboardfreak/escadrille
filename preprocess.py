@@ -38,11 +38,8 @@ def main():
     if options.default_config:
         config_file.print_default_config(tasks)
         return 0
-    for task_name in tasks:
+    for task_name in config_file.enabled_tasks:
         task = tasks[task_name](config_file=config_file)
-        if task_name not in config_file.enabled_tasks:
-            continue
-        dprint(task.debug_msg())
         task()
         if task.status is not None and task.status != 0:
             print('Task "%s" did not succeed: errno %s\n  Warnings:\n    %s\n'
