@@ -17,8 +17,6 @@ import os
 import argparse
 import errno
 
-from lib.config import ConfigFile
-
 
 VERBOSE = False
 DEBUG = False
@@ -30,7 +28,7 @@ class ConfigMixin(object):
         """Add config file options to the parser."""
         self.parser.add_argument(
             '-c', '--config', action='store', dest='config',
-            default=ConfigFile.default_path,
+            default=None,
             help='Specify the config file to use.')
         self.parser.add_argument(
             '--default-config', action='store_true', dest='default_config',
@@ -39,7 +37,7 @@ class ConfigMixin(object):
 
     def validate_args(self, args):
         """If provided, ensure that the config file path exists."""
-        if not os.path.exists(args.config):
+        if args.config is not None and not os.path.exists(args.config):
             raise FileNotFoundError(errno.ENOENT, "Config File not found",
                                     args.config)
         super().validate_args(args)
