@@ -18,13 +18,15 @@ from configparser import SafeConfigParser
 from configparser import ExtendedInterpolation
 from enum import Enum
 
+from .cmdline import dprint
+
 
 class GeneralOpts(Enum):
     """Options for the General Section."""
-    tmp_dir = os.path.join(os.environ.get('HOME', '/tmp/'), 'www')
+    tmp_dir = '/tmp/squadron'
     output_dir = os.path.join(tmp_dir, 'output')
     staging_dir = os.path.join(tmp_dir, 'staging')
-    enabled_tasks = ''
+    enabled_tasks = []
 
 
 class Sections(Enum):
@@ -36,67 +38,52 @@ class ConfigFile(object):
     """Config File API for Squadron."""
 
     default_path = os.path.abspath('./squadron.cfg')
+    list_sep = ' '
 
-    def __init__(self, filename):
-        self.filename = filename
-        self.parser = SafeConfigParser(interpolation=ExtendedInterpolation())
+    def __init__(self, filename=None):
+        self.filename = self.default_path
+        if filename is not None:
+            self.filename = filename
+        self.parser = None
         self.loaded = False
 
-    def set_general_defaults(self):
+    def set_parser_general_defaults(self):
         """Add default values to the parser for the general section."""
         key = Sections.general.name
         self.parser[key] = {}
         for opt in GeneralOpts:
-            self.parser[key][opt.name] = opt.value
+            if isinstance(opt.value, list):
+                self.parser[key][opt.name] = self.list_sep.join(opt.value)
+            else:
+                self.parser[key][opt.name] = opt.value
 
     def load(self):
         """Load the configuration file into memory."""
-        self.set_general_defaults()
-        self.parser.read(self.filename)
+        if self.filename is not None:
+            self.parser = SafeConfigParser(
+                interpolation=ExtendedInterpolation())
+            self.set_parser_general_defaults()
+            if not os.path.exists(self.filename):
+                dprint('%s: given config file "%s" could not be loaded.'
+                       'No config file loaded. Defaults loaded.' %
+                       (self.__class__.__name__, self.filename))
+            else:
+                self.parser.read(self.filename)
         self.loaded = True
 
-    def get(self, *args, **kwargs):
-        """Wrapper to simplify calls to self.parser.get()."""
-        return None if not self.parser else self.parser.get(*args, **kwargs)
-
-    def section(self, section):
-        """Helper method to simplify retrieving config sections for Tasks."""
-        return None if not self.parser else self.parser[section]
-
+    @property
     def default_config(self):
         """Return the string of an empty, default config file."""
         for section in Sections:
             default = "[%s]\n" % section.name
             for option in section.value:
-                default += "%s: %s\n" % (option.name, option.value)
+                if isinstance(option.value, list):
+                    default += "%s: %s\n" % (option.name,
+                                             self.list_sep.join(option.value))
+                else:
+                    default += "%s: %s\n" % (option.name, option.value)
             default += "\n"
         return default
-
-    @property
-    def enabled_tasks(self):
-        """Retrieve a list of the enabled tasks from the config file."""
-        enabled = self.get(Sections.general.name,
-                           GeneralOpts.enabled_tasks.name)
-        return [task for task in str(enabled).split(' ')
-                if task != '']
-
-    @property
-    def tmp_dir(self):
-        """The temporary directory to use for the squadron run."""
-        return self.get(Sections.general.name,
-                        GeneralOpts.tmp_dir.name)
-
-    @property
-    def output_dir(self):
-        """The output directory to use for the finished product."""
-        return self.get(Sections.general.name,
-                        GeneralOpts.output_dir.name)
-
-    @property
-    def staging_dir(self):
-        """The staging directory to use for the squadron run."""
-        return self.get(Sections.general.name,
-                        GeneralOpts.staging_dir.name)
 
     def print_default_config(self, tasks):
         """Print the default config example including stubs for each task."""
@@ -104,3 +91,56 @@ class ConfigFile(object):
         for task in tasks.values():
             task_obj = task(config_file=self)
             print(task_obj.default_config)
+
+    def get(self, section, option, *args, **kwargs):
+        """Wrapper to simplify calls to self.parser.get()."""
+        if not self.parser:
+            return None
+        if (self.parser.has_section(section) and
+                option in self.parser.options(section)):
+            return self.parser.get(section, option, *args, **kwargs)
+
+    def getboolean(self, section, option, *args, **kwargs):
+        """Wrapper to simplify calls to self.parser.get()."""
+        if not self.parser:
+            return None
+        if (self.parser.has_section(section) and
+                option in self.parser.options(section)):
+            return self.parser.getboolean(section, option, *args, **kwargs)
+
+    def section(self, section):
+        """Helper method to simplify retrieving config sections for Tasks."""
+        return None if not self.parser else self.parser[section]
+
+    @property
+    def enabled_tasks(self):
+        """Retrieve a list of the enabled tasks from the config file."""
+        enabled = self.get(Sections.general.name,
+                           GeneralOpts.enabled_tasks.name)
+        if enabled is None:
+            return GeneralOpts.enabled_tasks.value
+        return [task for task in str(enabled).split(self.list_sep)
+                if task != '']
+
+    @property
+    def tmp_dir(self):
+        """The temporary directory to use for the squadron run."""
+        tmp_dir = self.get(Sections.general.name,
+                           GeneralOpts.tmp_dir.name)
+        return tmp_dir if tmp_dir is not None else GeneralOpts.tmp_dir.value
+
+    @property
+    def output_dir(self):
+        """The output directory to use for the finished product."""
+        output_dir = self.get(Sections.general.name,
+                              GeneralOpts.output_dir.name)
+        default = GeneralOpts.output_dir.value
+        return output_dir if output_dir is not None else default
+
+    @property
+    def staging_dir(self):
+        """The staging directory to use for the squadron run."""
+        staging_dir = self.get(Sections.general.name,
+                               GeneralOpts.staging_dir.name)
+        default = GeneralOpts.staging_dir.value
+        return staging_dir if staging_dir is not None else default
