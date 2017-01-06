@@ -83,7 +83,11 @@ class CopyFilesTask(Task):
         """Generate a map of files and destinations for the Copy Files Task."""
         super().load_from_config()
         jobs, src_suffix, dest_suffix = {}, '_src', '_dst'
-        for option in self.config_file.parser.options(self.config_key):
+        options = []
+        if (self.config_file.parser and
+                self.config_file.has_section(self.config_key)):
+            options = self.config_file.section(self.config_key).keys()
+        for option in options:
             parts = option.split('_')
             if not (option.endswith(src_suffix) or
                     option.endswith(dest_suffix)):
@@ -97,11 +101,11 @@ class CopyFilesTask(Task):
             elif option.endswith(dest_suffix):
                 source_opt = option.replace(dest_suffix, src_suffix)
                 dest_opt = option
-            sources_string = ' '.join(str(self.config_file.parser.get(
+            sources_string = ' '.join(str(self.config_file.get(
                 self.config_key, source_opt)).split('\n'))
             job['sources'] = [
                 pth.strip() for pth in sources_string.split(' ')]
-            job['destination'] = self.config_file.parser.get(
+            job['destination'] = self.config_file.get(
                 self.config_key, dest_opt)
             jobs[parts[0]] = CopyFilesJob(**job)
         self.jobs = jobs.values()
