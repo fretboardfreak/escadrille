@@ -101,3 +101,48 @@ class Task(object):
     def vprint(self, msg):
         """Call the conditional verbose print method."""
         vprint(msg)
+
+
+class GeneralDirsOptionMixin(object):
+    """A mixin class for a config boolean option called "general_dirs"."""
+
+    general_dirs_key = 'general_dirs'
+    general_dirs_default = True
+
+    def load_config_general_dirs_bool(self):
+        """Load the general_dirs boolean from the config file."""
+        general_dirs = self.config_file.getboolean(
+            self.config_key, self.general_dirs_key)
+        if general_dirs is None:
+            self.general_dirs = self.general_dirs_default
+        else:
+            self.general_dirs = bool(int(general_dirs))
+
+    def get_config_snippet_general_dirs_bool(self):
+        """Return a string representing the general_dirs config option."""
+        return ("%s%s: %s\n" % (self.indent, self.general_dirs_key,
+                                self.general_dirs))
+
+
+class OtherDirsOptionMixin(object):
+    """A mixin class for a config list option called "other_dirs"."""
+
+    other_dirs_key = 'other_dirs'
+    other_dirs_default = []
+
+    def load_config_other_dirs_list(self):
+        """Load the other_dirs list from the config file."""
+        other_dirs_val = self.config_file.get(
+            self.config_key, self.other_dirs_key)
+        if other_dirs_val is None:
+            self.other_dirs = self.other_dirs_default
+        else:
+            self.other_dirs = [path for path in
+                               other_dirs_val.split(self.config_file.list_sep)
+                               if path != '']
+
+    def get_config_snippet_other_dirs_list(self):
+        """Return a string representing the other_dirs config option."""
+        return ("%s%s: %s\n" % (
+            self.indent, self.other_dirs_key,
+            self.config_file.list_sep.join(self.other_dirs)))
