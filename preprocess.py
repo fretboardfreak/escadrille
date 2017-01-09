@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright 2016 Curtis Sand <curtissand@gmail.com>
+# Copyright 2016-2017 Curtis Sand <curtissand@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
