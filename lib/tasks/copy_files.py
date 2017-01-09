@@ -52,12 +52,13 @@ class CopyFilesTask(Task):
     config_key = 'copy_files'
 
     def __init__(self, *args, **kwargs):
-        self.jobs = None
+        self.jobs = []
         super().__init__(*args, **kwargs)
 
     def __call__(self, *args, **kwargs):
-        self.vprint('Starting Copy Files Task: %d copy jobs' % len(self.jobs))
+        self.vprint('Starting Copy Files Task')
         super().__call__(*args, **kwargs)
+        self.dprint('%d copy jobs loaded from config file.' % len(self.jobs))
         for index, job in enumerate(self.jobs, 1):
             self.vprint('%s(%d/%d) %s' %
                         (self.indent, index, len(self.jobs), job.name))
