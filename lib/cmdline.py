@@ -23,8 +23,18 @@ from lib.tasks import load_tasks
 from lib.verbosity import DebugAction, VerboseAction
 
 
+class InterfaceCore(object):
+    """A base class for mixins that can add features to the UserInterface."""
+    def build(self):
+        """Construct the self.parser object."""
+        pass
 
-class ConfigMixin(object):
+    def validate_args(self, args):
+        """Validate the provided options meet requirements."""
+        pass
+
+
+class ConfigMixin(InterfaceCore):
     """Mixin class to add options for the configuration file."""
     def build(self):
         """Add config file options to the parser."""
@@ -66,8 +76,7 @@ class ConfigMixin(object):
         return 0
 
 
-
-class UserInterface(ConfigMixin):
+class UserInterface(ConfigMixin, InterfaceCore):
     """A base class for the User Interface."""
 
     description = """Squadron: Automated Website Generation"""
@@ -84,11 +93,12 @@ class UserInterface(ConfigMixin):
             version='%(prog)s {}'.format(self.version))
         DebugAction.add_parser_argument(self.parser)
         VerboseAction.add_parser_argument(self.parser)
+        super().build()
         self.built = True
 
     def validate_args(self, args):
         """Subclasses can implement this to verify validity of given args."""
-        pass
+        super().validate_args(args)
 
     def parse_cmd_line(self):
         """Parse the options from the command line."""
