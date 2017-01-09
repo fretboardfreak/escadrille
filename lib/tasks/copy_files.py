@@ -79,9 +79,9 @@ class CopyFilesTask(Task):
                                       shell=True)
         self._set_status()
 
-    def load_from_config(self):
+    def _load_config(self):
         """Generate a map of files and destinations for the Copy Files Task."""
-        super().load_from_config()
+        super()._load_config()
         jobs, src_suffix, dest_suffix = {}, '_src', '_dst'
         options = []
         if (self.config_file.parser and
