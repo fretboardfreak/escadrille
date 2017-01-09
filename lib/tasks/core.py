@@ -54,9 +54,8 @@ class TaskCore(object):
         """A method that can be subclassed to load info from the config file.
         """
         if not self.loaded:
-            self.dprint('Loading the config file.')
+            self.dprint('Loading the config for %s.' % self.config_key)
             self._load_config()
-        self.dprint('Config File loading complete.')
         self.loaded = True
 
     def _load_config(self):
