@@ -13,27 +13,3 @@ binaries that can be composed to create various custom websites.
 
 Squadron:
     A flock of pelicans.
-
-
-Design Notes
-============
-
-``preprocess.py``
------------------
-
-Searches for the list of preprocessing tasks available in the python packages,
-reads a given config file and executes the preprocessing tasks. Examples of
-some useful preprocessor tasks:
-
-- copy files from different places into one build directory
-- clean working directories.
-- make new directories that will be needed.
-- generate meta content files from data such as the log of a git repository,
-  system logs, or practically anything you can think of.
-- execute pelican, sphinx or another build script
-
-``config_debug.py``
--------------------
-
-Parses the given config file, or loads the default values, and prints out
-debugging messages to help identify issues with a squadron config file.
