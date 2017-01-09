@@ -18,7 +18,7 @@ from configparser import SafeConfigParser
 from configparser import ExtendedInterpolation
 from enum import Enum
 
-from .cmdline import dprint
+from .verbosity import dprint
 
 
 class GeneralOpts(Enum):

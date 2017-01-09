@@ -16,8 +16,8 @@
 import pkgutil
 import inspect
 
-from lib.cmdline import dprint
-from lib.cmdline import vprint
+from lib.verbosity import dprint
+from lib.verbosity import vprint
 
 
 def find_tasks(module, prefix):

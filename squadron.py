@@ -16,8 +16,8 @@
 import sys
 
 from lib.cmdline import UserInterface
-from lib.cmdline import vprint
-from lib.cmdline import dprint
+from lib.verbosity import vprint
+from lib.verbosity import dprint
 from lib.config import ConfigFile
 from lib.tasks import load_tasks
 
@@ -66,8 +66,8 @@ if __name__ == '__main__':
         print('...interrupted by user, exiting.')
         sys.exit(1)
     except Exception as exc:
-        import lib.cmdline
-        if lib.cmdline.DEBUG:
+        import lib.verbosity
+        if lib.verbosity.DEBUG:
             raise
         else:
             print(exc)

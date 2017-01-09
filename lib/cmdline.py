@@ -20,9 +20,8 @@ import errno
 from lib.config import ConfigFile
 from lib.tasks import load_tasks
 
+from lib.verbosity import DebugAction, VerboseAction
 
-VERBOSE = False
-DEBUG = False
 
 
 class ConfigMixin(object):
@@ -98,55 +97,3 @@ class UserInterface(ConfigMixin):
         args = self.parser.parse_args()
         self.validate_args(args)
         return args
-
-
-def dprint(msg):
-    """Conditionally print a debug message."""
-    prefix = 'dbg: '
-    line_sep = '\n%s' % prefix
-    if DEBUG:
-        lines = msg.split('\n')
-        print(prefix + line_sep.join(lines))
-
-
-def vprint(msg):
-    """Conditionally print a verbose message."""
-    if VERBOSE:
-        print(msg)
-
-
-class DebugAction(argparse.Action):
-    """Enable the debugging output mechanism."""
-
-    shortflag = '-d'
-    flag = '--debug'
-    help = 'Enable debugging output.'
-
-    @classmethod
-    def add_parser_argument(cls, parser):
-        """Add the action argument."""
-        parser.add_argument(cls.shortflag, cls.flag, help=cls.help, action=cls)
-
-    def __init__(self, option_strings, dest, **kwargs):
-        super().__init__(option_strings, dest, nargs=0,
-                         default=False, **kwargs)
-
-    def __call__(self, parser, namespace, values, option_string=None):
-        """Enable debugging output."""
-        global DEBUG
-        DEBUG = True
-        setattr(namespace, self.dest, True)
-
-
-class VerboseAction(DebugAction):
-    """Enable the verbose output mechanism."""
-
-    shortflag = '-v'
-    flag = '--verbose'
-    help = 'Enable verbose output.'
-
-    def __call__(self, parser, namespace, values, option_string=None):
-        """Enable verbose output."""
-        global VERBOSE
-        VERBOSE = True
-        setattr(namespace, self.dest, True)
