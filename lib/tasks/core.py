@@ -35,7 +35,55 @@ def find_tasks(module, prefix):
     return task_map
 
 
-class Task(object):
+class TaskCore(object):
+    """An internal class that can be shared by option mixins and Task objects.
+    """
+
+    config_key = 'noop'
+
+    # constant for easy output formatting
+    indent = '  '
+
+    def __init__(self, config_file=None):
+        self.config_file = config_file
+        self.warnings, self.errors, self.status = None, None, None
+        self._clear_status()
+        self.loaded = False
+
+    def load_config(self):
+        """A method that can be subclassed to load info from the config file.
+        """
+        if not self.loaded:
+            self.dprint('Loading the config file.')
+            self._load_config()
+        self.dprint('Config File loading complete.')
+        self.loaded = True
+
+    def _load_config(self):
+        """An internal method for subclasses to load their config values."""
+        pass
+
+    def _clear_status(self):
+        """Reset the warnings and errors lists and the status code."""
+        self.warnings = []
+        self.errors = []
+        self.status = None
+
+    def _set_status(self):
+        """Set the error status to the length of the warnings and errors lists.
+        """
+        self.status = len(self.errors)
+
+    def dprint(self, msg):
+        """Call the conditional debug print method."""
+        dprint(msg)
+
+    def vprint(self, msg):
+        """Call the conditional verbose print method."""
+        vprint(msg)
+
+
+class Task(TaskCore):
     """Base Task object for Squadron.
 
     The config_key attribute is used to reference the tasks from the config
@@ -53,63 +101,41 @@ class Task(object):
     update the status appropriately at the end of the task.
     """
 
-    config_key = 'noop'
-
-    # constant for easy output formatting
-    indent = '  '
-
     def __init__(self, config_file=None):
-        self.config_file = config_file
-        self.warnings, self.errors, self.status = None, None, None
-        self._clear_status()
-        self.load_from_config()
-
-    def load_from_config(self):
-        """A method that can be subclassed to load info from the config file.
-        """
-        pass
-
-    def _clear_status(self):
-        """Reset the warnings and errors lists and the status code."""
-        self.warnings = []
-        self.errors = []
-        self.status = None
-
-    def _set_status(self):
-        """Set the error status to the length of the warnings and errors lists.
-        """
-        self.status = len(self.errors)
+        super().__init__(config_file)
 
     def __call__(self, *args, **kwargs):
         self._clear_status()
+        self.load_config()
         self.dprint(self.debug_msg())
 
     def debug_msg(self):
         """If supported, generate and return a debug string."""
+        self.load_config()
         return "%s Debug" % self.__class__.__name__
 
     @property
     def default_config(self):
         """Return a string of the default example section for the config file.
         """
-        pass
-
-    def dprint(self, msg):
-        """Call the conditional debug print method."""
-        dprint(msg)
-
-    def vprint(self, msg):
-        """Call the conditional verbose print method."""
-        vprint(msg)
+        self.load_config()
+        return ""
 
 
-class GeneralDirsOptionMixin(object):
+
+class GeneralDirsOpt(TaskCore):
     """A mixin class for a config boolean option called "general_dirs"."""
 
     general_dirs_key = 'general_dirs'
     general_dirs_default = True
 
-    def load_config_general_dirs_bool(self):
+    def __init__(self, *args, general_dirs=None, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.general_dirs = self.general_dirs_default
+        if general_dirs is not None:
+            self.general_dirs = general_dirs
+
+    def _load_config(self):
         """Load the general_dirs boolean from the config file."""
         general_dirs = self.config_file.getboolean(
             self.config_key, self.general_dirs_key)
@@ -117,20 +143,28 @@ class GeneralDirsOptionMixin(object):
             self.general_dirs = self.general_dirs_default
         else:
             self.general_dirs = bool(int(general_dirs))
+        super()._load_config()
 
-    def get_config_snippet_general_dirs_bool(self):
+    @property
+    def config_snippet_general_dirs(self):
         """Return a string representing the general_dirs config option."""
         return ("%s%s: %s\n" % (self.indent, self.general_dirs_key,
                                 self.general_dirs))
 
 
-class OtherDirsOptionMixin(object):
+class OtherDirsOpt(TaskCore):
     """A mixin class for a config list option called "other_dirs"."""
 
     other_dirs_key = 'other_dirs'
     other_dirs_default = []
 
-    def load_config_other_dirs_list(self):
+    def __init__(self, *args, other_dirs=None, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.other_dirs = self.other_dirs_default
+        if other_dirs is not None:
+            self.other_dirs = other_dirs
+
+    def _load_config(self):
         """Load the other_dirs list from the config file."""
         other_dirs_val = self.config_file.get(
             self.config_key, self.other_dirs_key)
@@ -140,8 +174,10 @@ class OtherDirsOptionMixin(object):
             self.other_dirs = [path for path in
                                other_dirs_val.split(self.config_file.list_sep)
                                if path != '']
+        super()._load_config()
 
-    def get_config_snippet_other_dirs_list(self):
+    @property
+    def config_snippet_other_dirs(self):
         """Return a string representing the other_dirs config option."""
         return ("%s%s: %s\n" % (
             self.indent, self.other_dirs_key,
