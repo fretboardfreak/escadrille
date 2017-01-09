@@ -12,11 +12,10 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""A script to run the squadron preprocessing tasks."""
+"""The main squadron script."""
 import sys
 
-
-from lib.cmdline import PreprocessUI
+from lib.cmdline import UserInterface
 from lib.cmdline import vprint
 from lib.cmdline import dprint
 from lib.config import ConfigFile
@@ -27,8 +26,8 @@ VERSION = "0.1"
 
 
 def main():
-    """Main method for preprocess.py"""
-    user_interface = PreprocessUI(version=VERSION)
+    """Main method for squadron.py"""
+    user_interface = UserInterface(version=VERSION)
     options = user_interface.parse_cmd_line()
 
     dprint('loading configuration...')
@@ -38,6 +37,8 @@ def main():
     if options.default_config:
         config_file.print_default_config(tasks)
         return 0
+    if options.debug_config:
+        return user_interface.print_config_debug(options)
     for task_name in config_file.enabled_tasks:
         task = tasks[task_name](config_file=config_file)
         task()
