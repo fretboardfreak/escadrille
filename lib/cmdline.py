@@ -17,6 +17,9 @@ import os
 import argparse
 import errno
 
+from lib.config import ConfigFile
+from lib.tasks import load_tasks
+
 
 VERBOSE = False
 DEBUG = False
@@ -33,6 +36,10 @@ class ConfigMixin(object):
         self.parser.add_argument(
             '--default-config', action='store_true', dest='default_config',
             default=False, help='Print a default config section and exit.')
+        self.parser.add_argument(
+            '--debug-config', action='store_true', dest='debug_config',
+            default=False, help='Debug the config file instead of running '
+            'squadron tasks.')
         super().build()
 
     def validate_args(self, args):
@@ -42,11 +49,29 @@ class ConfigMixin(object):
                                     args.config)
         super().validate_args(args)
 
+    def print_config_debug(self, options):
+        """A procedure to parse and help identify issues with config files."""
+        print('cmdline args: %s' % options)
+        print('Parsing Config File...')
+        config_file = ConfigFile(options.config)
+        config_file.load()
+        print('Config Sections: %s' % config_file.parser.sections())
+        for section in config_file.parser.sections():
+            print('Options in section %s: %s' %
+                  (section, config_file.parser.options(section)))
+        print('Enabled Tasks: %s' % config_file.enabled_tasks)
+        for task in load_tasks().values():
+            task_obj = task(config_file=config_file)
+            print(task_obj.debug_msg())
 
-class BaseUI(object):
+        return 0
+
+
+
+class UserInterface(ConfigMixin):
     """A base class for the User Interface."""
 
-    description = "A description of the UI tool."
+    description = """Squadron: Automated Website Generation"""
 
     def __init__(self, version):
         self.parser = argparse.ArgumentParser(description=__doc__)
@@ -73,18 +98,6 @@ class BaseUI(object):
         args = self.parser.parse_args()
         self.validate_args(args)
         return args
-
-
-class DebugUI(ConfigMixin, BaseUI):
-    """Debug Interface for the Squadron system."""
-
-    description = "A tool for debugging squadron system internals."
-
-
-class PreprocessUI(ConfigMixin, BaseUI):
-    """UI Interface for the Preprocessor Command Line tool."""
-
-    description = """Squadron Preprocessor Tool."""
 
 
 def dprint(msg):
