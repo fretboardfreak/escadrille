@@ -78,8 +78,8 @@ class ConfigFile(object):
             default = "[%s]\n" % section.name
             for option in section.value:
                 if isinstance(option.value, list):
-                    default += "  %s: %s\n" % (option.name,
-                                             self.list_sep.join(option.value))
+                    default += "  %s: %s\n" % (
+                        option.name, self.list_sep.join(option.value))
                 else:
                     default += "  %s: %s\n" % (option.name, option.value)
             default += "\n"
