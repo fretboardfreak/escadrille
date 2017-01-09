@@ -16,25 +16,14 @@
 import os
 
 from .core import Task
-from .core import GeneralDirsOptionMixin
-from .core import OtherDirsOptionMixin
+from .core import GeneralDirsOpt
+from .core import OtherDirsOpt
 
 
-class MakeDirsTask(GeneralDirsOptionMixin, OtherDirsOptionMixin, Task):
+class MakeDirsTask(GeneralDirsOpt, OtherDirsOpt, Task):
     """Create any directories that may be needed by the squadron run."""
 
     config_key = 'make_dirs'
-
-    def __init__(self, *args, general_dirs=None, other_dirs=None, **kwargs):
-        self.general_dirs = self.general_dirs_default
-        self.other_dirs = self.other_dirs_default
-        super().__init__(*args, **kwargs)
-        # passed in options override config file since they probably come from
-        # a command line option.
-        if general_dirs is not None:
-            self.general_dirs = general_dirs
-        if other_dirs is not None:
-            self.other_dirs = other_dirs
 
     def _make_dir(self, path):
         """Make a directory."""
@@ -56,16 +45,10 @@ class MakeDirsTask(GeneralDirsOptionMixin, OtherDirsOptionMixin, Task):
             self._make_dir(path)
         self._set_status()
 
-    def load_from_config(self):
-        """Load the options from the config file."""
-        super().load_from_config()
-        self.load_config_general_dirs_bool()
-        self.load_config_other_dirs_list()
-
     def _get_option_snippet(self):
         """Return a string representing the options for this task."""
-        retval = self.get_config_snippet_general_dirs_bool()
-        retval += self.get_config_snippet_other_dirs_list()
+        retval = self.config_snippet_general_dirs
+        retval += self.config_snippet_other_dirs
         return retval
 
     def debug_msg(self):
