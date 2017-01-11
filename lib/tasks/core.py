@@ -121,36 +121,6 @@ class Task(TaskCore):
         return ""
 
 
-
-class GeneralDirsOpt(TaskCore):
-    """A mixin class for a config boolean option called "general_dirs"."""
-
-    general_dirs_key = 'general_dirs'
-    general_dirs_default = True
-
-    def __init__(self, *args, general_dirs=None, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.general_dirs = self.general_dirs_default
-        if general_dirs is not None:
-            self.general_dirs = general_dirs
-
-    def _load_config(self):
-        """Load the general_dirs boolean from the config file."""
-        general_dirs = self.config_file.getboolean(
-            self.config_key, self.general_dirs_key)
-        if general_dirs is None:
-            self.general_dirs = self.general_dirs_default
-        else:
-            self.general_dirs = bool(int(general_dirs))
-        super()._load_config()
-
-    @property
-    def config_snippet_general_dirs(self):
-        """Return a string representing the general_dirs config option."""
-        return ("%s%s: %s\n" % (self.indent, self.general_dirs_key,
-                                self.general_dirs))
-
-
 class OtherDirsOpt(TaskCore):
     """A mixin class for a config list option called "other_dirs"."""
 

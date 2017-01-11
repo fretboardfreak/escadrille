@@ -16,8 +16,8 @@
 import os
 
 from .core import Task
-from .core import GeneralDirsOpt
 from .core import OtherDirsOpt
+from .options import GeneralDirsOpt
 
 
 class MakeDirsTask(GeneralDirsOpt, OtherDirsOpt, Task):
