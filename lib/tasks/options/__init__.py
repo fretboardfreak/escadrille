@@ -8,8 +8,10 @@
 """
 from . import general_dirs
 from . import other_dirs
+from . import output_dir
 
 GeneralDirsOpt = general_dirs.GeneralDirsOpt
 OtherDirsOpt = other_dirs.OtherDirsOpt
+OutputDirOpt = output_dir.OutputDirOpt
 
-__ALL__ = [GeneralDirsOpt, OtherDirsOpt]
+__ALL__ = [GeneralDirsOpt, OtherDirsOpt, OutputDirOpt]

@@ -119,36 +119,3 @@ class Task(TaskCore):
         """
         self.load_config()
         return ""
-
-
-class OutputDirOpt(TaskCore):
-    """A mixin class to provide a Task object with an Output Dir config value.
-    """
-
-    output_dir_key = 'output_dir'
-
-    def __init__(self, *args, output_dir=None, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.output_dir = self.output_dir_default
-        if output_dir is not None:
-            self.output_dir = output_dir
-
-    @property
-    def output_dir_default(self):
-        """Default value is based on existing option in general section."""
-        return self.config_file.staging_dir
-
-    def _load_config(self):
-        """Load the output dir path option from the config file."""
-        output_dir = self.config_file.get(self.config_key, self.output_dir_key)
-        if output_dir is None:
-            self.output_dir = self.output_dir_default
-        else:
-            self.output_dir = output_dir.strip()
-        super()._load_config()
-
-    @property
-    def config_snippet_output_dir(self):
-        """Return a string representing the output_dir config option."""
-        return ("%s%s: %s\n" % (self.indent, self.output_dir_key,
-                                self.output_dir))

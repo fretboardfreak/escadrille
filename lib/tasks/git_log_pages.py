@@ -14,7 +14,7 @@
 """Git Log Pages Task."""
 
 from .core import Task
-from .core import OutputDirOpt
+from .options import OutputDirOpt
 
 
 class GitLogPagesTask(OutputDirOpt, Task):
