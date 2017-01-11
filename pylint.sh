@@ -14,7 +14,7 @@
 # limitations under the License.
 
 # Quick and dirty bash script to run pylint against the squadron project
-PATHS="*.py lib/*"
+PATHS=$(find . -iname "*.py")
 RCFILE="--rcfile ./pylintrc"
 
 exec pylint $RCFILE $PATHS $@
