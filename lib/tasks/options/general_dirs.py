@@ -13,7 +13,7 @@
 # limitations under the License.
 """General Dirs Option for Tasks."""
 
-from lib.tasks.core import TaskCore
+from ..core import TaskCore
 
 
 class GeneralDirsOpt(TaskCore):
