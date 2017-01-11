@@ -16,7 +16,7 @@
 import os
 
 from .core import Task
-from .core import OtherDirsOpt
+from .options import OtherDirsOpt
 from .options import GeneralDirsOpt
 
 

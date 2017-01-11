@@ -121,38 +121,6 @@ class Task(TaskCore):
         return ""
 
 
-class OtherDirsOpt(TaskCore):
-    """A mixin class for a config list option called "other_dirs"."""
-
-    other_dirs_key = 'other_dirs'
-    other_dirs_default = []
-
-    def __init__(self, *args, other_dirs=None, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.other_dirs = self.other_dirs_default
-        if other_dirs is not None:
-            self.other_dirs = other_dirs
-
-    def _load_config(self):
-        """Load the other_dirs list from the config file."""
-        other_dirs_val = self.config_file.get(
-            self.config_key, self.other_dirs_key)
-        if other_dirs_val is None:
-            self.other_dirs = self.other_dirs_default
-        else:
-            self.other_dirs = [path for path in
-                               other_dirs_val.split(self.config_file.list_sep)
-                               if path != '']
-        super()._load_config()
-
-    @property
-    def config_snippet_other_dirs(self):
-        """Return a string representing the other_dirs config option."""
-        return ("%s%s: %s\n" % (
-            self.indent, self.other_dirs_key,
-            self.config_file.list_sep.join(self.other_dirs)))
-
-
 class OutputDirOpt(TaskCore):
     """A mixin class to provide a Task object with an Output Dir config value.
     """

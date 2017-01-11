@@ -17,7 +17,7 @@ import subprocess
 
 from .core import Task
 from .options import GeneralDirsOpt
-from .core import OtherDirsOpt
+from .options import OtherDirsOpt
 
 
 class CleanTask(GeneralDirsOpt, OtherDirsOpt, Task):
