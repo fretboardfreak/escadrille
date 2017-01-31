@@ -52,10 +52,11 @@ class GitLogPagesTask(OutputDirOpt, Task):
         Ensure that the log is RST compatible by using the "raw" directive to
         force the log to be preformatted text.
         """
-        log = ".. raw:: html\n\n    <pre>\n\n"
+        log = "::\n\n"
         command = "git -C %s log --decorate=no | sed 's/<.*>//g'" % path
-        log += subprocess.getoutput(command)
-        return log + "\n\n.. raw:: html\n\n    </pre>\n\n[End of log]"
+        output = subprocess.getoutput(command).replace('\n', '\n    ')
+        log += '    ' + output
+        return log + "\n\n[End of log]"
 
     def construct_log_page(self, path, title):
         """Build an write a log page with the given options.
