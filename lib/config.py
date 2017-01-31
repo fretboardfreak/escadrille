@@ -26,6 +26,7 @@ class GeneralOpts(Enum):
     tmp_dir = '/tmp/squadron'
     output_dir = os.path.join(tmp_dir, 'output')
     staging_dir = os.path.join(tmp_dir, 'staging')
+    date_format = '%Y-%m-%d %H:%M'
     enabled_tasks = []
 
 
@@ -150,3 +151,14 @@ class ConfigFile(object):
                                GeneralOpts.staging_dir.name)
         default = GeneralOpts.staging_dir.value
         return staging_dir if staging_dir is not None else default
+
+    @property
+    def date_format(self):
+        """Retrieve the configured date format string.
+
+        The provided string must be compatible with ``time.strftime``.
+        """
+        date_format = self.get(Sections.general.name,
+                               GeneralOpts.date_format.name)
+        default = GeneralOpts.date_format.value
+        return date_format if date_format is not None else default
