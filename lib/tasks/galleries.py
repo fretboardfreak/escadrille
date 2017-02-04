@@ -137,6 +137,6 @@ class GalleriesTask(OutputDirOpt, Task):
         config = "[%s]\n" % self.config_key
         config += self.config_snippet_output_dir
         config += "  %s: %s\n" % (self.config_key, self.galleries_default)
-        config += "  %s: %s\n" % (self.stubs_key, self.stubs_default)
+        config += "  %s: %s\n" % (self.stubs_key, '')
         config += "  stubs_dir: %s\n" % self.stubs_dir_default
         return config
