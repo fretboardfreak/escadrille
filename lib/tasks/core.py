@@ -100,9 +100,6 @@ class Task(TaskCore):
     update the status appropriately at the end of the task.
     """
 
-    def __init__(self, config_file=None):
-        super().__init__(config_file)
-
     def __call__(self, *args, **kwargs):
         self._clear_status()
         self.load_config()

@@ -22,11 +22,9 @@ class GeneralDirsOpt(TaskCore):
     general_dirs_key = 'general_dirs'
     general_dirs_default = True
 
-    def __init__(self, *args, general_dirs=None, **kwargs):
-        super().__init__(*args, **kwargs)
+    def __init__(self, *args, **kwargs):
         self.general_dirs = self.general_dirs_default
-        if general_dirs is not None:
-            self.general_dirs = general_dirs
+        super().__init__(*args, **kwargs)
 
     def _load_config(self):
         """Load the general_dirs boolean from the config file."""

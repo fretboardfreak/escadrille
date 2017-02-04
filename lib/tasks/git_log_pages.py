@@ -30,11 +30,9 @@ class GitLogPagesTask(OutputDirOpt, Task):
     config_key = 'git_log_pages'
     repos_default = {}
 
-    def __init__(self, *args, repos=None, **kwargs):
-        super().__init__(*args, **kwargs)
+    def __init__(self, *args, **kwargs):
         self.repos = self.repos_default
-        if repos is not None:
-            self.repos = repos
+        super().__init__(*args, **kwargs)
 
     def load_config(self):
         """Load task options from the config file."""

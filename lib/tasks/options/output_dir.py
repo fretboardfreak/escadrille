@@ -22,11 +22,9 @@ class OutputDirOpt(TaskCore):
 
     output_dir_key = 'output_dir'
 
-    def __init__(self, *args, output_dir=None, **kwargs):
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.output_dir = self.output_dir_default
-        if output_dir is not None:
-            self.output_dir = output_dir
 
     @property
     def output_dir_default(self):

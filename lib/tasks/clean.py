@@ -24,10 +24,6 @@ class CleanTask(GeneralDirsOpt, OtherDirsOpt, Task):
     """Clean out directories as needed."""
 
     config_key = 'clean'
-    general_dirs_key = 'general_dirs'
-    general_dirs_default = True
-    other_dirs_key = 'other_dirs'
-    other_dirs_default = []
 
     def _remove(self, path):
         """Remove a path."""

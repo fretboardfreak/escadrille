@@ -22,11 +22,9 @@ class OtherDirsOpt(TaskCore):
     other_dirs_key = 'other_dirs'
     other_dirs_default = []
 
-    def __init__(self, *args, other_dirs=None, **kwargs):
-        super().__init__(*args, **kwargs)
+    def __init__(self, *args, **kwargs):
         self.other_dirs = self.other_dirs_default
-        if other_dirs is not None:
-            self.other_dirs = other_dirs
+        super().__init__(*args, **kwargs)
 
     def _load_config(self):
         """Load the other_dirs list from the config file."""
