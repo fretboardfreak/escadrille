@@ -36,3 +36,13 @@ def metadata(data):
     """Convert a dictionary of strings into an RST metadata block."""
     template = ":%s: %s\n"
     return ''.join(template % (key, data[key]) for key in data)
+
+
+def image_directive(image, width=None, align=None):
+    """Generate an RST Image directive."""
+    if width is None:
+        width = '300'
+    if align is None:
+        align = 'center'
+    return ".. image:: %s\n    :width: %s\n    :align: %s\n" % (
+        image, width, align)
