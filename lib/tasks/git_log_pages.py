@@ -93,6 +93,7 @@ class GitLogPagesTask(OutputDirOpt, Task):
         """Return some debug outut about the current state of the task."""
         msg = super().debug_msg() + "\n"
         msg += self.config_snippet_output_dir
+        msg += str(self.repos) + "\n"
         return msg
 
     @property
@@ -100,6 +101,7 @@ class GitLogPagesTask(OutputDirOpt, Task):
         """Return a string of the default example section for the config file.
         """
         config = "[%s]\n" % self.config_key
-        config += self.config_snippet_output_dir
-        config += '\n'
+        config += "%s%s: %s" % (self.indent, self.output_dir_key,
+                                self.output_dir_default)
+        config += "%srepos: %s" % (self.indent, self.repos_default)
         return config
