@@ -101,7 +101,7 @@ class GitLogPagesTask(OutputDirOpt, Task):
         """Return a string of the default example section for the config file.
         """
         config = "[%s]\n" % self.config_key
-        config += "%s%s: %s" % (self.indent, self.output_dir_key,
+        config += "%s%s: %s\n" % (self.indent, self.output_dir_key,
                                 self.output_dir_default)
-        config += "%srepos: %s" % (self.indent, self.repos_default)
+        config += "%srepos: %s\n" % (self.indent, '')
         return config
