@@ -34,9 +34,9 @@ class GitLogPagesTask(OutputDirOpt, Task):
         self.repos = self.repos_default
         super().__init__(*args, **kwargs)
 
-    def load_config(self):
+    def _load_config(self):
         """Load task options from the config file."""
-        super().load_config()
+        super()._load_config()
         self.repos = self.repos_default
         for option in self.config_file.section(self.config_key):
             if option is OutputDirOpt.output_dir_key:
