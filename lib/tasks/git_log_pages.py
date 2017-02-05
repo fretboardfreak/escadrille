@@ -102,6 +102,6 @@ class GitLogPagesTask(OutputDirOpt, Task):
         """
         config = "[%s]\n" % self.config_key
         config += "%s%s: %s\n" % (self.indent, self.output_dir_key,
-                                self.output_dir_default)
+                                  self.output_dir_default)
         config += "%srepos: %s\n" % (self.indent, '')
         return config
