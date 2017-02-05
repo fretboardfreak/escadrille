@@ -15,6 +15,7 @@
 
 import pkgutil
 import inspect
+import os.path
 
 from lib.verbosity import dprint
 from lib.verbosity import vprint
@@ -43,6 +44,7 @@ class TaskCore(object):
 
     # constant for easy output formatting
     indent = '  '
+    msg_template = '%s%s: %s\n'
 
     def __init__(self, config_file=None):
         self.config_file = config_file
@@ -80,6 +82,11 @@ class TaskCore(object):
     def vprint(self, msg):
         """Call the conditional verbose print method."""
         vprint(msg)
+
+    @staticmethod
+    def sanitize_path(path):
+        """Take a string and run it through some sanitization methods."""
+        return os.path.abspath(os.path.expanduser(path))
 
 
 class Task(TaskCore):
