@@ -3,7 +3,7 @@ docutils==0.13.1
 feedgenerator==1.9
 Jinja2==2.9.5
 MarkupSafe==0.23
-pelican==3.7.1
+pelican==3.5.0
 python-dateutil==2.6.0
 pytz==2016.10
 smartypants==2.0.0
