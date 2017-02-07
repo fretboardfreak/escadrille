@@ -17,10 +17,10 @@ import os
 import argparse
 import errno
 
-from lib.config import ConfigFile
-from lib.tasks import load_tasks
+from escadrille.config import ConfigFile
+from escadrille.tasks import load_tasks
 
-from lib.verbosity import DebugAction, VerboseAction
+from escadrille.verbosity import DebugAction, VerboseAction
 
 
 class InterfaceCore(object):

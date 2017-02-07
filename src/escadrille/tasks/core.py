@@ -17,8 +17,8 @@ import pkgutil
 import inspect
 import os.path
 
-from lib.verbosity import dprint
-from lib.verbosity import vprint
+from escadrille.verbosity import dprint
+from escadrille.verbosity import vprint
 
 
 def find_tasks(module, prefix):

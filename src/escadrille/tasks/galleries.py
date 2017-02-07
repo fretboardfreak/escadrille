@@ -16,7 +16,7 @@
 import os
 from collections import OrderedDict
 
-import lib.rst as rst
+import escadrille.rst as rst
 
 from .core import Task
 from .options import OutputDirOpt
