@@ -11,7 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""Library of command line tools for Squadron Automation."""
+"""Library of command line tools for Escadrille Automation."""
 
 import os
 import argparse
@@ -48,7 +48,7 @@ class ConfigMixin(InterfaceCore):
         self.parser.add_argument(
             '--debug-config', action='store_true', dest='debug_config',
             default=False, help='Debug the config file instead of running '
-            'squadron tasks.')
+            'escadrille tasks.')
         super().build()
 
     def validate_args(self, args):
@@ -79,7 +79,7 @@ class ConfigMixin(InterfaceCore):
 class UserInterface(ConfigMixin, InterfaceCore):
     """A base class for the User Interface."""
 
-    description = """Squadron: Automated Website Generation"""
+    description = """Escadrille: Automated Website Generation"""
 
     def __init__(self, version):
         self.parser = argparse.ArgumentParser(description=__doc__)

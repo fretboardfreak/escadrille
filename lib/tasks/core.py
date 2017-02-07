@@ -90,7 +90,7 @@ class TaskCore(object):
 
 
 class Task(TaskCore):
-    """Base Task object for Squadron.
+    """Base Task object for Escadrille.
 
     The config_key attribute is used to reference the tasks from the config
     file.

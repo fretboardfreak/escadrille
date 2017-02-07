@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Quick and dirty bash script to run pylint against the squadron project
+# Quick and dirty bash script to run pylint against the escadrille project
 PATHS=$(find . -iname "*.py")
 RCFILE="--rcfile ./pylintrc"
 

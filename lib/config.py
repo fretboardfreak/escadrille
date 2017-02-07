@@ -11,7 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""Squadron Config File API."""
+"""Escadrille Config File API."""
 
 import os
 from configparser import SafeConfigParser
@@ -23,7 +23,7 @@ from .verbosity import dprint
 
 class GeneralOpts(Enum):
     """Options for the General Section."""
-    tmp_dir = '/tmp/squadron'
+    tmp_dir = '/tmp/escadrille'
     output_dir = os.path.join(tmp_dir, 'output')
     staging_dir = os.path.join(tmp_dir, 'staging')
     date_format = '%Y-%m-%d %H:%M'
@@ -36,9 +36,9 @@ class Sections(Enum):
 
 
 class ConfigFile(object):
-    """Config File API for Squadron."""
+    """Config File API for Escadrille."""
 
-    default_path = os.path.abspath('./squadron.cfg')
+    default_path = os.path.abspath('./escadrille.cfg')
     list_sep = ' '
 
     def __init__(self, filename=None):
@@ -131,7 +131,7 @@ class ConfigFile(object):
 
     @property
     def tmp_dir(self):
-        """The temporary directory to use for the squadron run."""
+        """The temporary directory to use for the escadrille run."""
         tmp_dir = self.get(Sections.general.name,
                            GeneralOpts.tmp_dir.name)
         return tmp_dir if tmp_dir is not None else GeneralOpts.tmp_dir.value
@@ -146,7 +146,7 @@ class ConfigFile(object):
 
     @property
     def staging_dir(self):
-        """The staging directory to use for the squadron run."""
+        """The staging directory to use for the escadrille run."""
         staging_dir = self.get(Sections.general.name,
                                GeneralOpts.staging_dir.name)
         default = GeneralOpts.staging_dir.value

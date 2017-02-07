@@ -32,7 +32,7 @@ class CopyFilesJob(object):
 
 
 class CopyFilesTask(Task):
-    """Copy Files from around the system into the squadron build.
+    """Copy Files from around the system into the Escadrille build.
 
     Option keys use the suffixes "_dest" and "_src". Files listed in space
     separated strings as absolute paths are copied from options with the "_src"
@@ -40,7 +40,7 @@ class CopyFilesTask(Task):
     corresponding slug.
 
     (i.e "pics_src=/home/user/pics/*.jpeg /home/user/ref/images/*"
-    would all get copied to "pics_dest=/tmp/squadron/staging/")
+    would all get copied to "pics_dest=/tmp/escadrille/staging/")
 
     note: This behaviour disallows files containing spaces in their path. For
           paths containing spaces you can workaround this limitation by using

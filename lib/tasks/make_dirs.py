@@ -21,7 +21,7 @@ from .options import GeneralDirsOpt
 
 
 class MakeDirsTask(GeneralDirsOpt, OtherDirsOpt, Task):
-    """Create any directories that may be needed by the squadron run."""
+    """Create any directories that may be needed by the escadrille run."""
 
     config_key = 'make_dirs'
 

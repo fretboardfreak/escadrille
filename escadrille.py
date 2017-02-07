@@ -12,7 +12,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""The main squadron script."""
+"""The main escadrille script."""
 import sys
 
 from lib.cmdline import UserInterface
@@ -26,7 +26,7 @@ VERSION = "0.1"
 
 
 def main():
-    """Main method for squadron.py"""
+    """Main method for escadrille.py"""
     user_interface = UserInterface(version=VERSION)
     options = user_interface.parse_cmd_line()
 

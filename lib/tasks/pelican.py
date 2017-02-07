@@ -20,7 +20,7 @@ from .options import OutputDirOpt
 
 
 class PelicanTask(OutputDirOpt, Task):
-    """Run pelican using the options in the squadron configuration file."""
+    """Run pelican using the options in the escadrille configuration file."""
 
     config_key = 'pelican'
     output_dir_default = ''
