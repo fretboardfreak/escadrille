@@ -75,7 +75,7 @@ class CopyFilesTask(Task):
                     continue
                 self.vprint('%scopying "%s"...' % (self.indent * 2,
                                                    source_dir))
-                subprocess.check_call(' '.join(['cp', '--recursive',
+                subprocess.check_call(' '.join(['cp', '-R',
                                                 *source_paths, destination]),
                                       shell=True)
         self._set_status()
