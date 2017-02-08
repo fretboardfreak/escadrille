@@ -108,6 +108,7 @@ class GalleriesTask(OutputDirOpt, Task):
                 continue
             name = relative_path.replace('/', '-')
             media_prefix = './images'  # TODO: add to config file
+            fnames.sort()
             media = [os.path.join(media_prefix, relative_path, fname)
                      for fname in fnames]
             if len(media) == 0:
