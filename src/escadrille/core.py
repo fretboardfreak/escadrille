@@ -24,6 +24,7 @@ from .version import VERSION
 
 def main(config_file, tasks=None, skip=None):
     """Main business logic for Escadrille."""
+    skip = skip if skip else []
     if tasks is None:
         tasks = load_tasks()
     for task_name in config_file.enabled_tasks:
