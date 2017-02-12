@@ -93,6 +93,9 @@ class UserInterface(ConfigMixin, InterfaceCore):
             version='%(prog)s {}'.format(self.version))
         DebugAction.add_parser_argument(self.parser)
         VerboseAction.add_parser_argument(self.parser)
+        self.parser.add_argument(
+            '-s', '--skip', dest='skip', action='append', metavar='TASK',
+            help='Specify an enabled task to skip.')
         super().build()
         self.built = True
 

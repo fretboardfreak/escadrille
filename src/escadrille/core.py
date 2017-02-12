@@ -22,11 +22,14 @@ from .tasks import load_tasks
 from .version import VERSION
 
 
-def main(config_file, tasks=None):
+def main(config_file, tasks=None, skip=None):
     """Main business logic for Escadrille."""
     if tasks is None:
         tasks = load_tasks()
     for task_name in config_file.enabled_tasks:
+        if task_name in skip:
+            vprint('Skipping task "%s".' % task_name)
+            continue
         task = tasks[task_name](config_file=config_file)
         task()
         if task.status is not None and task.status != 0:
@@ -58,7 +61,7 @@ def cli_main():
             return 0
         if options.debug_config:
             return user_interface.print_config_debug(options)
-        sys.exit(main(config_file, tasks))
+        sys.exit(main(config_file, tasks, options.skip))
     except SystemExit:
         sys.exit(0)
     except KeyboardInterrupt:
