@@ -96,10 +96,6 @@ class UserInterface(ConfigMixin, InterfaceCore):
         super().build()
         self.built = True
 
-    def validate_args(self, args):
-        """Subclasses can implement this to verify validity of given args."""
-        super().validate_args(args)
-
     def parse_cmd_line(self):
         """Parse the options from the command line."""
         if not self.built:
