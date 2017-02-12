@@ -127,7 +127,6 @@
 <script type="text/javascript" src="{{ SITEURL }}/theme/js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="{{ SITEURL }}/theme/js/magnific-popup.js"></script>
 <script type="text/javascript" src="{{ SITEURL }}/theme/js/jquery.tagcloud.js"></script>"
-<script type="text/javascript" src="http://zor.livefyre.com/wjs/v3.0/javascripts/livefyre.js"></script>
 {% block script %}{% endblock %}
 <script type="text/javascript">
 $(document).ready(function() {
@@ -163,19 +162,5 @@ $(document).ready(function() {
       color: {start: '#00b', end: '#0b0'}
     });
 });
-(function () {
-    var articleId = fyre.conv.load.makeArticleId(null);
-    fyre.conv.load({}, [{
-        el: 'livefyre-comments',
-        network: "livefyre.com",
-        siteId: "360738",
-        articleId: articleId,
-        signed: false,
-        collectionMeta: {
-            articleId: articleId,
-            url: fyre.conv.load.makeCollectionUrl(),
-        }
-    }], function() {});
-}());
 </script>
 </html>
