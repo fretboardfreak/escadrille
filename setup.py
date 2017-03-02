@@ -184,7 +184,7 @@ setup(
     package_dir={'': 'src'},
     packages=find_packages('src'),
     entry_points={
-        'console_scripts': ['escadrille=escadrille.core:cli_main']
+        'console_scripts': ['escadrille=escadrille.core:CliInterface.main']
     },
     use_2to3=False,
     install_requires=install_requires(),
