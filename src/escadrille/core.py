@@ -47,6 +47,11 @@ class InterfaceCore(object):
         self.skip = self.skip if self.skip else []
         if self.tasks is None:
             self.tasks = load_tasks()
+        if self.list_tasks is not None and self.list_tasks:
+            for index, task_name in enumerate(
+                    self.config_file.enabled_tasks, 1):
+                print('%2d: %s' % (index, task_name))
+            return 0
         for task_name in self.config_file.enabled_tasks:
             if task_name in self.skip:
                 vprint('Skipping task "%s".' % task_name)
@@ -132,6 +137,9 @@ class CliInterface(ConfigMixin, InterfaceCore):
         self.parser.add_argument(
             '-s', '--skip', dest='skip', action='append', metavar='TASK',
             help='Specify an enabled task to skip.')
+        self.parser.add_argument(
+            '-l', '--list', dest='list', action='store_true',
+            help='List the enabled tasks in the config file.')
         super().build()
         self.built = True
 
@@ -150,6 +158,7 @@ class CliInterface(ConfigMixin, InterfaceCore):
         self.config_file.load()
         self.tasks = load_tasks()
         self.skip = options.skip
+        self.list_tasks = options.list
         if options.default_config:
             self.config_file.print_default_config(self.tasks)
             return 0
