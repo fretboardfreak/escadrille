@@ -29,7 +29,7 @@ class CleanTask(GeneralDirsOpt, OtherDirsOpt, Task):
         """Remove a path."""
         self.vprint('%sremoving %s' % (self.indent, path))
         try:
-            subprocess.check_call(['rm', '--recursive', '--force', path])
+            subprocess.check_call(['rm', '-r', '-f', path])
         except subprocess.CalledProcessError:
             err = '%sfailed to remove %s' % (self.indent, path)
             self.vprint(err)
