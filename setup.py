@@ -52,9 +52,9 @@ class SetupCommand(Command):
 
     def run(self):
         """Run the custom setup command."""
-        if self.distribution.install_requires:
-            self.distribution.fetch_build_eggs(
-                self.distribution.install_requires)
+        # if self.distribution.install_requires:
+        #     self.distribution.fetch_build_eggs(
+        #         self.distribution.install_requires)
 
     def _run_command(self, command):
         """Execute the command."""
@@ -90,8 +90,9 @@ class DevelopmentCommand(SetupCommand):
     def run(self):
         """Run the custom dev/test commands."""
         super().run()
-        if self.distribution.tests_require:
-            self.distribution.fetch_build_eggs(self.distribution.tests_require)
+        # if self.distribution.tests_require:
+        #     self.distribution.fetch_build_eggs(
+        #         self.distribution.tests_require)
 
 
 class PylintCommand(DevelopmentCommand):
@@ -130,6 +131,7 @@ class Pep8Command(DevelopmentCommand):
 
     def run(self):
         """Run the pep8 checker."""
+        super().run()
         self._run_command(['pep8', '--statistics', '--verbose'] +
                           self.test_paths)
 
@@ -142,6 +144,7 @@ class Pep257Command(DevelopmentCommand):
 
     def run(self):
         """Run the pep257 checker."""
+        super().run()
         self._run_command(['pep257', '--count', '--verbose'] +
                           self.test_paths)
 
@@ -163,13 +166,14 @@ class Test(test):
 
     def run(self):
         """Run all tests and checkers for project."""
+        # Skip parent method to avoid reinstalling packages
+        # super().run()
         self.run_command('pep8')
         self._interactive_pause()
         self.run_command('pep257')
         self._interactive_pause()
         self.run_command('pylint')
         self._interactive_pause()
-        super().run()
 
 
 setup(
