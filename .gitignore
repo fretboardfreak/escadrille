@@ -4,3 +4,9 @@
 *.swp
 
 .DS_Store
+
+# setuptools files
+.eggs
+build
+dist
+src/escadrille.egg-info
