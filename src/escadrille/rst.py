@@ -38,12 +38,13 @@ def metadata(data):
     return ''.join(template % (key, data[key]) for key in data)
 
 
-def image_directive(image, width=None, align=None):
+def image_directive(image, width=None, align=None, alt=None):
     """Generate an RST Image directive."""
     if width is None:
         width = '300'
     if align is None:
         align = 'center'
+    if alt is None:
+        alt = image
     return (".. image:: %s\n    :width: %s\n    :align: %s\n"
-            "    :alt: %s\n") % (
-        image, width, align, image)
+            "    :alt: %s\n") % (image, width, align, alt)
