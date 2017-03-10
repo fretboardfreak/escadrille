@@ -152,6 +152,22 @@ class Pep257Command(DevelopmentCommand):
                           self.test_paths)
 
 
+class DevInstallCommand(SetupCommand):
+    """A custom command to install the development requirements."""
+
+    description = "Install the development requirements."
+    user_options = []
+
+    def run(self):
+        """Install the development requirements."""
+        if self.distribution.install_requires:
+            self.distribution.fetch_build_eggs(
+                self.distribution.install_requires)
+        if self.distribution.tests_require:
+            self.distribution.fetch_build_eggs(
+                self.distribution.tests_require)
+
+
 class Test(test):
     """Combine unittest, pep8 and pylint checks all into one command."""
 
@@ -225,4 +241,5 @@ setup(
         'pep8': Pep8Command,
         # 'unittest': test,
         'pep257': Pep257Command,
-        'test': Test})
+        'test': Test,
+        'dev': DevInstallCommand})
