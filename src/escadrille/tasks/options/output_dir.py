@@ -17,14 +17,14 @@ from ..core import TaskCore
 
 
 class OutputDirOpt(TaskCore):
-    """A mixin class to provide a Task object with an Output Dir config value.
-    """
+    """Mixin class to provide Task object with an Output Dir config value."""
 
     output_dir_key = 'output_dir'
 
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        """Set up defaults for Output Dir Option."""
         self.output_dir = self.output_dir_default
+        super().__init__(*args, **kwargs)
 
     @property
     def output_dir_default(self):

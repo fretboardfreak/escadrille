@@ -23,6 +23,7 @@ class GeneralDirsOpt(TaskCore):
     general_dirs_default = True
 
     def __init__(self, *args, **kwargs):
+        """Set up defaults for the General Dirs Option."""
         self.general_dirs = self.general_dirs_default
         super().__init__(*args, **kwargs)
 

@@ -23,6 +23,7 @@ class OtherDirsOpt(TaskCore):
     other_dirs_default = []
 
     def __init__(self, *args, **kwargs):
+        """Set up defaults for the Other Dirs Option."""
         self.other_dirs = self.other_dirs_default
         super().__init__(*args, **kwargs)
 

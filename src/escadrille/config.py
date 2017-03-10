@@ -23,6 +23,7 @@ from .verbosity import dprint
 
 class GeneralOpts(Enum):
     """Options for the General Section."""
+
     tmp_dir = '/tmp/escadrille'
     output_dir = os.path.join(tmp_dir, 'output')
     staging_dir = os.path.join(tmp_dir, 'staging')
@@ -32,6 +33,7 @@ class GeneralOpts(Enum):
 
 class Sections(Enum):
     """The sections of the config file."""
+
     general = GeneralOpts
 
 
@@ -42,6 +44,7 @@ class ConfigFile(object):
     list_sep = ' '
 
     def __init__(self, filename=None):
+        """Setup instance vars for ConfigFile objects."""
         self.filename = self.default_path
         if filename is not None:
             self.filename = filename
@@ -94,7 +97,7 @@ class ConfigFile(object):
             print(task_obj.default_config)
 
     def get(self, section, option, *args, **kwargs):
-        """Wrapper to simplify calls to self.parser.get()."""
+        """Wrapper to simplify calls to self.parser.get."""
         if not self.parser:
             return None
         if (self.parser.has_section(section) and
@@ -110,7 +113,7 @@ class ConfigFile(object):
             return self.parser.getboolean(section, option, *args, **kwargs)
 
     def has_section(self, section):
-        """Wrapper to simplify calls to self.parser.has_section()."""
+        """Wrapper to simplify calls to self.parser.has_section."""
         if not self.parser:
             return False
         return self.parser.has_section(section)

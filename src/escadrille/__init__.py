@@ -1,0 +1,1 @@
+"""Escadrille: See ``escadrille.core``."""

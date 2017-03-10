@@ -37,8 +37,7 @@ def find_tasks(module, prefix):
 
 
 class TaskCore(object):
-    """An internal class that can be shared by option mixins and Task objects.
-    """
+    """An internal class to be shared by option mixins and Task objects."""
 
     config_key = 'noop'
 
@@ -47,14 +46,14 @@ class TaskCore(object):
     msg_template = '%s%s: %s\n'
 
     def __init__(self, config_file=None):
+        """Set up instance variables for an escadrille task object."""
         self.config_file = config_file
         self.warnings, self.errors, self.status = None, None, None
         self._clear_status()
         self.loaded = False
 
     def load_config(self):
-        """A method that can be subclassed to load info from the config file.
-        """
+        """A method to be subclassed to load info from the config file."""
         if not self.loaded:
             self.dprint('Loading the config for %s.' % self.config_key)
             self._load_config()
@@ -71,8 +70,7 @@ class TaskCore(object):
         self.status = None
 
     def _set_status(self):
-        """Set the error status to the length of the warnings and errors lists.
-        """
+        """Set error status to the length of the warnings and errors lists."""
         self.status = len(self.errors)
 
     def dprint(self, msg):
@@ -108,6 +106,7 @@ class Task(TaskCore):
     """
 
     def __call__(self, *args, **kwargs):
+        """Execute the core task behaviour."""
         self._clear_status()
         self.load_config()
         self.dprint(self.debug_msg())
@@ -119,7 +118,6 @@ class Task(TaskCore):
 
     @property
     def default_config(self):
-        """Return a string of the default example section for the config file.
-        """
+        """Return a string of default example section for config file."""
         self.load_config()
         return ""

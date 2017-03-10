@@ -175,6 +175,7 @@ class Test(test):
     user_options = [('interactive', 'i', 'Enable interactive pauses.')]
 
     def __init__(self, *args, **kwargs):
+        """Add instance variables for the Test subclass."""
         self.interactive = None
         super().__init__(*args, **kwargs)
 

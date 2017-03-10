@@ -21,14 +21,15 @@ from .config import ConfigFile
 from .tasks import load_tasks
 from .verbosity import DebugAction
 from .verbosity import VerboseAction
-from .verbosity import vprint
 from .verbosity import dprint
 from .version import VERSION
 
 
 class InterfaceCore(object):
     """A base class for mixins that can add features to the UserInterface."""
+
     def __init__(self):
+        """Setup instance defaults for the core Escadrille Interface."""
         self.config_file = None
         self.tasks = None
         self.skip = None
@@ -76,6 +77,7 @@ class InterfaceCore(object):
 
 class ConfigMixin(InterfaceCore):
     """Mixin class to add options for the configuration file."""
+
     def build(self):
         """Add config file options to the parser."""
         self.parser.add_argument(
@@ -122,6 +124,7 @@ class CliInterface(ConfigMixin, InterfaceCore):
     description = """Escadrille: Automated Website Generation"""
 
     def __init__(self):
+        """Set up instance vars for CLI Interface and call parent __init__."""
         super(CliInterface, self).__init__()
         self.parser = argparse.ArgumentParser(description=__doc__)
         self.version = VERSION
@@ -168,7 +171,7 @@ class CliInterface(ConfigMixin, InterfaceCore):
 
     @classmethod
     def main(cls):
-        """Escadrille's main entry point for CLI usage."""
+        """Escadrille main entry point for CLI usage."""
         try:
             cls = CliInterface()
             sys.exit(cls._main())

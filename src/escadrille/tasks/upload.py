@@ -36,6 +36,7 @@ class UploadTask(Task):
     rsync_options_default = ''
 
     def __init__(self, *args, **kwargs):
+        """Setup defaults for Upload Task instances."""
         self.ssh_port = self.ssh_port_default
         self.source_dir = self.source_dir_default
         self.user = self.user_default
@@ -72,6 +73,7 @@ class UploadTask(Task):
         super()._load_config()
 
     def __call__(self, *args, **kwargs):
+        """Execute the Upload Task."""
         print('Starting Upload Task.')
         super().__call__(*args, **kwargs)
         command = 'rsync -e "ssh -p %s" %s %s %s@%s:%s' % (
@@ -95,8 +97,7 @@ class UploadTask(Task):
 
     @property
     def default_config(self):
-        """Return a string of the default example section for the config file.
-        """
+        """Return a string of default example section for config file."""
         config = "[%s]\n" % self.config_key
         for indent, key, val in [
                 (self.indent, self.ssh_port_key, self.ssh_port_default),

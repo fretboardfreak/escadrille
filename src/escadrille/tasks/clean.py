@@ -36,6 +36,7 @@ class CleanTask(GeneralDirsOpt, OtherDirsOpt, Task):
             self.warnings.append(err)
 
     def __call__(self, *args, **kwargs):
+        """Execute the Clean Task."""
         print('Starting Clean Task.')
         super().__call__(*args, **kwargs)
         if self.general_dirs:
@@ -61,8 +62,7 @@ class CleanTask(GeneralDirsOpt, OtherDirsOpt, Task):
 
     @property
     def default_config(self):
-        """Return a string of the default example section for the config file.
-        """
+        """Return a string of default example section for config file."""
         config = "[%s]\n" % self.config_key
         config += self._get_option_snippet()
         config += '\n'

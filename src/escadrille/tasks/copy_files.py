@@ -22,10 +22,10 @@ from .core import Task
 
 
 class CopyFilesJob(object):
-
     """Data object to represent one Copy Files Job."""
 
     def __init__(self, name, sources, destination):
+        """Set up instance vars for a CopyFilesJob object."""
         self.name = name
         self.sources = sources
         self.destination = destination
@@ -52,10 +52,12 @@ class CopyFilesTask(Task):
     config_key = 'copy_files'
 
     def __init__(self, *args, **kwargs):
+        """Set up defaults for Copy Files Task instances."""
         self.jobs = []
         super().__init__(*args, **kwargs)
 
     def __call__(self, *args, **kwargs):
+        """Execute the Copy Files Task."""
         print('Starting Copy Files Task')
         super().__call__(*args, **kwargs)
         self.dprint('%d copy jobs loaded from config file.' % len(self.jobs))
@@ -123,8 +125,7 @@ class CopyFilesTask(Task):
 
     @property
     def default_config(self):
-        """Return a string of the default example section for the config file.
-        """
+        """Return a string of default example section for config file."""
         config = "[%s]\n" % self.config_key
         comment = ["Add key pairs using the suffixes '_dst' and '_src'.",
                    "The keys with the '_dst' suffix should be a string",

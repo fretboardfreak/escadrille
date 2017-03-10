@@ -31,6 +31,7 @@ class GitLogPagesTask(OutputDirOpt, Task):
     repos_default = {}
 
     def __init__(self, *args, **kwargs):
+        """Set up defaults for Git Log Pages Task instances."""
         self.repos = self.repos_default
         super().__init__(*args, **kwargs)
 
@@ -77,6 +78,7 @@ class GitLogPagesTask(OutputDirOpt, Task):
             fout.write(page)
 
     def __call__(self, *args, **kwargs):
+        """Execute the Git Log Pages Task."""
         print('Starting Git Log Pages Task.')
         super().__call__(*args, **kwargs)
         for repo in self.repos:
@@ -98,8 +100,7 @@ class GitLogPagesTask(OutputDirOpt, Task):
 
     @property
     def default_config(self):
-        """Return a string of the default example section for the config file.
-        """
+        """Return a string of default example section for config file."""
         config = "[%s]\n" % self.config_key
         config += "%s%s: %s\n" % (self.indent, self.output_dir_key,
                                   self.output_dir_default)

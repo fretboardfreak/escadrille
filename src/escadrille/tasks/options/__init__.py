@@ -1,4 +1,4 @@
-"""tasks.options package
+"""tasks.options package.
 
 .. note:
 
