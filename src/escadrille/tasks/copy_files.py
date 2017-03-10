@@ -56,7 +56,7 @@ class CopyFilesTask(Task):
         super().__init__(*args, **kwargs)
 
     def __call__(self, *args, **kwargs):
-        self.vprint('Starting Copy Files Task')
+        print('Starting Copy Files Task')
         super().__call__(*args, **kwargs)
         self.dprint('%d copy jobs loaded from config file.' % len(self.jobs))
         for index, job in enumerate(self.jobs, 1):

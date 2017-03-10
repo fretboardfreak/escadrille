@@ -59,7 +59,7 @@ class PelicanTask(OutputDirOpt, Task):
         super()._load_config()
 
     def __call__(self, *args, **kwargs):
-        self.vprint('Starting Pelican Task.')
+        print('Starting Pelican Task.')
         super().__call__(*args, **kwargs)
         command = "pelican %s -o %s -s %s -t %s %s" % (
             self.input_dir, self.output_dir, self.pelican_config,

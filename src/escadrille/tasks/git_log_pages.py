@@ -77,7 +77,7 @@ class GitLogPagesTask(OutputDirOpt, Task):
             fout.write(page)
 
     def __call__(self, *args, **kwargs):
-        self.vprint('Starting Git Log Pages Task.')
+        print('Starting Git Log Pages Task.')
         super().__call__(*args, **kwargs)
         for repo in self.repos:
             if repo == OutputDirOpt.output_dir_key:

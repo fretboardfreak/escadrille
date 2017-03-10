@@ -32,7 +32,7 @@ class MakeDirsTask(GeneralDirsOpt, OtherDirsOpt, Task):
             os.makedirs(path)
 
     def __call__(self, *args, **kwargs):
-        self.vprint('Starting Make Files Task.')
+        print('Starting Make Files Task.')
         super().__call__(*args, **kwargs)
         if self.general_dirs:
             self.vprint('%sMaking General Dirs' % self.indent)

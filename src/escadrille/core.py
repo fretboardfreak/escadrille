@@ -54,7 +54,7 @@ class InterfaceCore(object):
             return 0
         for task_name in self.config_file.enabled_tasks:
             if task_name in self.skip:
-                vprint('Skipping task "%s".' % task_name)
+                print('Skipping task "%s".' % task_name)
                 continue
             task = self.tasks[task_name](config_file=self.config_file)
             task()
@@ -69,8 +69,8 @@ class InterfaceCore(object):
                 print('Task "%s" succeeded with warnings:\n    %s' %
                       (task_name, '\n    '.join(task.warnings)))
             else:
-                vprint('Task %s succeeded with no errors.' % task_name)
-        vprint('All Tasks Completed. Exiting.')
+                print('Task %s succeeded.' % task_name)
+        print('All Tasks Completed. Exiting.')
         return 0
 
 

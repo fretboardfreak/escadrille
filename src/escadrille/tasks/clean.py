@@ -36,7 +36,7 @@ class CleanTask(GeneralDirsOpt, OtherDirsOpt, Task):
             self.warnings.append(err)
 
     def __call__(self, *args, **kwargs):
-        self.vprint('Starting Clean Task.')
+        print('Starting Clean Task.')
         super().__call__(*args, **kwargs)
         if self.general_dirs:
             dirs = [self.config_file.output_dir, self.config_file.staging_dir,

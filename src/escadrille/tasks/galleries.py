@@ -97,7 +97,7 @@ class GalleriesTask(OutputDirOpt, Task):
             fout.write('\n.. raw:: html\n\n    </div>')
 
     def __call__(self, *args, **kwargs):
-        self.vprint('Starting Galleries Task.')
+        print('Starting Galleries Task.')
         super().__call__(*args, **kwargs)
         tmp = self.galleries
         self.galleries = tmp if tmp.endswith('/') else tmp + '/'

@@ -72,7 +72,7 @@ class UploadTask(Task):
         super()._load_config()
 
     def __call__(self, *args, **kwargs):
-        self.vprint('Starting Upload Task.')
+        print('Starting Upload Task.')
         super().__call__(*args, **kwargs)
         command = 'rsync -e "ssh -p %s" %s %s %s@%s:%s' % (
             self.ssh_port, self.rsync_options, self.source_dir, self.user,
