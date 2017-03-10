@@ -44,5 +44,6 @@ def image_directive(image, width=None, align=None):
         width = '300'
     if align is None:
         align = 'center'
-    return ".. image:: %s\n    :width: %s\n    :align: %s\n" % (
-        image, width, align)
+    return (".. image:: %s\n    :width: %s\n    :align: %s\n"
+            "    :alt: %s\n") % (
+        image, width, align, image)
