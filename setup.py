@@ -117,8 +117,11 @@ class PylintCommand(DevelopmentCommand):
         """Prepare and run the Pylint command."""
         super().run()
         command = ['pylint']
-        if self.pylint_rcfile:
-            command.append('--rcfile=%s' % self.pylint_rcfile)
+        rcfile = self.pylint_rcfile
+        if not rcfile and os.path.exists('pylintrc'):
+            rcfile = 'pylintrc'
+        if rcfile:
+            command.append('--rcfile=%s' % rcfile)
         command.extend(self.test_paths)
         self._run_command(command)
 
