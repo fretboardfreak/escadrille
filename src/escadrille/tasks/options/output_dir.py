@@ -23,8 +23,8 @@ class OutputDirOpt(TaskCore):
 
     def __init__(self, *args, **kwargs):
         """Set up defaults for Output Dir Option."""
-        self.output_dir = self.output_dir_default
         super().__init__(*args, **kwargs)
+        self.output_dir = self.output_dir_default
 
     @property
     def output_dir_default(self):
