@@ -21,6 +21,11 @@ from escadrille.verbosity import dprint
 from escadrille.verbosity import vprint
 
 
+def TaskError(Exception):
+    """General class or error returned by a failed Task."""
+    pass
+
+
 def find_tasks(module, prefix):
     """Return an enum of config file tasks maping names to task callables."""
     dprint('lib.tasks.core: finding tasks in %s (prefix: %s)' %
