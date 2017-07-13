@@ -27,7 +27,7 @@ from .options import OutputDirOpt
 class GitLogPagesTask(OutputDirOpt, Task):
     """Make RST source pages out of Git Repository Logs."""
 
-    config_key = 'git_log_pages'
+    config_name = 'git_log_pages'
     repos_default = {}
 
     def __init__(self, *args, **kwargs):
@@ -39,11 +39,11 @@ class GitLogPagesTask(OutputDirOpt, Task):
         """Load task options from the config file."""
         super()._load_config()
         self.repos = self.repos_default
-        for option in self.config_file.section(self.config_key):
+        for option in self.config_file.section(self.tag):
             if option is OutputDirOpt.output_dir_key:
                 continue
             self.repos[option] = os.path.abspath(os.path.expanduser(
-                self.config_file.get(self.config_key, option)))
+                self.config_file.get(self.tag, option)))
 
     def read_git_log(self, path):
         """Return a string representing git log output.
@@ -94,6 +94,7 @@ class GitLogPagesTask(OutputDirOpt, Task):
     def debug_msg(self):
         """Return some debug outut about the current state of the task."""
         msg = super().debug_msg() + "\n"
+        msg += self.config_snippet_name
         msg += self.config_snippet_output_dir
         msg += str(self.repos) + "\n"
         return msg
@@ -101,7 +102,8 @@ class GitLogPagesTask(OutputDirOpt, Task):
     @property
     def default_config(self):
         """Return a string of default example section for config file."""
-        config = "[%s]\n" % self.config_key
+        config = "[%s_tag]\n" % self.config_name
+        config += self.config_snippet_name
         config += "%s%s: %s\n" % (self.indent, self.output_dir_key,
                                   self.output_dir_default)
         config += "%srepos: %s\n" % (self.indent, '')
