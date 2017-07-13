@@ -22,7 +22,7 @@ from .options import OutputDirOpt
 class PelicanTask(OutputDirOpt, Task):
     """Run pelican using the options in the escadrille configuration file."""
 
-    config_key = 'pelican'
+    config_name = 'pelican'
     output_dir_default = ''
     input_dir_key = 'input_dir'
     input_dir_default = ''
@@ -43,17 +43,17 @@ class PelicanTask(OutputDirOpt, Task):
 
     def _load_config(self):
         """Load task options from the config file."""
-        input_dir = self.config_file.get(self.config_key, self.input_dir_key)
+        input_dir = self.config_file.get(self.tag, self.input_dir_key)
         if input_dir is not None:
             self.input_dir = self.sanitize_path(input_dir)
-        pelican_config = self.config_file.get(self.config_key,
+        pelican_config = self.config_file.get(self.tag,
                                               self.pelican_config_key)
         if pelican_config is not None:
             self.pelican_config = self.sanitize_path(pelican_config)
-        theme_dir = self.config_file.get(self.config_key, self.theme_dir_key)
+        theme_dir = self.config_file.get(self.tag, self.theme_dir_key)
         if theme_dir is not None:
             self.theme_dir = self.sanitize_path(theme_dir)
-        pelican_options = self.config_file.get(self.config_key,
+        pelican_options = self.config_file.get(self.tag,
                                                self.pelican_options_key)
         if pelican_options is not None:
             self.pelican_options = pelican_options
@@ -73,6 +73,7 @@ class PelicanTask(OutputDirOpt, Task):
     def debug_msg(self):
         """Return some debug outut about the current state of the task."""
         msg = super().debug_msg() + "\n"
+        msg += self.config_snippet_name
         msg += self.config_snippet_output_dir
         msg += self.msg_template % (self.indent, self.input_dir_key,
                                     self.input_dir)
@@ -87,7 +88,8 @@ class PelicanTask(OutputDirOpt, Task):
     @property
     def default_config(self):
         """Return a string of default example section for config file."""
-        config = "[%s]\n" % self.config_key
+        config = "[%s_tag]\n" % self.config_name
+        config += self.config_snippet_name
         config += self.config_snippet_output_dir
         config += self.msg_template % (self.indent, self.input_dir_key,
                                        self.input_dir_default)
