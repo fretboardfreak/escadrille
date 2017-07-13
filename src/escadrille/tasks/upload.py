@@ -21,7 +21,7 @@ from .core import Task
 class UploadTask(Task):
     """Use rsync to upload the results to a webserver."""
 
-    config_key = 'upload'
+    config_name = 'upload'
     ssh_port_key = 'ssh_port'
     ssh_port_default = '22'
     source_dir_key = 'source_dir'
@@ -47,26 +47,26 @@ class UploadTask(Task):
 
     def _load_config(self):
         """Load task options from the config file."""
-        ssh_port = self.config_file.get(self.config_key, self.ssh_port_key)
+        ssh_port = self.config_file.get(self.tag, self.ssh_port_key)
         if ssh_port is not None:
             self.ssh_port = ssh_port
-        source_dir = self.config_file.get(self.config_key, self.source_dir_key)
+        source_dir = self.config_file.get(self.tag, self.source_dir_key)
         if source_dir is not None:
             self.source_dir = self.sanitize_path(source_dir)
             if source_dir[-1] == "/":
                 self.source_dir = self.source_dir + "/"
-        user = self.config_file.get(self.config_key, self.user_key)
+        user = self.config_file.get(self.tag, self.user_key)
         if user is not None:
             self.user = user
-        server = self.config_file.get(self.config_key, self.server_key)
+        server = self.config_file.get(self.tag, self.server_key)
         if server is not None:
             self.server = server
-        remote_path = self.config_file.get(self.config_key,
+        remote_path = self.config_file.get(self.tag,
                                            self.remote_path_key)
         if remote_path is not None:
             # note: cannot sanitize remote path
             self.remote_path = remote_path
-        rsync_options = self.config_file.get(self.config_key,
+        rsync_options = self.config_file.get(self.tag,
                                              self.rsync_options_key)
         if rsync_options is not None:
             self.rsync_options = rsync_options
@@ -86,6 +86,7 @@ class UploadTask(Task):
     def debug_msg(self):
         """Return some debug outut about the current state of the task."""
         msg = super().debug_msg() + "\n"
+        msg += self.config_snippet_name
         for indent, key, val in [
                 (self.indent, self.ssh_port_key, self.ssh_port),
                 (self.indent, self.source_dir_key, self.source_dir),
@@ -98,7 +99,8 @@ class UploadTask(Task):
     @property
     def default_config(self):
         """Return a string of default example section for config file."""
-        config = "[%s]\n" % self.config_key
+        config = "[%s_tag]\n" % self.config_name
+        config += self.config_snippet_name
         for indent, key, val in [
                 (self.indent, self.ssh_port_key, self.ssh_port_default),
                 (self.indent, self.source_dir_key, self.source_dir_default),
