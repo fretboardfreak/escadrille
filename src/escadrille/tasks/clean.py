@@ -23,7 +23,7 @@ from .options import OtherDirsOpt
 class CleanTask(GeneralDirsOpt, OtherDirsOpt, Task):
     """Clean out directories as needed."""
 
-    config_key = 'clean'
+    config_name = 'clean'
 
     def _remove(self, path):
         """Remove a path."""
@@ -50,7 +50,8 @@ class CleanTask(GeneralDirsOpt, OtherDirsOpt, Task):
 
     def _get_option_snippet(self):
         """Return a string representing the options for this task."""
-        retval = self.config_snippet_general_dirs
+        retval = self.config_snippet_name
+        retval += self.config_snippet_general_dirs
         retval += self.config_snippet_other_dirs
         return retval
 
@@ -63,7 +64,7 @@ class CleanTask(GeneralDirsOpt, OtherDirsOpt, Task):
     @property
     def default_config(self):
         """Return a string of default example section for config file."""
-        config = "[%s]\n" % self.config_key
+        config = "[%s_tag]\n" % self.config_name
         config += self._get_option_snippet()
         config += '\n'
         return config
