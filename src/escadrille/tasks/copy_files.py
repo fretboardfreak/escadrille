@@ -49,7 +49,7 @@ class CopyFilesTask(Task):
           preclude any other matches but the intended target.
     """
 
-    config_key = 'copy_files'
+    config_name = 'copy_files'
 
     def __init__(self, *args, **kwargs):
         """Set up defaults for Copy Files Task instances."""
@@ -88,8 +88,8 @@ class CopyFilesTask(Task):
         jobs, src_suffix, dest_suffix = {}, '_src', '_dst'
         options = []
         if (self.config_file.parser and
-                self.config_file.has_section(self.config_key)):
-            options = self.config_file.section(self.config_key).keys()
+                self.config_file.has_section(self.tag)):
+            options = self.config_file.section(self.tag).keys()
         for option in options:
             parts = option.split('_')
             if not (option.endswith(src_suffix) or
@@ -105,11 +105,11 @@ class CopyFilesTask(Task):
                 source_opt = option.replace(dest_suffix, src_suffix)
                 dest_opt = option
             sources_string = ' '.join(str(self.config_file.get(
-                self.config_key, source_opt)).split('\n'))
+                self.tag, source_opt)).split('\n'))
             job['sources'] = [
                 pth.strip() for pth in sources_string.split(' ')]
             job['destination'] = self.config_file.get(
-                self.config_key, dest_opt)
+                self.tag, dest_opt)
             jobs[parts[0]] = CopyFilesJob(**job)
         self.jobs = jobs.values()
 
@@ -126,7 +126,8 @@ class CopyFilesTask(Task):
     @property
     def default_config(self):
         """Return a string of default example section for config file."""
-        config = "[%s]\n" % self.config_key
+        config = "[%s_tag]\n" % self.config_name
+        config += self.config_snippet_name
         comment = ["Add key pairs using the suffixes '_dst' and '_src'.",
                    "The keys with the '_dst' suffix should be a string",
                    "path to the destination for the matching source key.",
