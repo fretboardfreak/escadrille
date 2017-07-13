@@ -25,7 +25,7 @@ from .options import OutputDirOpt
 class GalleriesTask(OutputDirOpt, Task):
     """Make RST source pages for sets of images."""
 
-    config_key = 'galleries'
+    config_name = 'galleries'
     galleries_default = ""
     stubs_key = "stubs"
     stubs_default = {}
@@ -41,7 +41,7 @@ class GalleriesTask(OutputDirOpt, Task):
 
     def load_stubs(self):
         """Load a list of stub files from the directory in the config file."""
-        stubs_dir = self.config_file.get(self.config_key, self.stubs_key)
+        stubs_dir = self.config_file.get(self.tag, self.stubs_key)
         if stubs_dir is None:
             self.stubs = self.stubs_default
             self.stubs_dir = self.stubs_dir_default
@@ -57,7 +57,7 @@ class GalleriesTask(OutputDirOpt, Task):
     def _load_config(self):
         """Load task options from the config file."""
         super()._load_config()
-        galleries = self.config_file.get(self.config_key, self.config_key)
+        galleries = self.config_file.get(self.tag, self.config_name)
         if galleries is None:
             self.galleries = self.galleries_default
         else:
@@ -128,7 +128,7 @@ class GalleriesTask(OutputDirOpt, Task):
         """Return some debug outut about the current state of the task."""
         msg = super().debug_msg() + "\n"
         msg += self.config_snippet_output_dir
-        msg += "  %s: %s\n" % (self.config_key, self.galleries)
+        msg += "  %s: %s\n" % (self.config_name, self.galleries)
         msg += "  %s: %s\n" % (self.stubs_key, self.stubs)
         msg += "  stubs_dir: %s\n" % self.stubs_dir
         return msg
@@ -136,9 +136,10 @@ class GalleriesTask(OutputDirOpt, Task):
     @property
     def default_config(self):
         """Return a string of default example section for config file."""
-        config = "[%s]\n" % self.config_key
+        config = "[%s_tag]\n" % self.config_name
+        config += self.config_snippet_name
         config += self.config_snippet_output_dir
-        config += "  %s: %s\n" % (self.config_key, self.galleries_default)
+        config += "  %s: %s\n" % (self.config_name, self.galleries_default)
         config += "  %s: %s\n" % (self.stubs_key, '')
         config += "  stubs_dir: %s\n" % self.stubs_dir_default
         return config
