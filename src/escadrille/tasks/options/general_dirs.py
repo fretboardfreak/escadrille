@@ -30,7 +30,7 @@ class GeneralDirsOpt(TaskCore):
     def _load_config(self):
         """Load the general_dirs boolean from the config file."""
         general_dirs = self.config_file.getboolean(
-            self.config_key, self.general_dirs_key)
+            self.tag, self.general_dirs_key)
         if general_dirs is None:
             self.general_dirs = self.general_dirs_default
         else:

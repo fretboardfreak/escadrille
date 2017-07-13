@@ -33,7 +33,7 @@ class OutputDirOpt(TaskCore):
 
     def _load_config(self):
         """Load the output dir path option from the config file."""
-        output_dir = self.config_file.get(self.config_key, self.output_dir_key)
+        output_dir = self.config_file.get(self.tag, self.output_dir_key)
         if output_dir is None:
             self.output_dir = self.output_dir_default
         else:

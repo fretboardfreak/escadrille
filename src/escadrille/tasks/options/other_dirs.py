@@ -30,7 +30,7 @@ class OtherDirsOpt(TaskCore):
     def _load_config(self):
         """Load the other_dirs list from the config file."""
         other_dirs_val = self.config_file.get(
-            self.config_key, self.other_dirs_key)
+            self.tag, self.other_dirs_key)
         if other_dirs_val is None:
             self.other_dirs = self.other_dirs_default
         else:
