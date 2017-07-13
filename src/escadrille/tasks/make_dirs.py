@@ -23,7 +23,7 @@ from .options import GeneralDirsOpt
 class MakeDirsTask(GeneralDirsOpt, OtherDirsOpt, Task):
     """Create any directories that may be needed by the escadrille run."""
 
-    config_key = 'make_dirs'
+    config_name = 'make_dirs'
 
     def _make_dir(self, path):
         """Make a directory."""
@@ -48,7 +48,8 @@ class MakeDirsTask(GeneralDirsOpt, OtherDirsOpt, Task):
 
     def _get_option_snippet(self):
         """Return a string representing the options for this task."""
-        retval = self.config_snippet_general_dirs
+        retval = self.config_snippet_name
+        retval += self.config_snippet_general_dirs
         retval += self.config_snippet_other_dirs
         return retval
 
@@ -61,7 +62,7 @@ class MakeDirsTask(GeneralDirsOpt, OtherDirsOpt, Task):
     @property
     def default_config(self):
         """Return a string of default example section for config file."""
-        config = "[%s]\n" % self.config_key
+        config = "[%s_tag]\n" % self.config_name
         config += self._get_option_snippet()
         config += '\n'
         return config
