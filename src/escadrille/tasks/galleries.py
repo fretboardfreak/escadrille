@@ -112,7 +112,7 @@ class GalleriesTask(OutputDirOpt, Task):
             media_prefix = './images'  # TODO: add to config file
             fnames.sort()
             media = [os.path.join(media_prefix, relative_path, fname)
-                     for fname in fnames]
+                     for fname in fnames if not fname.startswith('.')]
             if len(media) == 0:
                 self.vprint('Skipping %s, no images.' % name)
                 continue
