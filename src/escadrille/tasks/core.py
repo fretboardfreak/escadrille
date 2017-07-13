@@ -22,7 +22,7 @@ from escadrille.verbosity import vprint
 
 
 def find_tasks(module, prefix):
-    """Return an enum of config file tasks maping names to task callables."""
+    """Return an enum of config file tasks mapping names to task callables."""
     dprint('lib.tasks.core: finding tasks in %s (prefix: %s)' %
            (module, prefix))
     task_map = {}
@@ -32,22 +32,23 @@ def find_tasks(module, prefix):
         module = importer.find_module(modname).load_module(modname)
         for _, cls in inspect.getmembers(module, inspect.isclass):
             if issubclass(cls, Task) and cls != Task:
-                task_map[cls.config_key] = cls
+                task_map[cls.config_name] = cls
     return task_map
 
 
 class TaskCore(object):
     """An internal class to be shared by option mixins and Task objects."""
 
-    config_key = 'noop'
+    config_name = 'noop'
 
     # constant for easy output formatting
     indent = '  '
     msg_template = '%s%s: %s\n'
 
-    def __init__(self, config_file=None):
+    def __init__(self, config_file=None, tag=None):
         """Set up instance variables for an escadrille task object."""
         self.config_file = config_file
+        self.tag = tag
         self.warnings, self.errors, self.status = None, None, None
         self._clear_status()
         self.loaded = False
@@ -55,7 +56,7 @@ class TaskCore(object):
     def load_config(self):
         """A method to be subclassed to load info from the config file."""
         if not self.loaded:
-            self.dprint('Loading the config for %s.' % self.config_key)
+            self.dprint('Loading the config for %s.' % self.tag)
             self._load_config()
         self.loaded = True
 
@@ -86,12 +87,17 @@ class TaskCore(object):
         """Take a string and run it through some sanitization methods."""
         return os.path.abspath(os.path.expanduser(path))
 
+    @property
+    def config_snippet_name(self):
+        """Create a config string for the name of the current task."""
+        return "%stask=%s\n" % (self.indent, self.config_name)
+
 
 class Task(TaskCore):
     """Base Task object for Escadrille.
 
-    The config_key attribute is used to reference the tasks from the config
-    file.
+    The config_name attribute is used to reference the task class from the
+    config file.
 
     The __init__ and __call__ methods should be implemented by the subclasses.
 

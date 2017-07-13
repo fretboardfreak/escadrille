@@ -165,3 +165,8 @@ class ConfigFile(object):
                                GeneralOpts.date_format.name)
         default = GeneralOpts.date_format.value
         return date_format if date_format is not None else default
+
+    def get_task_name(self, tag):
+        """Retrieve the task name from the section with the given tag."""
+        name_key = "task"
+        return self.get(tag, name_key)

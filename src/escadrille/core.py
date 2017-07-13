@@ -49,28 +49,30 @@ class InterfaceCore(object):
         if self.tasks is None:
             self.tasks = load_tasks()
         if self.list_tasks is not None and self.list_tasks:
-            for index, task_name in enumerate(
+            for index, task_tag in enumerate(
                     self.config_file.enabled_tasks, 1):
-                print('%2d: %s' % (index, task_name))
+                print('%2d: %s' % (index, task_tag))
             return 0
-        for task_name in self.config_file.enabled_tasks:
-            if task_name in self.skip:
-                print('Skipping task "%s".' % task_name)
+        for task_tag in self.config_file.enabled_tasks:
+            if task_tag in self.skip:
+                print('Skipping task "%s".' % task_tag)
                 continue
-            task = self.tasks[task_name](config_file=self.config_file)
+            task_name = self.config_file.get_task_name(task_tag)
+            task = self.tasks[task_name](config_file=self.config_file,
+                                         tag=task_tag)
             task()
             if task.status is not None and task.status != 0:
                 print('Task "%s" did not succeed: errno %s\n  Warnings:\n'
                       '    %s\n  Errors:\n    %s' %
-                      (task_name, task.status,
+                      (task.tag, task.status,
                        '\n    '.join(task.warnings),
                        '\n    '.join(task.errors)))
                 return task.status
             elif task.warnings:
                 print('Task "%s" succeeded with warnings:\n    %s' %
-                      (task_name, '\n    '.join(task.warnings)))
+                      (task_tag, '\n    '.join(task.warnings)))
             else:
-                print('Task %s succeeded.' % task_name)
+                print('Task %s succeeded.' % task.tag)
         print('All Tasks Completed. Exiting.')
         return 0
 
