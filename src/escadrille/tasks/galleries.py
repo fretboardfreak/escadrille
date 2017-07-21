@@ -129,7 +129,7 @@ class GalleriesTask(OutputDirOpt, Task):
             if relative_path == "":
                 continue
             name = relative_path.replace('/', '-')
-            media_prefix = './images'  # TODO: add to config file
+            media_prefix = '../images'  # TODO: add to config file
             thumbs = False
             if "thumbs" in dirnames:
                 thumbs = True
