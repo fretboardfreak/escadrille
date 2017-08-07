@@ -1,0 +1,17 @@
+FROM fedora:26 as escadrille
+ARG user
+ARG uid
+ARG gid
+LABEL maintainer=curtissand@gmail.com
+
+RUN dnf upgrade -y
+RUN dnf install -y git
+
+RUN useradd --uid $uid --gid $gid $user --password $user
+RUN chown -R $uid:$gid /opt
+
+USER $user:$gid
+RUN /usr/bin/python3 -m venv /opt/escadrille_env
+RUN /opt/escadrille_env/bin/pip install git+https://git@github.com/fretboardfreak/escadrille.git
+
+WORKDIR /home/$user
