@@ -14,5 +14,6 @@ RUN chown -R $uid:$gid /opt
 USER $user:$gid
 RUN /usr/bin/python3 -m venv /opt/escadrille_env
 RUN /opt/escadrille_env/bin/pip install git+https://git@github.com/fretboardfreak/escadrille.git
+RUN echo "export PATH=\"\$PATH:/opt/escadrille_env/bin\"" >> /home/$user/.bashrc
 
 WORKDIR /home/$user
