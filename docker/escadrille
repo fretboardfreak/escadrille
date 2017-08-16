@@ -1,4 +1,4 @@
-FROM fedora:26 as escadrille
+FROM fedora:26
 ARG user
 ARG uid
 ARG gid
@@ -7,6 +7,7 @@ LABEL maintainer=curtissand@gmail.com
 RUN dnf upgrade -y
 RUN dnf install -y git
 
+RUN grep ":$gid:" /etc/group || groupadd $user -g $gid
 RUN useradd --uid $uid --gid $gid $user --password $user
 RUN chown -R $uid:$gid /opt
 
