@@ -33,7 +33,14 @@ def build_docker(args):
           'and user "%s" (uid=%s, gid=%s)' %
           (args.tag, args.user, args.uid, args.gid))
     vprint('Executing command: %s' % command)
-    subprocess.check_call(command, shell=True)
+    if args.dry_run:
+        if VERBOSE:
+            msg = "Docker Command:\n    " + command
+        else:
+            msg = command
+        print(msg)
+    else:
+        subprocess.check_call(command, shell=True)
 
 
 def generate_arg_defaults():
@@ -59,6 +66,8 @@ def parse_cmd_line(user=None, uid=None, gid=None, tag=None, dockerfile=None):
         '--version', help='Print the version and exit.', action='version',
         version='%(prog)s {}'.format(VERSION))
     VerboseAction.add_parser_argument(parser)
+    parser.add_argument('--dry-run', dest="dry_run", action="store_true", default=False,
+                        help="Print docker commands instead of executing.")
     parser.add_argument('-u', '--user',
                         help=("Create a user with this name "
                               "in the docker image. (default: %s)" % user),
