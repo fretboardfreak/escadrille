@@ -12,10 +12,12 @@ LABEL maintainer=curtissand@gmail.com
 
 # Update all packages to get the latest and greatest.
 RUN dnf upgrade -y
-RUN dnf install -y git
 
 # Install dependencies
 RUN dnf install -y git passwd
+
+# Set root passwd inside container so user has access to it.
+RUN echo $user | passwd --stdin root
 
 # Create the requested user group with the given GID
 RUN grep ":$gid:" /etc/group || groupadd $user -g $gid
