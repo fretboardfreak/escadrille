@@ -4,16 +4,37 @@ ARG uid
 ARG gid
 LABEL maintainer=curtissand@gmail.com
 
+# Note: default passwd for both user and root accounts is the username.
+#       Not ideal, I realize, so feel free to edit those portions of the
+#       dockerfile. A better way might be to pre-salt your password and edit
+#       the /etc/passwd directly by copying the salt in via COPY and then
+#       RUN-ing some bash commands to edit the "/etc/passwd" file as necessary.
+
+# Update all packages to get the latest and greatest.
 RUN dnf upgrade -y
 RUN dnf install -y git
 
+# Install dependencies
+RUN dnf install -y git passwd
+
+# Create the requested user group with the given GID
 RUN grep ":$gid:" /etc/group || groupadd $user -g $gid
+
+# Add the requested user, setting passwd to the default here again.
 RUN useradd --uid $uid --gid $gid $user --password $user
+
+# Give ownership over certain directories to the user
 RUN chown -R $uid:$gid /opt
 
 USER $user:$gid
+
+# create a virtual environment for a clean install of escadrille
 RUN /usr/bin/python3 -m venv /opt/escadrille_env
+
+# install escadrille
 RUN /opt/escadrille_env/bin/pip install git+https://git@github.com/fretboardfreak/escadrille.git
+
+# add escadrille to the user's PATH for ease of use.
 RUN echo "export PATH=\"\$PATH:/opt/escadrille_env/bin\"" >> /home/$user/.bashrc
 
 WORKDIR /home/$user
