@@ -12,7 +12,7 @@ LABEL maintainer=curtissand@gmail.com
 
 # Update packages and install dependencies
 RUN dnf upgrade -y && \
-    dnf install -y git passwd sshd
+    dnf install -y git passwd
 
 # Set root passwd inside container so user has access to it.
 RUN echo $user | passwd --stdin root
@@ -33,3 +33,9 @@ RUN echo "export PATH=\"\$PATH:/opt/escadrille_env/bin\"" >> /home/$user/.bashrc
 
 # Give ownership over certain directories to the user
 RUN chown -R $uid:$gid /opt
+
+USER $user:$gid
+
+WORKDIR /home/$user
+ENTRYPOINT ["/opt/escadrille_env/bin/escadrille"]
+CMD ["--help"]
