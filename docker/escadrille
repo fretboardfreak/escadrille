@@ -10,25 +10,17 @@ LABEL maintainer=curtissand@gmail.com
 #       the /etc/passwd directly by copying the salt in via COPY and then
 #       RUN-ing some bash commands to edit the "/etc/passwd" file as necessary.
 
-# Update all packages to get the latest and greatest.
-RUN dnf upgrade -y
-
-# Install dependencies
-RUN dnf install -y git passwd
+# Update packages and install dependencies
+RUN dnf upgrade -y && \
+    dnf install -y git passwd sshd
 
 # Set root passwd inside container so user has access to it.
 RUN echo $user | passwd --stdin root
 
-# Create the requested user group with the given GID
-RUN grep ":$gid:" /etc/group || groupadd $user -g $gid
-
-# Add the requested user, setting passwd to the default here again.
-RUN useradd --uid $uid --gid $gid $user --password $user
-
-# Give ownership over certain directories to the user
-RUN chown -R $uid:$gid /opt
-
-USER $user:$gid
+# Create the requested user group with the given GID and add the requested
+# user, setting passwd to the default here again.
+RUN (grep ":$gid:" /etc/group || groupadd $user -g $gid) && \
+    useradd --uid $uid --gid $gid $user --password $user
 
 # create a virtual environment for a clean install of escadrille
 RUN /usr/bin/python3 -m venv /opt/escadrille_env
@@ -39,4 +31,5 @@ RUN /opt/escadrille_env/bin/pip install git+https://git@github.com/fretboardfrea
 # add escadrille to the user's PATH for ease of use.
 RUN echo "export PATH=\"\$PATH:/opt/escadrille_env/bin\"" >> /home/$user/.bashrc
 
-WORKDIR /home/$user
+# Give ownership over certain directories to the user
+RUN chown -R $uid:$gid /opt
