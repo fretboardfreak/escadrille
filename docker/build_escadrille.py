@@ -25,10 +25,14 @@ def build_docker(args):
     command = ""
     if os.getuid() != 0:
         command += "sudo "
+    if args.tag.find(':') > 0:
+        tag = args.tag
+    else:
+        tag = 'escadrille:%s' % args.tag
     command += ("docker build --rm -f %s --build-arg user=%s "
                 "--build-arg uid=%s --build-arg gid=%s "
-                "--tag escadrille:%s ." % (
-                    args.dockerfile, args.user, args.uid, args.gid, args.tag))
+                "--tag %s ." % (
+                    args.dockerfile, args.user, args.uid, args.gid, tag))
     print('Creating Escadrille docker image using tag, "escadrille:%s", '
           'and user "%s" (uid=%s, gid=%s)' %
           (args.tag, args.user, args.uid, args.gid))
@@ -48,7 +52,7 @@ def generate_arg_defaults():
     return {'user': os.getlogin(),
             'uid': os.getuid(),
             'gid': os.getgid(),
-            'tag': strftime('%y%m%d%H%M'),
+            'tag': 'latest',
             'dockerfile': './docker/escadrille'}
 
 
