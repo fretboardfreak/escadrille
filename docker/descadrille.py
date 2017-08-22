@@ -21,7 +21,9 @@ def main():
 def generate_arg_defaults():
     """Return a dict of programmatically determined argument defaults."""
     return {'image': 'escadrille:latest',
-            'command': '',
+            'command': (
+                '/bin/bash -c "source /opt/escadrille_env/bin/activate; '
+                'escadrille --help"'),
             'mount': [],
             'run_opts': ['--rm', '--interactive', '--tty']}
 
