@@ -30,6 +30,8 @@ RUN /opt/escadrille_env/bin/pip install git+https://git@github.com/fretboardfrea
 
 # add escadrille to the user's PATH for ease of use.
 RUN echo "export PATH=\"\$PATH:/opt/escadrille_env/bin\"" >> /home/$user/.bashrc
+RUN echo "export PATH=\"\$PATH:/opt/escadrille_env/bin\"" >> /root/.bashrc
+
 
 # Give ownership over certain directories to the user
 RUN chown -R $uid:$gid /opt
@@ -37,5 +39,4 @@ RUN chown -R $uid:$gid /opt
 USER $user:$gid
 
 WORKDIR /home/$user
-ENTRYPOINT ["/opt/escadrille_env/bin/escadrille"]
-CMD ["--help"]
+CMD ["escadrille"]
