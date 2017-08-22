@@ -25,10 +25,12 @@ def generate_arg_defaults():
                 '/bin/bash -c "source /opt/escadrille_env/bin/activate; '
                 'escadrille --help"'),
             'mount': [],
-            'run_opts': ['--rm', '--interactive', '--tty']}
+            'run_opts': ['--rm', '--interactive', '--tty'],
+            'bash': False}
 
 
-def parse_cmd_line(image=None, command=None, mount=None, run_opts=None):
+def parse_cmd_line(image=None, command=None, mount=None, run_opts=None,
+                   bash=None):
     """Parse the command line options."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -52,16 +54,22 @@ def parse_cmd_line(image=None, command=None, mount=None, run_opts=None):
         '-r', '--run_opts', dest='run_opts', action='append', default=run_opts,
         help=("Pass other docker options to the run command. default=%s" %
               run_opts))
+    parser.add_argument(
+        '--bash', action='store_true', default=bash,
+        help="Override '--command' and run Bash instead. default=[%s]" % bash)
     return parser.parse_args()
 
 
 def run_escadrille_docker(args):
     """Build a docker command and execute the docker image."""
+    command_arg = args.command
+    if args.bash:
+        command_arg = '/bin/bash'
     command = (add_sudo() +
                "docker run {} {} {} {}".format(
                    ' '.join(args.run_opts), format_mounts(args.mounts),
-                   image_name(args.image), args.command))
-    execute_docker(command, dry_run=args.dry_run)
+                   image_name(args.image), command_arg))
+    execute(command, dry_run=args.dry_run)
 
 
 def add_sudo():
@@ -86,8 +94,8 @@ def image_name(image):
         return "escadrille:" + image.strip()
 
 
-def execute_docker(command, dry_run=False):
-    """Execute the docker command obeying the dry_run flag."""
+def execute(command, dry_run=False):
+    """Execute the command obeying the dry_run flag."""
     if dry_run:
         print("dry_run: " + command)
     else:
