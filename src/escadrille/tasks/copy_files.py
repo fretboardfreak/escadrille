@@ -79,7 +79,8 @@ class CopyFilesTask(Task):
                                                    source_dir))
                 subprocess.check_call(
                     ' '.join(['rsync', '-Pa', '--ignore-existing',
-                              *source_paths, destination]), shell=True)
+                              '--cvs-exclude', *source_paths, destination]),
+                    shell=True)
         self._set_status()
 
     def _load_config(self):
