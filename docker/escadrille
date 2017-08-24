@@ -12,7 +12,7 @@ LABEL maintainer=curtissand@gmail.com
 
 # Update packages and install dependencies
 RUN dnf upgrade -y && \
-    dnf install -y git passwd
+    dnf install -y git passwd rsync
 
 # Set root passwd inside container so user has access to it.
 RUN echo $user | passwd --stdin root
