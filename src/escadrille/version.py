@@ -13,4 +13,4 @@
 # limitations under the License.
 """The escadrille version string."""
 
-VERSION = "0.1"
+VERSION = "0.2"
