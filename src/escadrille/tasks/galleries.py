@@ -138,7 +138,8 @@ class GalleriesTask(OutputDirOpt, Task):
                 fnames.remove(cwd)
             fnames.sort()
             path = os.path.join(media_prefix, relative_path)
-            if len(fnames) == 0:
+            image_count = len(fnames)
+            if image_count == 0:
                 self.vprint('Skipping %s, no images.' % name)
                 continue
             self.vprint('Creating gallery: %s.%s - %s images' %
