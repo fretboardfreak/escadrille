@@ -15,6 +15,7 @@
 import os
 import subprocess
 import distutils.log
+import unittest
 from distutils.cmd import Command
 from setuptools import setup
 from setuptools import find_packages
@@ -55,6 +56,7 @@ class SetupCommand(Command):
         # if self.distribution.install_requires:
         #     self.distribution.fetch_build_eggs(
         #         self.distribution.install_requires)
+        pass
 
     def _run_command(self, command):
         """Execute the command."""
@@ -86,13 +88,7 @@ class SetupCommand(Command):
 
 class DevelopmentCommand(SetupCommand):
     """Base command for project development and testing."""
-
-    def run(self):
-        """Run the custom dev/test commands."""
-        super().run()
-        # if self.distribution.tests_require:
-        #     self.distribution.fetch_build_eggs(
-        #         self.distribution.tests_require)
+    pass
 
 
 class PylintCommand(DevelopmentCommand):
@@ -102,6 +98,11 @@ class PylintCommand(DevelopmentCommand):
     user_options = [
         ('pylint-rcfile=', None, 'path to Pylint config file.')
     ]
+
+    def __init__(self, *args, **kwargs):
+        """Initialize the class."""
+        super().__init__(*args, **kwargs)
+        self.pylint_rcfile = ""
 
     def initialize_options(self):
         """Set defaults for options."""
@@ -122,7 +123,8 @@ class PylintCommand(DevelopmentCommand):
             rcfile = 'pylintrc'
         if rcfile:
             command.append('--rcfile=%s' % rcfile)
-        command.extend(self.test_paths)
+        command.extend([test_path for test_path in self.test_paths
+                        if test_path != __file__])
         self._run_command(command)
 
 
@@ -150,6 +152,25 @@ class Pep257Command(DevelopmentCommand):
         super().run()
         self._run_command(['pep257', '--count', '--verbose'] +
                           self.test_paths)
+
+
+class UnitTestCommand(DevelopmentCommand):
+    """A custom command for running unit tests."""
+
+    description = "Run the escadrille unittests."
+    user_options = []
+
+    def run(self):
+        """Run the unittests."""
+        super().run()
+        # load test suite
+        test_loader = unittest.defaultTestLoader
+        setup_dir, _ = os.path.split(__file__)
+        test_suite = test_loader.discover(os.path.join(setup_dir, 'src/tests'))
+
+        # run the tests
+        test_runner = unittest.TextTestRunner(verbosity=3)
+        test_runner.run(test_suite)
 
 
 class DevInstallCommand(SetupCommand):
@@ -194,6 +215,8 @@ class Test(test):
         self._interactive_pause()
         self.run_command('pylint')
         self._interactive_pause()
+        self.run_command('unittest')
+        self._interactive_pause()
 
 
 setup(
@@ -214,7 +237,7 @@ setup(
     install_requires=install_requires(),
     zip_safe=True,
     include_package_data=True,
-    # test_suite='escadrille.tests',
+    test_suite='escadrille.tests',
     tests_require=tests_require(),
     keywords='escadrille net html site website generator rst',
     classifiers=[
@@ -240,7 +263,7 @@ setup(
     cmdclass={
         'pylint': PylintCommand,
         'pep8': Pep8Command,
-        # 'unittest': test,
+        'unittest': UnitTestCommand,
         'pep257': Pep257Command,
         'test': Test,
         'dev': DevInstallCommand})
