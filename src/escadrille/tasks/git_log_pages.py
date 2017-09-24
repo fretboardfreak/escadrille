@@ -40,7 +40,8 @@ class GitLogPagesTask(OutputDirOpt, Task):
         super()._load_config()
         self.repos = self.repos_default
         for option in self.config_file.section(self.tag):
-            if option is OutputDirOpt.output_dir_key:
+            self.dprint('Loading option %s' % option)
+            if option in [OutputDirOpt.output_dir_key, 'task']:
                 continue
             self.repos[option] = os.path.abspath(os.path.expanduser(
                 self.config_file.get(self.tag, option)))
