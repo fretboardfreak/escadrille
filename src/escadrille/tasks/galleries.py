@@ -154,9 +154,10 @@ class GalleriesTask(OutputDirOpt, Task):
         """Return some debug outut about the current state of the task."""
         msg = super().debug_msg() + "\n"
         msg += self.config_snippet_output_dir
-        msg += "  %s: %s\n" % (self.config_name, self.galleries)
-        msg += "  %s: %s\n" % (self.stubs_key, self.stubs)
-        msg += "  stubs_dir: %s\n" % self.stubs_dir
+        msg += self.msg_template % (self.indent, self.config_name,
+                                    self.galleries)
+        msg += self.msg_template % (self.indent, self.stubs_key, self.stubs)
+        msg += "%sstubs_dir: %s\n" % (self.indent, self.stubs_dir)
         return msg
 
     @property
@@ -165,7 +166,8 @@ class GalleriesTask(OutputDirOpt, Task):
         config = "[%s_tag]\n" % self.config_name
         config += self.config_snippet_name
         config += self.config_snippet_output_dir
-        config += "  %s: %s\n" % (self.config_name, self.galleries_default)
-        config += "  %s: %s\n" % (self.stubs_key, '')
-        config += "  stubs_dir: %s\n" % self.stubs_dir_default
+        config += self.msg_template % (self.indent, self.config_name,
+                                       self.galleries_default)
+        config += self.msg_template % (self.indent, self.stubs_key,
+                                       self.stubs_dir_default)
         return config
