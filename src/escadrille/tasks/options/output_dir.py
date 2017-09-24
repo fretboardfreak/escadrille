@@ -43,5 +43,5 @@ class OutputDirOpt(TaskCore):
     @property
     def config_snippet_output_dir(self):
         """Return a string representing the output_dir config option."""
-        return ("%s%s: %s\n" % (self.indent, self.output_dir_key,
-                                self.output_dir))
+        return (self.msg_template % (self.indent, self.output_dir_key,
+                                     self.output_dir))

@@ -40,5 +40,5 @@ class GeneralDirsOpt(TaskCore):
     @property
     def config_snippet_general_dirs(self):
         """Return a string representing the general_dirs config option."""
-        return ("%s%s: %s\n" % (self.indent, self.general_dirs_key,
-                                self.general_dirs))
+        return self.msg_template % (self.indent, self.general_dirs_key,
+                                    self.general_dirs)

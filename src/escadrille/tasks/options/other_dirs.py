@@ -42,6 +42,6 @@ class OtherDirsOpt(TaskCore):
     @property
     def config_snippet_other_dirs(self):
         """Return a string representing the other_dirs config option."""
-        return ("%s%s: %s\n" % (
+        return (self.msg_template % (
             self.indent, self.other_dirs_key,
             self.config_file.list_sep.join(self.other_dirs)))
