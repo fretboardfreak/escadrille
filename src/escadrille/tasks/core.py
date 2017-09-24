@@ -43,7 +43,7 @@ class TaskCore(object):
 
     # constant for easy output formatting
     indent = '  '
-    msg_template = '%s%s: %s\n'
+    msg_template = '%s%s=%s\n'
 
     def __init__(self, config_file=None, tag=None):
         """Set up instance variables for an escadrille task object."""
