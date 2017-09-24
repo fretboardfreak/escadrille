@@ -104,7 +104,8 @@ class GitLogPagesTask(OutputDirOpt, Task):
         """Return a string of default example section for config file."""
         config = "[%s_tag]\n" % self.config_name
         config += self.config_snippet_name
-        config += "%s%s: %s\n" % (self.indent, self.output_dir_key,
-                                  self.output_dir_default)
-        config += "%srepos: %s\n" % (self.indent, '')
+        config += self.msg_template % (self.indent, self.output_dir_key,
+                                       self.output_dir_default)
+        comment = ['Add key pairs for each repository (repo_name=repo_path)']
+        config += '; %s\n\n' % '\n; '.join(comment)
         return config
