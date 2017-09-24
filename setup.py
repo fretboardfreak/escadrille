@@ -88,6 +88,7 @@ class SetupCommand(Command):
 
 class DevelopmentCommand(SetupCommand):
     """Base command for project development and testing."""
+
     pass
 
 
