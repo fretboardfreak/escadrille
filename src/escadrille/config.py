@@ -42,6 +42,8 @@ class ConfigFile(object):
 
     default_path = os.path.abspath('./escadrille.cfg')
     list_sep = ' '
+    indent = '  '
+    msg_template = '%s%s=%s\n'
 
     def __init__(self, filename=None):
         """Setup instance vars for ConfigFile objects."""
@@ -82,10 +84,12 @@ class ConfigFile(object):
             default = "[%s]\n" % section.name
             for option in section.value:
                 if isinstance(option.value, list):
-                    default += "  %s: %s\n" % (
-                        option.name, self.list_sep.join(option.value))
+                    default += self.msg_template % (
+                        self.indent, option.name,
+                        self.list_sep.join(option.value))
                 else:
-                    default += "  %s: %s\n" % (option.name, option.value)
+                    default += self.msg_template % (self.indent, option.name,
+                                                    option.value)
             default += "\n"
         return default
 
