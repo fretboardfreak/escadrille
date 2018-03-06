@@ -53,14 +53,19 @@ class InterfaceCore(object):
                     self.config_file.enabled_tasks, 1):
                 print('%2d: %s' % (index, task_tag))
             return 0
+        # container for tasks to pass intermediary data to each other
+        shared_state = {}
         for task_tag in self.config_file.enabled_tasks:
             if task_tag in self.skip:
                 print('Skipping task "%s".' % task_tag)
                 continue
             task_name = self.config_file.get_task_name(task_tag)
             task = self.tasks[task_name](config_file=self.config_file,
-                                         tag=task_tag)
-            task()
+                                         tag=task_tag,
+                                         shared_state=shared_state.copy())
+            new_state = task()
+            if new_state is not None and new_state != shared_state:
+                shared_state = new_state
             if task.status is not None and task.status != 0:
                 print('Task "%s" did not succeed: errno %s\n  Warnings:\n'
                       '    %s\n  Errors:\n    %s' %

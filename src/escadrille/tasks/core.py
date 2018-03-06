@@ -33,6 +33,7 @@ def find_tasks(module, prefix):
         for _, cls in inspect.getmembers(module, inspect.isclass):
             if issubclass(cls, Task) and cls != Task:
                 task_map[cls.config_name] = cls
+    dprint('task_map: %s' % task_map)
     return task_map
 
 
@@ -45,10 +46,11 @@ class TaskCore(object):
     indent = '  '
     msg_template = '%s%s=%s\n'
 
-    def __init__(self, config_file=None, tag=None):
+    def __init__(self, config_file=None, tag=None, shared_state=None):
         """Set up instance variables for an escadrille task object."""
         self.config_file = config_file
         self.tag = tag
+        self.shared_state = shared_state
         self.warnings, self.errors, self.status = None, None, None
         self._clear_status()
         self.loaded = False
