@@ -85,8 +85,10 @@ class GitLogPagesTask(OutputDirOpt, Task):
         for repo in self.repos:
             if repo == OutputDirOpt.output_dir_key:
                 continue
-            output_filename = os.path.join(self.output_dir, "%s.rst" % repo)
-            title = repo.title()
+            # TODO: add filename suffix to config file
+            output_filename = os.path.join(self.output_dir, "%s_log.rst" %
+                                           repo)
+            title = "%s log" % repo.title()
             self.vprint('Writing Log File %s: %s' % (title, output_filename))
             page = self.construct_log_page(self.repos[repo], title)
             self.write_log_page(page, output_filename)
