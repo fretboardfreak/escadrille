@@ -70,7 +70,8 @@ def parse_cmd_line(user=None, uid=None, gid=None, tag=None, dockerfile=None):
         '--version', help='Print the version and exit.', action='version',
         version='%(prog)s {}'.format(VERSION))
     VerboseAction.add_parser_argument(parser)
-    parser.add_argument('--dry-run', dest="dry_run", action="store_true", default=False,
+    parser.add_argument('--dry-run', dest="dry_run", action="store_true",
+                        default=False,
                         help="Print docker commands instead of executing.")
     parser.add_argument('-u', '--user',
                         help=("Create a user with this name "
@@ -86,7 +87,9 @@ def parse_cmd_line(user=None, uid=None, gid=None, tag=None, dockerfile=None):
                         default=gid)
     parser.add_argument('-t', '--tag',
                         help=("Create the docker image using this "
-                              "version tag. (default: %s)" % tag),
+                              "version tag. Note: 'escadrille' is the default "
+                              "image name unless specified by prefixing the "
+                              "tag with 'imagename:tag'. (default: %s)" % tag),
                         default=tag)
     parser.add_argument('-d', '--dockerfile',
                         help=("The path to the escadrille dockerfile "
