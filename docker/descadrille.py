@@ -49,7 +49,10 @@ def parse_cmd_line(image=None, command=None, mount=None, run_opts=None,
               "default=['%s']" % command))
     parser.add_argument(
         '-m', '--mount', dest='mounts', action='append', default=mount,
-        help="Pass '--mount' arguments to docker run. default=%s" % mount)
+        help=("Pass '--mount' arguments to docker run. The format can "
+              "follow the docker mount style or be specified using "
+              "'source:dest'. If the latter is used the docker mount "
+              "type will be 'bind'. default=%s" % mount))
     parser.add_argument(
         '-r', '--run_opts', dest='run_opts', action='append', default=run_opts,
         help=("Pass other docker options to the run command. default=%s" %
@@ -82,8 +85,16 @@ def add_sudo():
 
 def format_mounts(mount_opts):
     """Format the mount volumes for the docker run command."""
+    sane_opts = []
+    for opt in mount_opts:
+        if opt.find(':') > 0:
+            stub = "type=bind,source={src},destination={dest}"
+            src, dest = opt.split(':')
+            sane_opts.append(stub.format(src=src, dest=dest))
+        else:
+            sane_opts.append(opt)
     return ' '.join([i + j for i, j in
-                     zip(['--mount '] * len(mount_opts), mount_opts)])
+                     zip(['--mount '] * len(sane_opts), sane_opts)])
 
 
 def image_name(image):
