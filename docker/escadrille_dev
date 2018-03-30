@@ -1,0 +1,45 @@
+FROM escadrille_fedora
+ARG user
+ARG uid
+ARG gid
+LABEL maintainer=curtissand@gmail.com
+
+# create a virtual environment for a clean install of escadrille
+RUN /usr/bin/python3 -m venv /opt/escadrille_env
+
+# build directory structure for repository, and copy over files
+RUN mkdir /opt/escadrille \
+          /opt/escadrille/docker \
+          /opt/escadrille/docs \
+          /opt/escadrille/src \
+          /opt/escadrille/theme
+COPY README.rst \
+     CHANGES.rst \
+     dev_requirements.txt \
+     LICENSE.rst \
+     MANIFEST.in \
+     pylintrc \
+     requirements.txt \
+     setup.py \
+     /opt/escadrille/
+COPY docker /opt/escadrille/docker/
+COPY docs /opt/escadrille/docs/
+COPY src /opt/escadrille/src/
+COPY theme /opt/escadrille/theme/
+
+# install escadrille from the local git repository
+WORKDIR /opt/escadrille
+RUN /opt/escadrille_env/bin/python /opt/escadrille/setup.py install;
+
+# add escadrille to the user's PATH for ease of use.
+RUN echo "export PATH=\"\$PATH:/opt/escadrille_env/bin\"" >> /home/$user/.bashrc
+RUN echo "export PATH=\"\$PATH:/opt/escadrille_env/bin\"" >> /root/.bashrc
+
+
+# Give ownership over certain directories to the user
+RUN chown -R $uid:$gid /opt
+
+USER $user:$gid
+
+WORKDIR /home/$user
+CMD ["escadrille"]
