@@ -1,0 +1,23 @@
+FROM fedora:27
+ARG user
+ARG uid
+ARG gid
+LABEL maintainer=curtissand@gmail.com
+
+# Note: default passwd for both user and root accounts is the username.
+#       Not ideal, I realize, so feel free to edit those portions of the
+#       dockerfile. A better way might be to pre-salt your password and edit
+#       the /etc/passwd directly by copying the salt in via COPY and then
+#       RUN-ing some bash commands to edit the "/etc/passwd" file as necessary.
+
+# Update packages and install dependencies
+RUN dnf upgrade -y && \
+    dnf install -y git passwd rsync
+
+# Set root passwd inside container so user has access to it.
+RUN echo $user | passwd --stdin root
+
+# Create the requested user group with the given GID and add the requested
+# user, setting passwd to the default here again.
+RUN (grep ":$gid:" /etc/group || groupadd $user -g $gid) && \
+    useradd --uid $uid --gid $gid $user --password $user
