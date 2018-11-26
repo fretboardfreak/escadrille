@@ -21,7 +21,6 @@ from docutils.io import FileInput
 
 from .core import Task
 from .options import OutputDirOpt
-from .common import build_output_input_file_pairs
 
 
 class Rst2dtreeTask(OutputDirOpt, Task):
@@ -58,7 +57,7 @@ class Rst2dtreeTask(OutputDirOpt, Task):
                     sane_path.endswith('.rst')):
                 # input files are mapped directly to output dir
                 path, fname = os.path.split(sane_path)
-                self.input_file_map = self.build_output_input_file_pairs(
+                self.build_output_input_pair(
                     sane_path, path, fname)
             elif os.path.isdir(sane_path):
                 for path, dirs, files in os.walk(sane_path):
@@ -69,12 +68,23 @@ class Rst2dtreeTask(OutputDirOpt, Task):
                         if fname.startswith('.'):
                             continue  # skip hidden files
                         if fname.endswith('.rst'):
-                            self.input_file_map = (
-                                build_output_input_file_pairs(sane_path,
-                                                              path, fname))
+                            self.build_output_input_pair(
+                                sane_path, path, fname)
             else:
                 print('Cannot load input "%s", skipping...' %
                       item)
+
+    def build_output_input_pair(self, top_path, path, fname):
+        """Build the pair of output and input paths."""
+        infile = os.path.join(path, fname)
+        name_parts = fname.split('.')
+        out_fname = '.'.join(name_parts[:-1] + ['pkl'])
+        partial = path.replace(top_path, '')
+        if partial.startswith('/'):
+            partial = partial[1:]
+        outfile = os.path.join(self.output_dir, partial,
+                               out_fname)
+        self.input_file_map[outfile] = infile
 
     def __call__(self, *args, **kwargs):
         """Parse input files into doctree and pickle results."""

@@ -24,10 +24,10 @@ from .options import OutputDirOpt
 from .common import build_output_input_file_pairs
 
 
-class Rst2dtreeTask(OutputDirOpt, Task):
-    """Make doctree itermediary files from RST source files."""
+class Rst2htmlTask(OutputDirOpt, Task):
+    """Convert RST source files into HTML files."""
 
-    config_name = 'rst2dtree'
+    config_name = 'rst2html'
     inputs_key = 'inputs'
     inputs_default = {}  # output_file: input_file
     output_dir_default = ''
@@ -37,7 +37,7 @@ class Rst2dtreeTask(OutputDirOpt, Task):
         # TODO: add suffix to general config file section
         self.suffix = 'rst'
         self.input_file_map = self.inputs_default
-        self.dtree_key = 'dtrees'
+        self.rst_key = ''
         super().__init__(*args, **kwargs)
 
     def _load_config(self):
